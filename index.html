@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tucson Event Connections | Local Party & Event Vendors</title>
+    <meta name="description" content="Find the best local Tucson event vendors. From taco carts and jumping castles to wedding photographers and tent rentals in Pima County.">
+    <meta name="keywords" content="Tucson Event Planning, Party Rentals Tucson, Taco Carts Tucson, Jumping Castles Tucson, Local SEO Tucson">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --tucson-blue: #2c3e50; --user-bg: #3498db; --bot-bg: #f1f0f0; --font-friendly: 'Quicksand', sans-serif; }
+        body { font-family: 'Inter', sans-serif; background: #fdfdfd; color: #333; font-size: 1.15rem; overflow-x: hidden; }
+        
+        /* HEADER - Logo removed for clean branding */
+        .hero { 
+            background: linear-gradient(rgba(44, 62, 80, 0.75), rgba(44, 62, 80, 0.75)), url('headline.jpg'); 
+            background-size: cover; background-position: center; color: white; padding: 6rem 1rem; 
+        }
+        
+        .vendor-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 2rem; border-radius: 12px; height: 100%; transition: 0.3s; cursor: pointer; }
+        .vendor-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+        .bg-food { background: #fff5eb; border-left: 6px solid #f6ad55; }
+        .bg-rentals { background: #f0fff4; border-left: 6px solid #68d391; }
+        .bg-jump { background: #ebf8ff; border-left: 6px solid #63b3ed; } 
+        .bg-photo { background: #e6fffa; border-left: 6px solid #4fd1c5; }
+        .bg-cakes { background: #fff5f7; border-left: 6px solid #fbb6ce; }
+        .bg-trans { background: #f7fafc; border-left: 6px solid #a0aec0; }
+
+        /* SEO HIDDEN SECTION */
+        .seo-hidden { display: none; visibility: hidden; height: 0; width: 0; overflow: hidden; }
+
+        .drawer { position: fixed; top: 0; right: -100%; width: 45%; height: 100%; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.15); z-index: 10000; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); padding: 60px 40px; overflow-y: auto; }
+        .drawer.is-active { right: 0; }
+        .drawer-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(44, 62, 80, 0.5); backdrop-filter: blur(4px); display: none; z-index: 9999; }
+        .drawer-overlay.is-active { display: block; }
+        .drawer-close { position: absolute; top: 25px; right: 30px; font-size: 2.5rem; cursor: pointer; color: #aaa; }
+        .drawer-img { width: 100%; border-radius: 12px; margin-bottom: 25px; background: #eee; height: 300px; background-size: cover; background-position: center; }
+
+        #chat-widget { 
+            position: fixed; bottom: 20px; right: 20px; width: 380px; background: white; border-radius: 15px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25); z-index: 9998; overflow: hidden; display: none; 
+            flex-direction: column; font-family: var(--font-friendly); transition: 0.3s;
+        }
+        #chat-widget.collapsed { width: 220px; height: 50px !important; }
+        #chat-widget.collapsed #chat-body { display: none !important; }
+        #chat-header { background: var(--tucson-blue); color: white; padding: 15px 20px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
+        #chat-body { height: 500px; display: flex; flex-direction: column; }
+        #chat-display { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #fff; }
+        .chat-msg { max-width: 85%; padding: 12px 16px; border-radius: 20px; font-size: 0.95rem; line-height: 1.4; }
+        .bot-msg { align-self: flex-start; background: #f1f0f0; border-bottom-left-radius: 4px; }
+        .user-msg { align-self: flex-end; background: #3498db; color: white; border-bottom-right-radius: 4px; }
+        #chat-controls { padding: 15px; background: #fafafa; border-top: 1px solid #eee; min-height: 100px; }
+
+        @media screen and (max-width: 1024px) { .drawer { width: 100%; } #chat-widget { width: 95%; right: 2.5%; } }
+    </style>
+</head>
+<body>
+
+    <section class="hero has-text-centered">
+        <div class="container">
+            <h1 class="title is-1 has-text-white">Tucson Event Connections</h1>
+            <p class="subtitle is-4 has-text-grey-lighter">Connecting Planners to Local Tucson Pros</p>
+        </div>
+    </section>
+
+    <section class="section has-background-white-bis">
+        <div class="container">
+            <div class="content has-text-centered">
+                <h2 class="title is-3">Tucson's Premier Event Vendor Network</h2>
+                <p class="is-size-5">
+                    Planning an event in the Old Pueblo? Whether it's a graduation party in the <strong>Catalina Foothills</strong>, a wedding in <strong>Oro Valley</strong>, or a backyard bash in <strong>Midtown Tucson</strong>, we simplify your search. Our mission is to provide a seamless connection point for Tucson hosts to find the city's best event professionals in under 2 minutes.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-4">
+                    <div class="box vendor-card bg-food" onclick="openDrawer('Food/Catering', 'Taco carts, local BBQ, & catering.', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800')">
+                        <h4 class="title is-4">🚚 Food / Catering</h4>
+                        <p>Best taco carts and local BBQ catering in Tucson.</p>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="box vendor-card bg-rentals" onclick="openDrawer('Rentals', 'Furniture, shade, & tent rentals.', 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800')">
+                        <h4 class="title is-4">⛺ Tables / Chairs / Shade</h4>
+                        <p>Event rentals and shade structures for AZ weather.</p>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="box vendor-card bg-jump" onclick="openDrawer('Jumpers/Slides', 'Clean, safe bounce houses & slides.', 'jump.jpg')">
+                        <h4 class="title is-4">🏰 Jumping Houses / Slides</h4>
+                        <p>Insured bounce house rentals in Tucson.</p>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="box vendor-card bg-photo" onclick="openDrawer('Photo/Booth', 'Professional photography & photobooths.', 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800')">
+                        <h4 class="title is-4">📸 Photography / Booths</h4>
+                        <p>Tucson event photographers and photobooths.</p>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="box vendor-card bg-cakes" onclick="openDrawer('Cakes/Sweets', 'Artisan cakes & local desert sweets.', 'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800')">
+                        <h4 class="title is-4">🍰 Cakes / Desserts</h4>
+                        <p>Custom party cakes and local sweets.</p>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="box vendor-card bg-trans" onclick="openDrawer('Transportation', 'Guest shuttles & group services.', 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800')">
+                        <h4 class="title is-4">🚐 Transportation</h4>
+                        <p>Group shuttles and transit for events.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section has-background-link">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-8">
+                    <h3 class="title is-3 has-text-white">Are you a Tucson Event Vendor?</h3>
+                    <p class="is-size-5 has-text-white">
+                        Grow your business by joining our Connection Network. We connect quality Tucson professionals with vetted event leads.
+                    </p>
+                </div>
+                <div class="column is-4">
+                    <button class="button is-warning is-large is-fullwidth has-text-weight-bold" onclick="openVendorPage()">
+                        JOIN THE NETWORK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="seo-hidden">
+        Tucson Service Areas: 85701, 85704, 85705, 85706, 85707, 85708, 85710, 85711, 85712, 85713, 85714, 85715, 85716, 85718, 85719, 85721, 85723, 85724, 85726, 85730, 85737, 85741, 85742, 85743, 85745, 85746, 85747, 85748, 85749, 85750, 85756, 85757.
+    </div>
+
+    <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+    <div class="drawer" id="drawer">
+        <span class="drawer-close" onclick="closeDrawer()">&times;</span>
+        <h2 class="title is-2" id="drawer-title" style="margin-top: 20px;">Category</h2>
+        <div id="drawer-media-box" class="drawer-img"></div>
+        <p class="is-size-5" id="drawer-desc" style="line-height: 1.8; color: #555;"></p>
+        <hr>
+        <button class="button is-link is-fullwidth is-large" id="drawer-action-btn">GET QUOTES IN CHAT</button>
+    </div>
+
+    <div id="chat-widget">
+        <div id="chat-header" onclick="toggleChat()">
+            <span>💬 Theory Assistant</span>
+            <span id="chat-toggle-icon">−</span>
+        </div>
+        <div id="chat-body">
+            <div id="chat-display"></div>
+            <div id="chat-controls"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
