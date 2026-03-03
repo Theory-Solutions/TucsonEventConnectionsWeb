@@ -1,6 +1,9 @@
 // --- CONFIGURATION & SUPABASE STAGING ---
 const SB_URL = 'https://vksrsmxjrpnjtfwvhjin.supabase.co/functions/v1/dispatch-call';
+// Public Anon Key for initial connection
 const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZrc3JzbXhqcnBuanRmd3ZoamluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI0OTAzMDEsImV4cCI6MjA4ODA2NjMwMX0.cSTaLQXlQzMAP65xJGT24qz1p3cCr0WyA3oVL8Q3HMg';
+// Bot-Proof Secret Header
+const THEORY_AUTH = 'Tucson-Lead-2026'; 
 
 let chatData = { 
     vendors: [], 
@@ -31,12 +34,19 @@ window.onload = () => {
 };
 
 async function pushToSupabase(payload) {
+    // Basic validation to prevent blank submissions from the UI side
+    if (!payload.email && !payload.vendorEmail) {
+        console.warn("🚫 Blocked empty submission attempt.");
+        return;
+    }
+
     try {
         const response = await fetch(SB_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${SB_KEY}`
+                'Authorization': `Bearer ${SB_KEY}`,
+                'X-Theory-Auth': THEORY_AUTH // Required by your new Bot-Proof dispatch
             },
             body: JSON.stringify(payload)
         });
@@ -44,6 +54,8 @@ async function pushToSupabase(payload) {
         if (!response.ok) {
             const errorText = await response.text();
             console.error("Supabase Error:", errorText);
+            // If we get a 429, it's the rate limiter we built
+            if (response.status === 429) alert("You've already submitted a request. Please check your email!");
         } else {
             const result = await response.json();
             console.log("Supabase Success:", result);
@@ -71,7 +83,8 @@ async function renderMessage(text, side = 'bot') {
 }
 
 function clearInputs() { 
-    document.getElementById('chat-controls').innerHTML = ''; 
+    const controls = document.getElementById('chat-controls');
+    if (controls) controls.innerHTML = ''; 
 }
 
 // --- ENTRY POINTS: Planner vs Vendor ---
@@ -107,9 +120,8 @@ window.handleInitial = async (isYes) => {
 window.openVendorPage = async () => {
     toggleChat(false); 
     clearInputs();
-    
     const chatDisplay = document.getElementById('chat-display');
-    chatDisplay.innerHTML = ''; // Wipe chat history for B2B clarity
+    chatDisplay.innerHTML = ''; 
     
     await renderMessage("Excellent! We are always looking for quality Tucson professionals to join our network. 🛠️");
     await renderMessage("What is the name of your business?");
@@ -156,10 +168,7 @@ window.askVendorConsent = async () => {
     if (!val) return;
     chatData.vendorEmail = val;
     renderMessage(val, "user"); clearInputs();
-
-    await renderMessage("By clicking below, you agree to receive business updates from Tucson Event Connections.");
-    await renderMessage("We have a formal review process for all partners. Theory Solutions is not liable for performance disputes.");
-    
+    await renderMessage("By clicking below, you agree to receive business updates from Theory Solutions.");
     document.getElementById('chat-controls').innerHTML = `
         <button class="button is-success is-fullwidth is-large mb-2" onclick="finishVendorSignup()">✅ I AGREE & APPLY</button>
         <button class="button is-light is-small is-fullwidth" onclick="startChat()">CANCEL</button>`;
@@ -168,9 +177,7 @@ window.askVendorConsent = async () => {
 window.finishVendorSignup = async () => {
     chatData.vendorConsent = true;
     clearInputs();
-    await renderMessage("Thank you! Your application has been received.");
-    await renderMessage("We will be in touch after reviewing your details. 🌵");
-    
+    await renderMessage("Thank you! Your application has been received. 🌵");
     await pushToSupabase(chatData);
 };
 
@@ -180,11 +187,10 @@ window.jumpToCategory = async (category) => {
     toggleChat(false); 
     clearInputs();
     if (chatData.eventDate) {
-        await renderMessage(`I've added ${category} to your request list!`);
+        await renderMessage(`I've added ${category} to your list!`);
         routeToSub(category);
     } else {
-        await renderMessage(`I see you're interested in ${category}! Let's get your event details first.`);
-        await renderMessage("When is the event date?");
+        await renderMessage(`I see you're interested in ${category}! Let's get event details first.`);
         document.getElementById('chat-controls').innerHTML = `
             <input class="input is-medium mb-2" type="date" id="eventDate">
             <button class="button is-link is-fullwidth" onclick="saveDate('${category}')">NEXT</button>`;
@@ -223,8 +229,6 @@ window.selectVendorStep = async () => {
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="askQuotes('Transportation')">🚐 Transport</button></div>
         </div>`;
 };
-
-// --- SUB-CATEGORY ROUTING ---
 
 function routeToSub(cat) {
     if (cat === 'Food/Catering') askFoodType();
@@ -273,8 +277,7 @@ window.askQuotes = async (type) => {
 
 window.saveVendor = async (type, count) => {
     chatData.vendors.push({ type, count }); clearInputs();
-    await renderMessage(`Added ${type} for ${count} quotes.`);
-    await renderMessage(`Need anything else?`);
+    await renderMessage(`Added ${type}. Need anything else?`);
     document.getElementById('chat-controls').innerHTML = `
         <button class="button is-link btn-oversized" onclick="selectVendorStep()">YES, ADD MORE</button>
         <button class="button is-light btn-oversized" onclick="askName()">NO, THAT'S ALL</button>`;
@@ -304,7 +307,7 @@ window.askEmail = async () => {
     chatData.phone = document.getElementById('custPhone').value;
     if (!chatData.phone) return;
     renderMessage(chatData.phone, "user"); clearInputs();
-    await renderMessage("Lastly, what's your email? We'll send your summary and Tucson Event Guide there! 🌵");
+    await renderMessage("Lastly, what's your email? 🌵");
     document.getElementById('chat-controls').innerHTML = `
         <input class="input is-medium mb-2" type="email" id="custEmail" placeholder="name@example.com">
         <button class="button is-link is-fullwidth" onclick="askConsent()">NEXT</button>`;
@@ -314,42 +317,21 @@ window.askConsent = async () => {
     chatData.email = document.getElementById('custEmail').value;
     if (!chatData.email) return;
     renderMessage(chatData.email, "user"); clearInputs();
-    await renderMessage("By clicking below, you agree to receive event updates from Tucson Event Connections.");
-    await renderMessage("Disclaimer: Theory Solutions is a connection service and is not liable for vendor performance.");
+    await renderMessage("By clicking below, you agree to receive event updates from Theory Solutions.");
     document.getElementById('chat-controls').innerHTML = `<button class="button is-success is-fullwidth is-large mb-2" onclick="finish()">✅ I AGREE & CONNECT ME</button>`;
 };
 
 window.finish = async () => {
     chatData.marketingConsent = true;
     clearInputs();
-    await renderMessage("Perfect! Request sent. Check your inbox shortly for your Event Guide! 🌵");
-    
+    await renderMessage("Perfect! Request sent. Check your inbox shortly! 🌵");
     await pushToSupabase(chatData);
 };
 
-// --- INTERFACE UTILITIES ---
-
-function openDrawer(title, desc, mediaUrl) {
-    document.getElementById('drawer-title').innerText = title;
-    document.getElementById('drawer-desc').innerText = desc;
-    document.getElementById('drawer-media-box').style.backgroundImage = "url('" + mediaUrl + "')";
-    document.getElementById('drawer').classList.add('is-active');
-    document.getElementById('overlay').classList.add('is-active');
-    document.getElementById('drawer-action-btn').onclick = () => {
-        closeDrawer();
-        jumpToCategory(title);
-    };
-}
-
-function closeDrawer() {
-    document.getElementById('drawer').classList.remove('is-active');
-    document.getElementById('overlay').classList.remove('is-active');
-}
-
-window.toggleChat = (forceCollapse = null) => {
+function toggleChat(forceCollapse = null) {
     const widget = document.getElementById('chat-widget');
     const icon = document.getElementById('chat-toggle-icon');
     const shouldCollapse = (forceCollapse !== null) ? forceCollapse : !widget.classList.contains('collapsed');
     if (shouldCollapse) { widget.classList.add('collapsed'); if (icon) icon.innerText = '+'; } 
     else { widget.classList.remove('collapsed'); if (icon) icon.innerText = '−'; }
-};
+}
