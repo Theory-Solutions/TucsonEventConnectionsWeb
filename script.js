@@ -1,285 +1,209 @@
 // --- CONFIGURATION & SECURITY ---
 const SB_URL = 'https://vksrsmxjrpnjtfwvhjin.supabase.co/functions/v1/dispatch-call';
 const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZrc3JzbXhqcnBuanRmd3ZoamluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI0OTAzMDEsImV4cCI6MjA4ODA2NjMwMX0.cSTaLQXlQzMAP65xJGT24qz1p3cCr0WyA3oVL8Q3HMg';
-const THEORY_AUTH = 'Tucson-Lead-2026'; // Handshake for the secure dispatch-call
+const THEORY_AUTH = 'Tucson-Lead-2026';
 
 let chatData = { 
-    vendors: [], 
-    name: '', 
-    phone: '', 
-    email: '', 
-    eventDate: '', 
-    guests: '',
-    marketingConsent: false
+    vendors: [], name: '', phone: '', email: '', eventDate: '', guests: '',
+    isVendorFlow: false, businessName: '', vendorCat: '', marketingConsent: false
 };
 
-// --- STARTUP LOGIC ---
-
-window.onload = () => {
-    setTimeout(() => {
-        const widget = document.getElementById('chat-widget');
-        if (widget) { 
-            widget.style.display = 'flex'; 
-            startChat(); 
-        }
-    }, 6000); // 6-second delay as requested
+const tucsonPricing = {
+    "Catering / Food Truck / Food Carts": "$10-$20 per person",
+    "Furniture / Setup / Tents": "$2-$15 per item/setup",
+    "Jumping Castle / Slides / Water Inflatable": "$150-$450 per day",
+    "Photography / Photobooths / Videography": "$300-$1500 per event",
+    "Cakes / Sweets / Treats": "$50-$350 custom orders",
+    "Transportation / Shuttles / Limos": "$125-$250 per hour",
+    "Music / DJ": "$450-$1200 per event",
+    "Pinatas / Balloons / Decor": "$80-$400 per setup"
 };
 
-// --- SECURE DISPATCH HANDSHAKE ---
-
-async function pushToSupabase(payload) {
-    if (!payload.email || payload.email.length < 5) {
-        console.warn("🚫 Blocked empty submission attempt.");
-        return;
-    }
-
-    try {
-        const response = await fetch(SB_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${SB_KEY}`,
-                'X-Theory-Auth': THEORY_AUTH // Bot-Proof Gatekeeper
-            },
-            body: JSON.stringify(payload)
-        });
-        
-        if (response.status === 429) {
-            alert("Rate limit reached. Please wait 60 seconds before submitting again.");
-        } else if (response.ok) {
-            console.log("Lead successfully routed to Tucson partners.");
-        }
-    } catch (err) {
-        console.error("Network/Fetch Error:", err);
-    }
-}
-
-// --- DRAWER INTERFACE LOGIC ---
-
-window.openDrawer = (title, desc, mediaUrl) => {
-    const drawer = document.getElementById('drawer');
-    const overlay = document.getElementById('overlay');
-    
-    if (!drawer || !overlay) return;
-
-    document.getElementById('drawer-title').innerText = title;
-    document.getElementById('drawer-desc').innerText = desc;
-    document.getElementById('drawer-media-box').style.backgroundImage = `url('${mediaUrl}')`;
-    
-    drawer.classList.add('is-active');
-    overlay.classList.add('is-active');
-    
-    document.getElementById('drawer-action-btn').onclick = () => {
-        closeDrawer();
-        jumpToCategory(title); // Bridges drawer to chat flow
-    };
-};
-
-window.closeDrawer = () => {
-    const drawer = document.getElementById('drawer');
-    const overlay = document.getElementById('overlay');
-    if (drawer) drawer.classList.remove('is-active');
-    if (overlay) overlay.classList.remove('is-active');
-};
-
-// --- CHAT UI UTILITIES ---
+// --- STARTUP & UI HELPERS ---
+window.onload = () => { setTimeout(() => { document.getElementById('chat-widget').style.display = 'flex'; startChat(); }, 6000); };
+function scrollToBottom() { const display = document.getElementById('chat-display'); display.scrollTop = display.scrollHeight; }
+function clearInputs() { document.getElementById('chat-controls').innerHTML = ''; }
+function focusInput(id) { setTimeout(() => { const el = document.getElementById(id); if (el) el.focus(); }, 100); }
 
 async function renderMessage(text, side = 'bot') {
-    const chatDisplay = document.getElementById('chat-display');
-    const msgDiv = document.createElement('div');
-    msgDiv.className = side === 'bot' ? 'chat-msg bot-msg' : 'chat-msg user-msg';
-    if (side === 'bot') {
-        msgDiv.innerText = "...";
-        chatDisplay.appendChild(msgDiv);
-        chatDisplay.scrollTop = chatDisplay.scrollHeight;
-        await new Promise(res => setTimeout(res, 800));
-        msgDiv.innerText = text;
-    } else {
-        msgDiv.innerText = text;
-        chatDisplay.appendChild(msgDiv);
-    }
-    chatDisplay.scrollTop = chatDisplay.scrollHeight;
+    const display = document.getElementById('chat-display');
+    const msg = document.createElement('div');
+    msg.className = side === 'bot' ? 'chat-msg bot-msg' : 'chat-msg user-msg';
+    if (side === 'bot') { msg.innerText = "..."; display.appendChild(msg); scrollToBottom(); await new Promise(r => setTimeout(r, 600)); }
+    msg.innerText = text; display.appendChild(msg); scrollToBottom();
 }
 
-function clearInputs() { 
-    const controls = document.getElementById('chat-controls');
-    if (controls) controls.innerHTML = ''; 
-}
+// --- VENDOR INTAKE FLOW (WIPES HISTORY) ---
+window.openVendorIntake = async () => {
+    chatData = { vendors: [], name: '', phone: '', email: '', eventDate: '', guests: '', isVendorFlow: true, businessName: '', vendorCat: '', marketingConsent: false };
+    document.getElementById('chat-display').innerHTML = ''; // WIPES PREVIOUS HISTORY
+    toggleChat(false); clearInputs();
+    await renderMessage("Welcome to the Theory Solutions Partner Network! 🌵");
+    await renderMessage("Ready to join and receive vetted Tucson leads?");
+    document.getElementById('chat-controls').innerHTML = `
+        <button class="button is-warning is-fullwidth mb-2" onclick="askBizName()">YES, START APPLICATION</button>
+        <button class="button is-light is-fullwidth" onclick="startChat()">NO, I'M A PLANNER</button>`;
+};
 
-// --- CORE CHAT FLOW ---
+window.askBizName = async () => {
+    clearInputs(); await renderMessage("What is the name of your Business?");
+    document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" id="vBiz" placeholder="Business Name"><button class="button is-link is-fullwidth" onclick="saveBizName()">NEXT</button>`;
+    focusInput('vBiz');
+};
 
+window.saveBizName = async () => {
+    const val = document.getElementById('vBiz').value; if (!val) return;
+    chatData.businessName = val; renderMessage(val, "user"); clearInputs();
+    await renderMessage("Which primary category do you serve in Tucson?");
+    document.getElementById('chat-controls').innerHTML = `
+        <div class="columns is-mobile is-multiline" style="margin: 0;">
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Food & Beverage')">Food & Bev</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Event Rentals')">Rentals</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Entertainment')">Entertainment</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Media/Photo')">Media</button></div>
+            <div class="column is-12 p-1"><button class="button is-dark is-small is-fullwidth" onclick="askOtherCat()">❌ NOT LISTED / OTHER</button></div>
+        </div>`;
+};
+
+window.askOtherCat = async () => {
+    clearInputs(); await renderMessage("No problem! What service do you provide?");
+    document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" id="vOther" placeholder="e.g. Security, Lighting"><button class="button is-link is-fullwidth" onclick="saveVendorCat(document.getElementById('vOther').value)">NEXT</button>`;
+    focusInput('vOther');
+};
+
+window.saveVendorCat = async (cat) => { chatData.vendorCat = cat; renderMessage(cat, "user"); askName(); };
+
+// --- PLANNER FLOW ---
 async function startChat() {
-    clearInputs();
+    chatData.isVendorFlow = false; clearInputs();
     await renderMessage("Hey, I'm the Theory Assistant! 👋");
     await renderMessage("Ready to find some vendors for your Tucson event?");
-    document.getElementById('chat-controls').innerHTML = `
-        <button class="button is-link btn-oversized" onclick="handleInitial(true)">YES</button>
-        <button class="button is-light btn-oversized" onclick="handleInitial(false)">NO</button>`;
+    document.getElementById('chat-controls').innerHTML = `<button class="button is-link is-fullwidth mb-2" onclick="handleInitial(true)">YES</button><button class="button is-light is-fullwidth" onclick="handleInitial(false)">NO</button>`;
 }
 
-window.handleInitial = async (isYes) => {
-    clearInputs();
-    if (!isYes) {
-        renderMessage("No", "user");
-        await renderMessage("No problem! Come back when you're ready to plan.");
-        return;
-    }
-    renderMessage("Yes", "user");
-    await renderMessage("Great! What is the event date?");
-    document.getElementById('chat-controls').innerHTML = `
-        <input class="input is-medium mb-2" type="date" id="eventDate">
-        <button class="button is-link is-fullwidth" onclick="saveDate()">NEXT</button>`;
+window.handleInitial = async (yes) => {
+    clearInputs(); if (!yes) { await renderMessage("No problem! Come back soon."); return; }
+    renderMessage("Yes", "user"); await renderMessage("Great! What is the event date?");
+    document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" type="date" id="eDate" value="${chatData.eventDate}"><button class="button is-link is-fullwidth" onclick="saveDate()">NEXT</button>`;
+    focusInput('eDate');
 };
 
-window.saveDate = async (jumpCat = null) => {
-    const val = document.getElementById('eventDate').value;
-    if (!val) return;
-    chatData.eventDate = val;
-    renderMessage(val, "user"); clearInputs();
-    await renderMessage("Roughly how many guests are you expecting?");
-    document.getElementById('chat-controls').innerHTML = `
-        <input class="input is-medium mb-2" type="number" id="guestCount" placeholder="e.g. 50">
-        <button class="button is-link is-fullwidth" onclick="saveGuests('${jumpCat}')">NEXT</button>`;
+window.saveDate = async () => {
+    const val = document.getElementById('eDate').value; if (!val) return;
+    chatData.eventDate = val; renderMessage(val, "user"); clearInputs();
+    if (chatData.email) { showRecap(); return; }
+    await renderMessage("How many guests?");
+    document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" type="number" id="gCount" value="${chatData.guests}" placeholder="e.g. 50"><button class="button is-link is-fullwidth" onclick="saveGuests()">NEXT</button>`;
+    focusInput('gCount');
 };
 
-window.saveGuests = async (jumpCat = null) => {
-    const val = document.getElementById('guestCount').value;
-    if (!val) return;
-    chatData.guests = val;
-    renderMessage(`${val} guests`, "user"); clearInputs();
-    if (jumpCat && jumpCat !== 'null') routeToSub(jumpCat); else selectVendorStep();
+window.saveGuests = async () => {
+    const val = document.getElementById('gCount').value; if (!val) return;
+    chatData.guests = val; renderMessage(`${val} guests`, "user"); clearInputs();
+    if (chatData.email) { showRecap(); return; }
+    selectVendorStep();
 };
 
 window.selectVendorStep = async () => {
-    clearInputs();
-    await renderMessage("What do you need help with today?");
+    clearInputs(); await renderMessage("What do you need help with?");
     document.getElementById('chat-controls').innerHTML = `
         <div class="columns is-mobile is-multiline" style="margin: 0;">
-            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="askFoodType()">🚚 Food/Catering</button></div>
-            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="askRentals()">⛺ Rentals</button></div>
-            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="askQuotes('Jumpers/Slides')">🏰 Jumpers/Slides</button></div>
-            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="askQuotes('Cakes/Sweets')">🍰 Cakes/Sweets</button></div>
-            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="askPhotoType()">📸 Photo/Booth</button></div>
-            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="askQuotes('Transportation')">🚐 Transport</button></div>
-        </div>`;
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Catering')">🚚 Food</button></div>
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Furniture')">⛺ Furniture</button></div>
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Jumping')">🏰 Inflatables</button></div>
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Photo')">📸 Photo/Video</button></div>
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Cakes')">🍰 Sweets</button></div>
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Transportation')">🚐 Shuttles</button></div>
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Music')">🎵 Music/DJ</button></div>
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Decor')">🎈 Decor</button></div>
+        </div>
+        ${chatData.email ? '<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="showRecap()">⬅️ DONE EDITING</button>' : ''}`;
+    scrollToBottom();
 };
 
-// --- ROUTING & CATEGORY SYNC ---
-
-window.jumpToCategory = async (category) => {
-    toggleChat(false); 
-    clearInputs();
-    if (chatData.eventDate) {
-        await renderMessage(`Added ${category} to your request!`);
-        routeToSub(category);
-    } else {
-        await renderMessage(`I'll add ${category}, but let's get your details first!`);
-        document.getElementById('chat-controls').innerHTML = `
-            <input class="input is-medium mb-2" type="date" id="eventDate">
-            <button class="button is-link is-fullwidth" onclick="saveDate('${category}')">NEXT</button>`;
-    }
+window.jumpToCategory = async (cat) => {
+    toggleChat(false);
+    if (chatData.eventDate) { await renderMessage(`Adding ${cat}...`); routeToSub(cat); } 
+    else { await renderMessage(`Let's get your date first!`); document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" type="date" id="eDate"><button class="button is-link is-fullwidth" onclick="saveDate()">NEXT</button>`; focusInput('eDate'); }
 };
 
 function routeToSub(cat) {
-    const syncCat = cat.replace(' & ', '/'); // Matches DB 'Tables/Chairs'
-    if (syncCat === 'Food/Catering') askFoodType();
-    else if (syncCat === 'Rentals') askRentals();
-    else if (syncCat === 'Photo/Booth') askPhotoType();
-    else askQuotes(syncCat);
+    clearInputs(); const ctrl = document.getElementById('chat-controls');
+    const backBtn = chatData.email ? `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="showRecap()">⬅️ DONE EDITING</button>` : `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="selectVendorStep()">⬅️ BACK</button>`;
+    if (cat.includes('Catering') || cat.includes('Food')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Catering')">Catering</button><button class="button is-small" onclick="askQuotes('Food Truck')">Truck</button><button class="button is-small" onclick="askQuotes('Food Carts')">Carts</button></div>${backBtn}`; }
+    else if (cat.includes('Furniture') || cat.includes('Rentals') || cat.includes('Tables')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Tables')">Tables</button><button class="button is-small" onclick="askQuotes('Chairs')">Chairs</button><button class="button is-small" onclick="askQuotes('Tents')">Tents</button></div>${backBtn}`; }
+    else if (cat.includes('Jumping')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Jumping Castle')">Castle</button><button class="button is-small" onclick="askQuotes('Slides')">Slides</button><button class="button is-small" onclick="askQuotes('Water Inflatable')">Water</button></div>${backBtn}`; }
+    else if (cat.includes('Photo')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Photography')">Photo</button><button class="button is-small" onclick="askQuotes('Photobooths')">Booth</button><button class="button is-small" onclick="askQuotes('Videography')">Video</button></div>${backBtn}`; }
+    else if (cat.includes('Cakes')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Cakes')">Cakes</button><button class="button is-small" onclick="askQuotes('Sweets')">Sweets</button><button class="button is-small" onclick="askQuotes('Treats')">Treats</button></div>${backBtn}`; }
+    else if (cat.includes('Transportation')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Transportation')">Transport</button><button class="button is-small" onclick="askQuotes('Shuttles')">Shuttle</button><button class="button is-small" onclick="askQuotes('Limos')">Limo</button></div>${backBtn}`; }
+    else if (cat.includes('Music')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('DJ')">DJ</button><button class="button is-small" onclick="askQuotes('Live Band')">Band</button></div>${backBtn}`; }
+    else if (cat.includes('Decor')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Pinatas')">Pinatas</button><button class="button is-small" onclick="askQuotes('Balloons')">Balloons</button><button class="button is-small" onclick="askQuotes('Decor')">Decor</button></div>${backBtn}`; }
+    else { askQuotes(cat); }
+    scrollToBottom();
 }
 
-window.askRentals = async () => {
-    clearInputs(); renderMessage("Rentals", "user");
-    await renderMessage("What kind of setup do you need?");
-    document.getElementById('chat-controls').innerHTML = `
-        <button class="button is-info is-light is-fullwidth mb-2" onclick="askQuotes('Tents/Shade')">⛺ Tents & Shade</button>
-        <button class="button is-info is-light is-fullwidth mb-2" onclick="askQuotes('Tables/Chairs')">🪑 Tables & Chairs</button>
-        <button class="button is-info is-light is-fullwidth" onclick="askQuotes('Full Rental Package')">📦 Full Setup</button>`;
-};
-
-window.askFoodType = async () => {
-    clearInputs(); renderMessage("Food", "user");
-    document.getElementById('chat-controls').innerHTML = `
-        <button class="button is-info is-light is-fullwidth mb-2" onclick="askQuotes('Taco Truck')">🌮 Taco Truck</button>
-        <button class="button is-info is-light is-fullwidth mb-2" onclick="askQuotes('BBQ Truck')">🍖 BBQ Truck</button>
-        <button class="button is-info is-light is-fullwidth" onclick="askQuotes('Full Catering')">🍽️ Full Catering</button>`;
-};
-
-window.askPhotoType = async () => {
-    clearInputs(); renderMessage("Photography", "user");
-    document.getElementById('chat-controls').innerHTML = `
-        <button class="button is-info is-light is-fullwidth mb-2" onclick="askQuotes('Photobooth Rental')">🎟️ Photobooth</button>
-        <button class="button is-info is-light is-fullwidth mb-2" onclick="askQuotes('Family/Event Photo')">📸 Photographer</button>`;
-};
-
 window.askQuotes = async (type) => {
-    clearInputs(); renderMessage(type, "user");
-    await renderMessage(`How many quotes for ${type}? (1-3)`);
-    document.getElementById('chat-controls').innerHTML = `
-        <div class="buttons is-centered">
-            <button class="button is-info" onclick="saveVendor('${type}', 1)">1</button>
-            <button class="button is-info" onclick="saveVendor('${type}', 2)">2</button>
-            <button class="button is-info" onclick="saveVendor('${type}', 3)">3</button>
-        </div>`;
+    clearInputs(); await renderMessage(`How many quotes for ${type}?`);
+    const backBtn = chatData.email ? `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="showRecap()">⬅️ DONE EDITING</button>` : `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="selectVendorStep()">⬅️ BACK</button>`;
+    document.getElementById('chat-controls').innerHTML = `<div class="buttons is-centered"><button class="button is-info" onclick="saveVendor('${type}', 1)">1</button><button class="button is-info" onclick="saveVendor('${type}', 2)">2</button><button class="button is-info" onclick="saveVendor('${type}', 3)">3</button></div>${backBtn}`;
+    scrollToBottom();
 };
 
 window.saveVendor = async (type, count) => {
-    chatData.vendors.push({ type, count }); clearInputs();
-    await renderMessage(`Added ${type}. Need anything else?`);
-    document.getElementById('chat-controls').innerHTML = `
-        <button class="button is-link btn-oversized" onclick="selectVendorStep()">YES, ADD MORE</button>
-        <button class="button is-light btn-oversized" onclick="askName()">NO, THAT'S ALL</button>`;
+    chatData.vendors.push({ type, count }); renderMessage(`${count} quotes for ${type}`, "user"); clearInputs();
+    if (chatData.email) { showRecap(); return; }
+    await renderMessage(`Got it. Need anything else?`);
+    document.getElementById('chat-controls').innerHTML = `<button class="button is-link is-fullwidth mb-2" onclick="selectVendorStep()">YES, ADD MORE</button><button class="button is-light is-fullwidth" onclick="askName()">NO, THAT'S ALL</button>`;
 };
 
-// --- CONTACT & COMPLETION ---
+// --- CONTACT INFO & RECAP ---
+window.askName = async () => { clearInputs(); await renderMessage("Excellent. What is your full name?"); document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" id="cName" value="${chatData.name}" placeholder="Full Name"><button class="button is-link is-fullwidth" onclick="saveName()">NEXT</button>`; focusInput('cName'); };
+window.saveName = async () => { const val = document.getElementById('cName').value; if (!val) return; chatData.name = val; renderMessage(val, "user"); clearInputs(); if (chatData.email) { showRecap(); return; } askPhone(); };
+window.askPhone = async () => { clearInputs(); await renderMessage("What's a good contact number?"); document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" id="cPhone" value="${chatData.phone}" placeholder="520-XXX-XXXX"><button class="button is-link is-fullwidth" onclick="savePhone()">NEXT</button>`; focusInput('cPhone'); };
+window.savePhone = async () => { const val = document.getElementById('cPhone').value; if (!val) return; chatData.phone = val; renderMessage(val, "user"); clearInputs(); if (chatData.email) { showRecap(); return; } askEmail(); };
+window.askEmail = async () => { clearInputs(); await renderMessage("And finally, your email?"); document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" id="cEmail" value="${chatData.email}" placeholder="email@example.com"><button class="button is-link is-fullwidth" onclick="showRecap()">RECAP MY REQUEST</button>`; focusInput('cEmail'); };
 
-window.askName = async () => {
-    clearInputs(); renderMessage("Ready", "user");
-    await renderMessage("Excellent. What is your full name?");
-    document.getElementById('chat-controls').innerHTML = `
-        <input class="input is-medium mb-2" type="text" id="custName" placeholder="Full Name">
-        <button class="button is-link is-fullwidth" onclick="askPhone()">NEXT</button>`;
+window.showRecap = async () => {
+    const emailInput = document.getElementById('cEmail'); if (emailInput) chatData.email = emailInput.value;
+    clearInputs();
+    await renderMessage("Please review your details. Click any item to change it:");
+    if (chatData.isVendorFlow) {
+        await renderMessage(`🏢 Business: ${chatData.businessName}\n🛠️ Category: ${chatData.vendorCat}\n👤 Contact: ${chatData.name}\n📞 Phone: ${chatData.phone}`); // NO EVENT DETAILS FOR VENDORS
+        document.getElementById('chat-controls').innerHTML = `
+            <div class="columns is-multiline is-mobile" style="margin: 0;">
+                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="askBizName()">🏢 Edit Biz</button></div>
+                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveBizName()">🛠️ Edit Cat</button></div>
+                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="askName()">👤 Edit Name</button></div>
+                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="askPhone()">📞 Edit Phone</button></div>
+            </div>
+            <hr style="margin: 10px 0;"><button class="button is-success is-medium is-fullwidth" onclick="askConsent()">✅ EVERYTHING IS CORRECT</button>`;
+    } else {
+        const serviceRecap = chatData.vendors.length > 0 ? chatData.vendors.map(v => `${v.type} (${v.count})`).join(', ') : 'None selected';
+        await renderMessage(`📅 Date: ${chatData.eventDate}\n👥 Guests: ${chatData.guests}\n🛠️ Services: ${serviceRecap}`);
+        document.getElementById('chat-controls').innerHTML = `
+            <div class="columns is-multiline is-mobile" style="margin: 0;">
+                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="handleInitial(true)">📅 Edit Date</button></div>
+                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveDate()">👥 Edit Guests</button></div>
+                <div class="column is-12 p-1"><button class="button is-small is-fullwidth" onclick="selectVendorStep()">🛠️ Edit Services (${chatData.vendors.length})</button></div>
+                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="askName()">👤 Edit Name</button></div>
+                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="askPhone()">📞 Edit Phone</button></div>
+            </div>
+            <hr style="margin: 10px 0;"><button class="button is-success is-medium is-fullwidth" onclick="askConsent()">✅ EVERYTHING IS CORRECT</button>`;
+    }
+    scrollToBottom();
 };
 
-window.askPhone = async () => {
-    chatData.name = document.getElementById('custName').value;
-    if (!chatData.name) return;
-    renderMessage(chatData.name, "user"); clearInputs();
-    await renderMessage("And a contact number for the vendors?");
-    document.getElementById('chat-controls').innerHTML = `
-        <input class="input is-medium mb-2" type="tel" id="custPhone" placeholder="520-XXX-XXXX">
-        <button class="button is-link is-fullwidth" onclick="askEmail()">NEXT</button>`;
-};
-
-window.askEmail = async () => {
-    chatData.phone = document.getElementById('custPhone').value;
-    if (!chatData.phone) return;
-    renderMessage(chatData.phone, "user"); clearInputs();
-    await renderMessage("Lastly, what's your email?");
-    document.getElementById('chat-controls').innerHTML = `
-        <input class="input is-medium mb-2" type="email" id="custEmail" placeholder="name@example.com">
-        <button class="button is-link is-fullwidth" onclick="askConsent()">NEXT</button>`;
-};
-
-window.askConsent = async () => {
-    chatData.email = document.getElementById('custEmail').value;
-    if (!chatData.email) return;
-    renderMessage(chatData.email, "user"); clearInputs();
-    await renderMessage("By clicking below, you agree to connect with Tucson professionals via Theory Solutions. 🌵");
-    document.getElementById('chat-controls').innerHTML = `<button class="button is-success is-fullwidth is-large" onclick="finish()">✅ I AGREE & CONNECT ME</button>`;
-};
+window.askConsent = async () => { clearInputs(); await renderMessage("By clicking below, you agree to the Theory Solutions terms. 🌵"); document.getElementById('chat-controls').innerHTML = `<button class="button is-success is-large is-fullwidth" onclick="finish()">✅ I AGREE & SUBMIT</button>`; scrollToBottom(); };
 
 window.finish = async () => {
-    chatData.marketingConsent = true;
-    clearInputs();
-    await renderMessage("Success! Your request has been sent. Check your inbox shortly! 🌵");
-    await pushToSupabase(chatData); // Triggers Round Robin logic
+    chatData.marketingConsent = true; clearInputs();
+    const successMsg = chatData.isVendorFlow ? "Success! Your partner application has been sent. Our team will review your business shortly. 🌵" : "Success! Your request has been sent. Expect a call/text from our Tucson partners shortly.";
+    await renderMessage(successMsg);
+    await pushToSupabase(chatData);
 };
 
-function toggleChat(forceCollapse = null) {
-    const widget = document.getElementById('chat-widget');
-    const icon = document.getElementById('chat-toggle-icon');
-    const shouldCollapse = (forceCollapse !== null) ? forceCollapse : !widget.classList.contains('collapsed');
-    if (shouldCollapse) { widget.classList.add('collapsed'); if (icon) icon.innerText = '+'; } 
-    else { widget.classList.remove('collapsed'); if (icon) icon.innerText = '−'; }
-}
+// --- BASE UTILITIES ---
+async function pushToSupabase(payload) { if (!payload.email) return; try { await fetch(SB_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SB_KEY}`, 'X-Theory-Auth': THEORY_AUTH }, body: JSON.stringify(payload) }); } catch (err) { console.error("Error:", err); } }
+window.openDrawer = (title, desc, mediaUrl) => { document.getElementById('drawer-title').innerText = title; document.getElementById('drawer-desc').innerHTML = `${desc}<br><br><strong>Average Tucson Price:</strong> ${tucsonPricing[title] || "Request Quote"}`; document.getElementById('drawer-media-box').style.backgroundImage = `url('${mediaUrl}')`; document.getElementById('drawer').classList.add('is-active'); document.getElementById('overlay').classList.add('is-active'); document.getElementById('drawer-action-btn').onclick = () => { closeDrawer(); jumpToCategory(title); }; };
+window.closeDrawer = () => { document.getElementById('drawer').classList.remove('is-active'); document.getElementById('overlay').classList.remove('is-active'); };
+window.toggleChat = (force) => { const w = document.getElementById('chat-widget'); const collapse = force !== undefined ? force : !w.classList.contains('collapsed'); if (collapse) w.classList.add('collapsed'); else w.classList.remove('collapsed'); };
