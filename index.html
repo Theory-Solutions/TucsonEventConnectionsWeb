@@ -36,7 +36,20 @@
         .user-msg { align-self: flex-end; background: #3498db; color: white; }
         #chat-controls { padding: 15px; background: #fafafa; border-top: 1px solid #eee; min-height: 100px; }
         @media screen and (max-width: 1024px) { .drawer { width: 100%; } #chat-widget { width: 95%; right: 2.5%; } }
-    </style>
+.grid-img { 
+    width: 100%; 
+    aspect-ratio: 1/1; 
+    object-fit: cover; 
+    border-radius: 4px; 
+    border: 1px solid #ddd;
+    /* FORCES SHARP EDGES */
+    image-rendering: -webkit-optimize-contrast; 
+    image-rendering: crisp-edges;
+    /* FORCES HIGH-QUALITY GPU RENDERING */
+    transform: translateZ(0); 
+    backface-visibility: hidden;
+}    
+</style>
 </head>
 <body>
 
@@ -63,51 +76,51 @@
         <div class="container">
             <div class="columns is-multiline is-mobile">
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Catering / Food Truck / Food Carts', 'Taco trucks, BBQ, and full catering.', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800')">
+                    <div class="box vendor-card" onclick="openDrawer('Catering / Food Truck / Food Carts', 'Experience the best of Tucson’s vibrant food scene with our hand-picked selection of local catering professionals. Whether you are looking for an authentic Tucson taco truck experience, slow-smoked Arizona BBQ, or a sophisticated full-service catering team for weddings and corporate galas, we connect you with vetted experts who specialize in desert hospitality. Serving the entire Pima County area—including Oro Valley, Sahuarita, and the Catalina Foothills—our partners ensure your event menu is as memorable as the sunset.', 'img/tucson-taco-food-event.jpg')">
                         <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc833?w=200" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/food-truck-tucson-az.jpg" alt="Local Tucson food truck" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/taco-cart-rentals-tucson.jpg" alt="Taco cart rentals in Pima County" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/wedding-catering-services-oro-valley.jpg" alt="Event catering in Oro Valley" class="grid-img"></div>
                         </div>
                         <h4 class="title is-5">Catering / Food Truck / Food Carts</h4>
                     </div>
                 </div>
 
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Furniture / Setup / Tents', 'Essential furniture and shade for AZ sun.', 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800')">
+                    <div class="box vendor-card" onclick="openDrawer('Tables / Chairs / Tents', 'Build a seamless foundation for your next event with our curated network of Tucson event rental specialists. From high-capacity wedding chair rentals and professional event tables to heavy-duty shade tents and engineered canopies designed to withstand the Arizona sun, we provide the essential infrastructure for any gathering. Our partners serve the entire Pima County region, delivering reliable inventory to hosts in Oro Valley, Marana, Sahuarita, and the Catalina Foothills. Whether you are planning a large-scale corporate activation or a private celebration, we connect you with the shade and seating solutions needed to keep your guests cool and your event running smoothly.', 'img/table.jpg')">
                         <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=200" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/eventtable.jpg" alt="Local Tucson table event setup" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/shadetent.jpg" alt="Tucson sun shade" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/chairs.jpg" alt="Local Tucson food truck" class="grid-img"></div>
                         </div>
                         <h4 class="title is-5">Tables / Chairs / Tents</h4>
                     </div>
                 </div>
 
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Jumping Castle / Slides / Water Inflatable', 'Safe bounce houses.', 'https://images.unsplash.com/photo-1572445025210-948679153579?w=800')">
+                    <div class="box vendor-card" onclick="openDrawer('Jumping Castle / Slides / Water Inflatable', 'levate your outdoor celebration with our premier network of Tucson jumping castle and inflatable rental experts. From high-throughput commercial-grade bounce houses to massive water slides and interactive inflatables designed for the Arizona heat, we provide the ultimate entertainment for all ages. Our partners prioritize safety and cleanliness, serving neighborhoods across Pima County—including Oro Valley, Marana, and Sahuarita. Whether you’re planning a neighborhood block party or a summer splash event, we connect you with the water inflatables and party rentals needed to keep your guests active and cool.', 'img/backgroundjump.jpg')">
                         <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1531113061456-f63365610ec2?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1620987278429-ca178d6fe42a?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1521412644187-c49fa0b4e691?w=200" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/castle.jpg" alt="Local Tucson Jumping Castle Rental" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/slide.jpg" alt="Local Oro Valley Water Slide" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/playset.jpg" alt="Local Soft Play Set" class="grid-img"></div>
                         </div>
                         <h4 class="title is-5">Jumping Houses / Slides</h4>
                     </div>
                 </div>
 
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Photography / Photobooths / Videography', 'Photography and booths.', 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800')">
+                    <div class="box vendor-card" onclick="openDrawer('Photography / Photobooths / Videography', 'Capture every moment with our elite network of Tucson event photographers and digital media specialists. From high-resolution wedding photography and cinematic videography to modern interactive photobooths and 360-degree video stations, we provide the creative talent to document your celebration in style. Our partners serve the entire Pima County area, delivering professional media services to clients in Oro Valley, Marana, and the Catalina Foothills. Whether it’s a high-profile corporate launch or an intimate private gathering, we connect you with the media and photobooth solutions needed to create lasting memories for your guests.', 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800')">
                         <div class="columns is-mobile is-gapless mb-2">
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=200" class="grid-img"></div>
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=200" class="grid-img"></div>
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=200" class="grid-img"></div>
                         </div>
-                        <h4 class="title is-5">Photography / Booths / Video</h4>
+                        <h4 class="title is-5">Photography / Photo Booths / Video</h4>
                     </div>
                 </div>
 
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Cakes / Sweets / Treats', 'Custom desserts.', 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800')">
+                    <div class="box vendor-card" onclick="openDrawer('Cakes / Sweets / Treats', 'Indulge your guests with the finest creations from our curated network of Tucson custom bakeries and artisanal dessert specialists. From stunning custom wedding cakes and gourmet dessert tables to local hand-crafted treats tailored to your event’s theme, we connect you with the most talented pastry chefs in the desert. Our partners serve the entire Pima County region, delivering exquisite sweets to celebrations in Oro Valley, Marana, and the Catalina Foothills. Whether you are planning a milestone birthday or a corporate gala, we find the custom dessert solutions needed to provide a memorable and delicious finale to your event.', 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800')">
                         <div class="columns is-mobile is-gapless mb-2">
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200" class="grid-img"></div>
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1514517604298-cf80e0fb7f1e?w=200" class="grid-img"></div>
@@ -118,21 +131,21 @@
                 </div>
 
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Transportation / Shuttles / Limos', 'Transit.', 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800')">
+                    <div class="box vendor-card" onclick="openDrawer('Transportation / Shuttles / Limos', 'Streamline your event logistics with our premier network of Tucson transportation and shuttle service providers. From professional wedding shuttles and limousine services to high-capacity passenger vans and group transit, we ensure your guests arrive safely and on time. Our partners serve the entire Pima County region, providing reliable shuttle solutions to venues in Oro Valley, Marana, and the Catalina Foothills. Whether you are coordinating a large-scale corporate conference or a private celebration, we connect you with the professional transit specialists needed to handle all your event transportation needs with precision.', 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800')">
                         <div class="columns is-mobile is-gapless mb-2">
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=200" class="grid-img"></div>
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1551525212-a1dc18871d4a?w=200" class="grid-img"></div>
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=200" class="grid-img"></div>
                         </div>
-                        <h4 class="title is-5">Shuttles / Limos</h4>
+                        <h4 class="title is-5">Transportation / Shuttles / Limos</h4>
                     </div>
                 </div>
 
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Music / DJ', 'Professional DJs.', 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800')">
+                    <div class="box vendor-card" onclick="openDrawer('Music / DJ', 'Set the perfect tone for your event with our premier network of Tucson DJs and live entertainment specialists. From high-energy wedding DJs and professional emcees to curated musical sets tailored to your event’s unique energy, we provide the soundtrack for a flawless celebration. Our partners serve the entire Pima County region, bringing world-class sound and lighting to venues in Oro Valley, Marana, and the Catalina Foothills. Whether you are planning a high-profile corporate event or an intimate private party, we connect you with the professional DJ services and live music solutions needed to keep your dance floor full and your guests engaged.', 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800')">
                         <div class="columns is-mobile is-gapless mb-2">
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=200" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/dj.jpg" alt="Local DJ for Tucson Events" class="grid-img" class="grid-img"></div>
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=200" class="grid-img"></div>
                         </div>
                         <h4 class="title is-5">Music / DJ</h4>
@@ -140,13 +153,13 @@
                 </div>
 
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Pinatas / Balloons / Decor', 'Party decor.', 'https://images.unsplash.com/photo-1530103043960-ef38714abb15?w=800')">
+                    <div class="box vendor-card" onclick="openDrawer('Decor / Balloons / Pinatas', 'Transform your venue with our elite network of Tucson event decor and visual styling specialists. From bespoke balloon installations and custom-crafted piñatas to elegant floral arrangements and themed party backdrops, we provide the creative elements that define your event’s atmosphere. Our partners serve the entire Pima County region, delivering high-end design solutions to hosts in Oro Valley, Marana, and the Catalina Foothills. Whether you are planning a vibrant community celebration or a sophisticated corporate gala, we connect you with the event design and decor experts needed to turn your vision into a stunning reality.', 'https://images.unsplash.com/photo-1530103043960-ef38714abb15?w=800')">
                         <div class="columns is-mobile is-gapless mb-2">
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=200" class="grid-img"></div>
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1533219057257-4bb9ed5d2cc6?w=200" class="grid-img"></div>
                             <div class="column p-1"><img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=200" class="grid-img"></div>
                         </div>
-                        <h4 class="title is-5">Pinatas / Balloons / Decor</h4>
+                        <h4 class="title is-5">Decor / Balloons / Pinatas</h4>
                     </div>
                 </div>
             </div>
