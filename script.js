@@ -8,15 +8,16 @@ let chatData = {
     isVendorFlow: false, businessName: '', vendorCat: '', marketingConsent: false
 };
 
+// Pricing matches your home page cards exactly
 const tucsonPricing = {
     "Catering / Food Truck / Food Carts": "$10-$20 per person",
-    "Furniture / Setup / Tents": "$2-$15 per item/setup",
-    "Jumping Castle / Slides / Water Inflatable": "$150-$450 per day",
-    "Photography / Photobooths / Videography": "$300-$1500 per event",
+    "Tables / Chairs / Tents": "$2-$15 per item/setup",
+    "Jumping Houses / Slides": "$150-$450 per day",
+    "Photography / Photo Booth / Videography": "$300-$1500 per event",
     "Cakes / Sweets / Treats": "$50-$350 custom orders",
     "Transportation / Shuttles / Limos": "$125-$250 per hour",
     "Music / DJ": "$450-$1200 per event",
-    "Pinatas / Balloons / Decor": "$80-$400 per setup"
+    "Decor / Balloons / Pinatas": "$80-$400 per setup"
 };
 
 // --- STARTUP & UI HELPERS ---
@@ -33,10 +34,10 @@ async function renderMessage(text, side = 'bot') {
     msg.innerText = text; display.appendChild(msg); scrollToBottom();
 }
 
-// --- VENDOR INTAKE FLOW (WIPES HISTORY) ---
+// --- VENDOR INTAKE FLOW ---
 window.openVendorIntake = async () => {
     chatData = { vendors: [], name: '', phone: '', email: '', eventDate: '', guests: '', isVendorFlow: true, businessName: '', vendorCat: '', marketingConsent: false };
-    document.getElementById('chat-display').innerHTML = ''; // WIPES PREVIOUS HISTORY
+    document.getElementById('chat-display').innerHTML = ''; 
     toggleChat(false); clearInputs();
     await renderMessage("Welcome to the Theory Solutions Partner Network! 🌵");
     await renderMessage("Ready to join and receive vetted Tucson leads?");
@@ -57,10 +58,14 @@ window.saveBizName = async () => {
     await renderMessage("Which primary category do you serve in Tucson?");
     document.getElementById('chat-controls').innerHTML = `
         <div class="columns is-mobile is-multiline" style="margin: 0;">
-            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Food & Beverage')">Food & Bev</button></div>
-            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Event Rentals')">Rentals</button></div>
-            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Entertainment')">Entertainment</button></div>
-            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Media/Photo')">Media</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Catering')">Catering</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Tables/Chairs')">Tables/Chairs</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Jumping Houses')">Inflatables</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Photography')">Media</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Cakes')">Sweets</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Transportation')">Transport</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Music')">Music/DJ</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Decor')">Decor</button></div>
             <div class="column is-12 p-1"><button class="button is-dark is-small is-fullwidth" onclick="askOtherCat()">❌ NOT LISTED / OTHER</button></div>
         </div>`;
 };
@@ -109,11 +114,11 @@ window.selectVendorStep = async () => {
     document.getElementById('chat-controls').innerHTML = `
         <div class="columns is-mobile is-multiline" style="margin: 0;">
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Catering')">🚚 Food</button></div>
-            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Furniture')">⛺ Furniture</button></div>
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Tables')">⛺ Tables/Chairs/Tents</button></div>
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Jumping')">🏰 Inflatables</button></div>
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Photo')">📸 Photo/Video</button></div>
-            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Cakes')">🍰 Sweets</button></div>
-            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Transportation')">🚐 Shuttles</button></div>
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Cakes')">🍰 Cakes/Sweets/Treats</button></div>
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Transportation')">🚐 Transportation</button></div>
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Music')">🎵 Music/DJ</button></div>
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Decor')">🎈 Decor</button></div>
         </div>
@@ -130,14 +135,15 @@ window.jumpToCategory = async (cat) => {
 function routeToSub(cat) {
     clearInputs(); const ctrl = document.getElementById('chat-controls');
     const backBtn = chatData.email ? `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="showRecap()">⬅️ DONE EDITING</button>` : `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="selectVendorStep()">⬅️ BACK</button>`;
+    
     if (cat.includes('Catering') || cat.includes('Food')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Catering')">Catering</button><button class="button is-small" onclick="askQuotes('Food Truck')">Truck</button><button class="button is-small" onclick="askQuotes('Food Carts')">Carts</button></div>${backBtn}`; }
-    else if (cat.includes('Furniture') || cat.includes('Rentals') || cat.includes('Tables')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Tables')">Tables</button><button class="button is-small" onclick="askQuotes('Chairs')">Chairs</button><button class="button is-small" onclick="askQuotes('Tents')">Tents</button></div>${backBtn}`; }
-    else if (cat.includes('Jumping')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Jumping Castle')">Castle</button><button class="button is-small" onclick="askQuotes('Slides')">Slides</button><button class="button is-small" onclick="askQuotes('Water Inflatable')">Water</button></div>${backBtn}`; }
-    else if (cat.includes('Photo')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Photography')">Photo</button><button class="button is-small" onclick="askQuotes('Photobooths')">Booth</button><button class="button is-small" onclick="askQuotes('Videography')">Video</button></div>${backBtn}`; }
-    else if (cat.includes('Cakes')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Cakes')">Cakes</button><button class="button is-small" onclick="askQuotes('Sweets')">Sweets</button><button class="button is-small" onclick="askQuotes('Treats')">Treats</button></div>${backBtn}`; }
-    else if (cat.includes('Transportation')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Transportation')">Transport</button><button class="button is-small" onclick="askQuotes('Shuttles')">Shuttle</button><button class="button is-small" onclick="askQuotes('Limos')">Limo</button></div>${backBtn}`; }
-    else if (cat.includes('Music')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('DJ')">DJ</button><button class="button is-small" onclick="askQuotes('Live Band')">Band</button></div>${backBtn}`; }
-    else if (cat.includes('Decor')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Pinatas')">Pinatas</button><button class="button is-small" onclick="askQuotes('Balloons')">Balloons</button><button class="button is-small" onclick="askQuotes('Decor')">Decor</button></div>${backBtn}`; }
+    else if (cat.includes('Furniture') || cat.includes('Tables')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Tables')">Tables</button><button class="button is-small" onclick="askQuotes('Chairs')">Chairs</button><button class="button is-small" onclick="askQuotes('Tents')">Tents</button></div>${backBtn}`; }
+    else if (cat.includes('Jumping') || cat.includes('Inflatable')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Jumping House')">House</button><button class="button is-small" onclick="askQuotes('Slides')">Slides</button><button class="button is-small" onclick="askQuotes('Water Inflatable')">Water</button></div>${backBtn}`; }
+    else if (cat.includes('Photo')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Photography')">Photo</button><button class="button is-small" onclick="askQuotes('Photo Booth')">Booth</button><button class="button is-small" onclick="askQuotes('Videography')">Video</button></div>${backBtn}`; }
+    else if (cat.includes('Cakes') || cat.includes('Sweets')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Cakes')">Cakes</button><button class="button is-small" onclick="askQuotes('Sweets')">Sweets</button><button class="button is-small" onclick="askQuotes('Treats')">Treats</button></div>${backBtn}`; }
+    else if (cat.includes('Transportation') || cat.includes('Shuttle')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Transportation')">Transport</button><button class="button is-small" onclick="askQuotes('Shuttles')">Shuttle</button><button class="button is-small" onclick="askQuotes('Limos')">Limo</button></div>${backBtn}`; }
+    else if (cat.includes('Music') || cat.includes('DJ')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('DJ')">DJ</button><button class="button is-small" onclick="askQuotes('Live Band')">Band</button></div>${backBtn}`; }
+    else if (cat.includes('Decor') || cat.includes('Balloon')) { ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Pinatas')">Pinatas</button><button class="button is-small" onclick="askQuotes('Balloons')">Balloons</button><button class="button is-small" onclick="askQuotes('Decor')">Decor</button></div>${backBtn}`; }
     else { askQuotes(cat); }
     scrollToBottom();
 }
@@ -167,8 +173,9 @@ window.showRecap = async () => {
     const emailInput = document.getElementById('cEmail'); if (emailInput) chatData.email = emailInput.value;
     clearInputs();
     await renderMessage("Please review your details. Click any item to change it:");
+    
     if (chatData.isVendorFlow) {
-        await renderMessage(`🏢 Business: ${chatData.businessName}\n🛠️ Category: ${chatData.vendorCat}\n👤 Contact: ${chatData.name}\n📞 Phone: ${chatData.phone}`); // NO EVENT DETAILS FOR VENDORS
+        await renderMessage(`🏢 Business: ${chatData.businessName}\n🛠️ Category: ${chatData.vendorCat}\n👤 Contact: ${chatData.name}\n📞 Phone: ${chatData.phone}`);
         document.getElementById('chat-controls').innerHTML = `
             <div class="columns is-multiline is-mobile" style="margin: 0;">
                 <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="askBizName()">🏢 Edit Biz</button></div>
@@ -179,21 +186,44 @@ window.showRecap = async () => {
             <hr style="margin: 10px 0;"><button class="button is-success is-medium is-fullwidth" onclick="askConsent()">✅ EVERYTHING IS CORRECT</button>`;
     } else {
         const serviceRecap = chatData.vendors.length > 0 ? chatData.vendors.map(v => `${v.type} (${v.count})`).join(', ') : 'None selected';
-        await renderMessage(`📅 Date: ${chatData.eventDate}\n👥 Guests: ${chatData.guests}\n🛠️ Services: ${serviceRecap}`);
+        // Updated Recap to show Name and Phone for Planners
+        await renderMessage(`👤 Name: ${chatData.name}\n📞 Phone: ${chatData.phone}\n📅 Date: ${chatData.eventDate}\n👥 Guests: ${chatData.guests}\n🛠️ Services: ${serviceRecap}`);
         document.getElementById('chat-controls').innerHTML = `
             <div class="columns is-multiline is-mobile" style="margin: 0;">
+                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="askName()">👤 Edit Name</button></div>
+                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="askPhone()">📞 Edit Phone</button></div>
                 <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="handleInitial(true)">📅 Edit Date</button></div>
                 <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveDate()">👥 Edit Guests</button></div>
                 <div class="column is-12 p-1"><button class="button is-small is-fullwidth" onclick="selectVendorStep()">🛠️ Edit Services (${chatData.vendors.length})</button></div>
-                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="askName()">👤 Edit Name</button></div>
-                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="askPhone()">📞 Edit Phone</button></div>
             </div>
             <hr style="margin: 10px 0;"><button class="button is-success is-medium is-fullwidth" onclick="askConsent()">✅ EVERYTHING IS CORRECT</button>`;
     }
     scrollToBottom();
 };
 
-window.askConsent = async () => { clearInputs(); await renderMessage("By clicking below, you agree to the Theory Solutions terms. 🌵"); document.getElementById('chat-controls').innerHTML = `<button class="button is-success is-large is-fullwidth" onclick="finish()">✅ I AGREE & SUBMIT</button>`; scrollToBottom(); };
+// --- LEGAL & CONSENT ---
+window.askConsent = async () => { 
+    clearInputs(); 
+    await renderMessage("By clicking below, you agree to our terms and subscribe to our Tucson event newsletters. 🌵"); 
+    document.getElementById('chat-controls').innerHTML = `
+        <div class="box has-background-white-ter p-3 mb-2" style="border: 1px solid #ddd;">
+            <label class="checkbox">
+                <input type="checkbox" id="legalCheck"> 
+                I agree to the <a href="legal.html" target="_blank">Legal Terms & Privacy Policy</a>
+            </label>
+        </div>
+        <button class="button is-success is-large is-fullwidth" onclick="handleFinalSubmission()">✅ I AGREE & SUBMIT</button>`; 
+    scrollToBottom(); 
+};
+
+window.handleFinalSubmission = async () => {
+    const isChecked = document.getElementById('legalCheck').checked;
+    if (!isChecked) {
+        alert("Please check the box to agree to the terms before submitting.");
+        return;
+    }
+    finish();
+};
 
 window.finish = async () => {
     chatData.marketingConsent = true; clearInputs();
@@ -203,7 +233,25 @@ window.finish = async () => {
 };
 
 // --- BASE UTILITIES ---
-async function pushToSupabase(payload) { if (!payload.email) return; try { await fetch(SB_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SB_KEY}`, 'X-Theory-Auth': THEORY_AUTH }, body: JSON.stringify(payload) }); } catch (err) { console.error("Error:", err); } }
-window.openDrawer = (title, desc, mediaUrl) => { document.getElementById('drawer-title').innerText = title; document.getElementById('drawer-desc').innerHTML = `${desc}<br><br><strong>Average Tucson Price:</strong> ${tucsonPricing[title] || "Request Quote"}`; document.getElementById('drawer-media-box').style.backgroundImage = `url('${mediaUrl}')`; document.getElementById('drawer').classList.add('is-active'); document.getElementById('overlay').classList.add('is-active'); document.getElementById('drawer-action-btn').onclick = () => { closeDrawer(); jumpToCategory(title); }; };
+async function pushToSupabase(payload) { 
+    if (!payload.email) return; 
+    try { 
+        await fetch(SB_URL, { 
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SB_KEY}`, 'X-Theory-Auth': THEORY_AUTH }, 
+            body: JSON.stringify(payload) 
+        }); 
+    } catch (err) { console.error("Error:", err); } 
+}
+
+window.openDrawer = (title, desc, mediaUrl) => { 
+    document.getElementById('drawer-title').innerText = title; 
+    document.getElementById('drawer-desc').innerHTML = `${desc}<br><br><strong>Average Tucson Price:</strong> ${tucsonPricing[title] || "Request Quote"}<br><hr><small>Theory Solutions is a lead provider only. <a href="legal.html" target="_blank">Full Terms & Disclaimer</a></small>`; 
+    document.getElementById('drawer-media-box').style.backgroundImage = `url('${mediaUrl}')`; 
+    document.getElementById('drawer').classList.add('is-active'); 
+    document.getElementById('overlay').classList.add('is-active'); 
+    document.getElementById('drawer-action-btn').onclick = () => { closeDrawer(); jumpToCategory(title); }; 
+};
+
 window.closeDrawer = () => { document.getElementById('drawer').classList.remove('is-active'); document.getElementById('overlay').classList.remove('is-active'); };
 window.toggleChat = (force) => { const w = document.getElementById('chat-widget'); const collapse = force !== undefined ? force : !w.classList.contains('collapsed'); if (collapse) w.classList.add('collapsed'); else w.classList.remove('collapsed'); };
