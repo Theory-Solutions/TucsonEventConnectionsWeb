@@ -31,7 +31,16 @@
             transform: translateZ(0); 
             backface-visibility: hidden;
         }
-        .cta-box { background: #fff; border: 3px solid var(--tucson-blue); padding: 1.5rem; border-radius: 15px; margin-top: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .cta-box { 
+            background: #f9fbfd; 
+            border: none; 
+            border-left: 6px solid var(--tucson-blue); 
+            padding: 1.25rem 2rem; 
+            border-radius: 4px; 
+            margin-top: 2rem; 
+            box-shadow: none; 
+            display: inline-block; 
+        }
         .drawer { position: fixed; top: 0; right: -100%; width: 45%; height: 100%; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.15); z-index: 10000; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); padding: 40px; overflow-y: auto; }
         .drawer.is-active { right: 0; }
         .drawer-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(44, 62, 80, 0.5); backdrop-filter: blur(4px); display: none; z-index: 9999; }
@@ -64,7 +73,9 @@
                 Planning an event in <strong>Tucson</strong>? From <strong>Oro Valley</strong> to <strong>Sahuarita</strong>, we simplify your search. Find the best local professionals—including taco trucks, jumping castles, and wedding photographers— All here for one stop connections.
             </p>
             <div class="cta-box">
-                <p class="is-size-4 has-text-weight-bold has-text-link">🌵 Ready to get started? Let’s help you find the perfect vendors!</p>
+                <p class="is-size-5 has-text-weight-medium">
+                    🌵 <strong>Ready to get started?</strong> Our Theory Assistant is ready to help you find the perfect vendors below!
+                </p>
             </div>
         </div>
     </section>
@@ -117,11 +128,11 @@
                 </div>
 
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Cakes / Sweets / Treats', 'Indulge your guests with the finest creations from our curated network of Tucson custom bakeries and artisanal dessert specialists. From stunning custom wedding cakes and gourmet dessert tables to local hand-crafted treats tailored to your event’s theme, we connect you with the most talented pastry chefs in the desert. Our partners serve the entire Pima County region, delivering exquisite sweets to celebrations in Oro Valley, Marana, and the Catalina Foothills.', 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800')">
+                    <div class="box vendor-card" onclick="openDrawer('Cakes / Sweets / Treats', 'Indulge your guests with the finest creations from our curated network of Tucson custom bakeries and artisanal dessert specialists. From stunning custom wedding cakes and gourmet dessert tables to local hand-crafted treats tailored to your event’s theme, we connect you with the most talented pastry chefs in the desert. Our partners serve the entire Pima County region, delivering exquisite sweets to celebrations in Oro Valley, Marana, and the Catalina Foothills.', 'img/cake-full.jpg')">
                         <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1514517604298-cf80e0fb7f1e?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=200" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/cake.jpg" alt="Local Tucson Cake" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/cookie.jpg" alt="Local Oro Valley Cookie" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/macroons.jpg" alt="Local Tucson Macroons" class="grid-img"></div>
                         </div>
                         <h4 class="title is-5">Cakes / Sweets / Treats</h4>
                     </div>
@@ -130,9 +141,9 @@
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
                     <div class="box vendor-card" onclick="openDrawer('Transportation / Shuttles / Limos', 'Streamline your event logistics with our premier network of Tucson transportation and shuttle service providers. From professional wedding shuttles and limousine services to high-capacity passenger vans and group transit, we ensure your guests arrive safely and on time. Our partners serve the entire Pima County region, providing reliable shuttle solutions to venues in Oro Valley, Marana, and the Catalina Foothills.', 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800')">
                         <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1551525212-a1dc18871d4a?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=200" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/bus.jpg" alt="Local Tucson bus" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/limo.jpg" alt="Local Tucson limo" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/suv.jpg" alt="Local Tucson transport" class="grid-img"></div>
                         </div>
                         <h4 class="title is-5">Transportation / Shuttles / Limos</h4>
                     </div>
@@ -150,16 +161,43 @@
                 </div>
 
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Decor / Balloons / Pinatas', 'Transform your venue with our elite network of Tucson event decor and visual styling specialists. From bespoke balloon installations and custom-crafted piñatas to elegant floral arrangements and themed party backdrops, we provide the creative elements that define your event’s atmosphere. Our partners serve the entire Pima County region, delivering high-end design solutions to hosts in Oro Valley, Marana, and the Catalina Foothills.', 'https://images.unsplash.com/photo-1530103043960-ef38714abb15?w=800')">
+                    <div class="box vendor-card" onclick="openDrawer('Decor / Balloons / Pinatas', 'Transform your venue with our elite network of Tucson event decor and visual styling specialists. From bespoke balloon installations and custom-crafted piñatas to elegant floral arrangements and themed party backdrops, we provide the creative elements that define your event’s atmosphere. Our partners serve the entire Pima County region, delivering high-end design solutions to hosts in Oro Valley, Marana, and the Catalina Foothills.', 'img/party-full.jpg')">
                         <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1533219057257-4bb9ed5d2cc6?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=200" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/balloon.jpg" alt="Local Tucson ballon" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/decor.jpg" alt="Local Tucson decor" class="grid-img"></div>
+                            <div class="column p-1"><img src="img/pinata.jpg" alt="Local Tucson Pintata" class="grid-img"></div>
                         </div>
                         <h4 class="title is-5">Decor / Balloons / Pinatas</h4>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="section has-background-white">
+        <div class="container">
+            <h2 class="title is-3 has-text-centered">🌵 Tucson Event Pro-Tips</h2>
+            <p class="subtitle is-5 has-text-centered mb-6">Ask these 3 questions before you book any vendor!</p>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="cta-box" style="border-left-color: #3498db; width: 100%; height: 100%;">
+                        <h4 class="title is-5">1. Access & Power</h4>
+                        <p class="is-size-6">Confirm if they need a <strong>dedicated 20-amp circuit</strong> or a 4ft wide gate for <strong>Jumping Houses</strong>. Don't let a narrow gate stop the party!</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="cta-box" style="border-left-color: #ffdd57; width: 100%; height: 100%;">
+                        <h4 class="title is-5">2. Setup Surfaces</h4>
+                        <p class="is-size-6">Will they be on grass or pavement? Tucson winds require different <strong>weighting systems</strong> for safety on hard surfaces.</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="cta-box" style="border-left-color: #ff3860; width: 100%; height: 100%;">
+                        <h4 class="title is-5">3. Clean-up & Trash</h4>
+                        <p class="is-size-6">For <strong>Catering</strong>, clarify if they haul away trash or if the host is responsible. Avoid hidden clean-up fees!</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -183,6 +221,7 @@
             <p>
                 <strong>Tucson Event Connections</strong> | 
                 <a href="legal.html" target="_blank">Terms & Privacy</a>
+            </p>
             <p class="is-size-7 has-text-grey mt-2">
                 Theory Solutions is a Connection platform. We are NOT LIABLE for any services conducted or performed by independent vendors.
             </p>
