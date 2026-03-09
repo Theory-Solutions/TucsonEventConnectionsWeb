@@ -21,7 +21,7 @@ const tucsonPricing = {
 };
 
 // --- STARTUP & UI HELPERS ---
-window.onload = () => { setTimeout(() => { document.getElementById('chat-widget').style.display = 'flex'; startChat(); }, 6000); };
+window.onload = () => { setTimeout(() => { document.getElementById('chat-widget').style.display = 'flex'; startChat(); }, 2000); };
 function scrollToBottom() { const display = document.getElementById('chat-display'); display.scrollTop = display.scrollHeight; }
 function clearInputs() { document.getElementById('chat-controls').innerHTML = ''; }
 function focusInput(id) { setTimeout(() => { const el = document.getElementById(id); if (el) el.focus(); }, 100); }
