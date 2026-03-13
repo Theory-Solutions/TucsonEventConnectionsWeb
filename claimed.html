@@ -30,8 +30,8 @@
         .err-body{padding:40px 32px;text-align:center}
         .err-body h2{font-family:'Syne',sans-serif;font-size:1.3rem;color:#1B2A4A;margin-bottom:10px}
         .err-body p{color:#5E6D8A;font-size:0.9rem;line-height:1.6}
-        .credit-ok{background:#F0FAF9;color:#2AA198}
-        .credit-low{background:#FFF5F5;color:#E8623A}
+        .credit-ok{background:#F0FAF9}.credit-ok .val{color:#2AA198}
+        .credit-low{background:#FFF5F5}.credit-low .val{color:#E8623A}
         .loading{padding:60px 32px;text-align:center;color:#5E6D8A;font-size:0.95rem}
         @keyframes spin{to{transform:rotate(360deg)}}
         .spinner{width:32px;height:32px;border:3px solid #E8EDF3;border-top-color:#2AA198;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px}
@@ -46,94 +46,95 @@
     </div>
 
     <script>
+        const CLAIM_URL = 'https://vksrsmxjrpnjtfwvhjin.supabase.co/functions/v1/claim-lead';
         const params = new URLSearchParams(window.location.search);
         const status = params.get('status');
+        const token = params.get('token');
         const card = document.getElementById('card');
 
         function formatDate(dateStr) {
-            if (!dateStr || dateStr === 'null') return 'TBD';
+            if (!dateStr || dateStr === 'null' || dateStr === '') return 'TBD';
             try {
                 const d = new Date(dateStr);
                 return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
             } catch { return dateStr; }
         }
 
-        function cleanPhoneForTel(phone) {
-            return phone.replace(/\D/g, '');
+        function cleanPhone(phone) {
+            return (phone || '').replace(/\D/g, '');
         }
 
-        function render() {
-            if (status === 'success' || status === 'repeat') {
-                const name = params.get('name') || '';
-                const phone = params.get('phone') || '';
-                const email = params.get('email') || '';
-                const date = params.get('date') || '';
-                const guests = params.get('guests') || '';
-                const service = params.get('service') || '';
-                const credits = params.get('credits') || '0';
-                const biz = params.get('biz') || '';
-                const cleanPhone = cleanPhoneForTel(phone);
-                const displayDate = formatDate(date);
-                const isRepeat = status === 'repeat';
-                const creditsNum = parseInt(credits);
+        function renderContact(data, isRepeat) {
+            const cp = cleanPhone(data.phone);
+            const displayDate = formatDate(data.date);
+            const creditsNum = parseInt(data.credits) || 0;
 
-                let headerColor = '#2AA198';
-                let headerTitle = 'Lead Claimed!';
-                let subtitle = 'Here are the contact details for your new lead. Reach out within 24 hours for the best chance of booking.';
-
-                if (isRepeat) {
-                    headerTitle = 'Lead Already Claimed';
-                    subtitle = 'You already claimed this lead. Here is the info again — no extra credit charged.';
-                }
-
-                card.innerHTML = `
-                    <div class="card-header" style="background:${headerColor}">
-                        <h1>${headerTitle}</h1>
-                        ${biz ? `<p>${biz}</p>` : ''}
+            card.innerHTML = `
+                <div class="card-header" style="background:#2AA198">
+                    <h1>${isRepeat ? 'Lead Already Claimed' : 'Lead Claimed!'}</h1>
+                    ${data.biz ? `<p>${data.biz}</p>` : ''}
+                </div>
+                <div class="card-body">
+                    <p class="subtitle">${isRepeat
+                        ? 'You already claimed this lead. Here is the info again — no extra credit charged.'
+                        : 'Here are the contact details. Reach out within 24 hours for the best chance of booking.'
+                    }</p>
+                    <div class="info-row"><div class="ico">N</div><div><div class="lbl">Customer Name</div><div class="val">${data.name}</div></div></div>
+                    ${data.phone ? `<div class="info-row"><div class="ico">P</div><div><div class="lbl">Phone</div><div class="val"><a href="tel:${cp}">${data.phone}</a></div></div></div>` : ''}
+                    ${data.email ? `<div class="info-row"><div class="ico">E</div><div><div class="lbl">Email</div><div class="val"><a href="mailto:${data.email}">${data.email}</a></div></div></div>` : ''}
+                    <div class="info-row"><div class="ico">D</div><div><div class="lbl">Event Date</div><div class="val">${displayDate}</div></div></div>
+                    ${data.guests && data.guests !== '0' ? `<div class="info-row"><div class="ico">G</div><div><div class="lbl">Guest Count</div><div class="val">${data.guests}</div></div></div>` : ''}
+                    ${data.service ? `<div class="info-row"><div class="ico">S</div><div><div class="lbl">Service</div><div class="val">${data.service}</div></div></div>` : ''}
+                    <div class="info-row ${creditsNum <= 0 ? 'credit-low' : 'credit-ok'}"><div class="ico">C</div><div><div class="lbl">Your Credits</div><div class="val">${data.credits} remaining</div></div></div>
+                    <div class="cta-row">
+                        ${cp ? `<a href="tel:${cp}" class="btn-call">Call Now</a>` : ''}
+                        ${data.email ? `<a href="mailto:${data.email}" class="btn-email">Send Email</a>` : ''}
                     </div>
-                    <div class="card-body">
-                        <p class="subtitle">${subtitle}</p>
-                        <div class="info-row"><div class="ico">N</div><div><div class="lbl">Customer Name</div><div class="val">${name}</div></div></div>
-                        ${phone ? `<div class="info-row"><div class="ico">P</div><div><div class="lbl">Phone</div><div class="val"><a href="tel:${cleanPhone}">${phone}</a></div></div></div>` : ''}
-                        ${email ? `<div class="info-row"><div class="ico">E</div><div><div class="lbl">Email</div><div class="val"><a href="mailto:${email}">${email}</a></div></div></div>` : ''}
-                        <div class="info-row"><div class="ico">D</div><div><div class="lbl">Event Date</div><div class="val">${displayDate}</div></div></div>
-                        ${guests && guests !== 'null' && guests !== '0' ? `<div class="info-row"><div class="ico">G</div><div><div class="lbl">Guest Count</div><div class="val">${guests}</div></div></div>` : ''}
-                        ${service ? `<div class="info-row"><div class="ico">S</div><div><div class="lbl">Service Requested</div><div class="val">${service}</div></div></div>` : ''}
-                        <div class="info-row ${creditsNum <= 0 ? 'credit-low' : 'credit-ok'}"><div class="ico">C</div><div><div class="lbl">Your Credits</div><div class="val">${credits} remaining</div></div></div>
-                        <div class="cta-row">
-                            ${cleanPhone ? `<a href="tel:${cleanPhone}" class="btn-call">Call Now</a>` : ''}
-                            ${email ? `<a href="mailto:${email}" class="btn-email">Send Email</a>` : ''}
-                        </div>
-                        <p class="note">Tip: Vendors who respond within 2 hours are 5x more likely to book the event.</p>
-                    </div>
-                    <div class="ft"><a href="https://tucsoneventconnections.com">Back to Tucson Event Connections</a></div>
-                `;
+                    <p class="note">Tip: Vendors who respond within 2 hours are 5x more likely to book.</p>
+                </div>
+                <div class="ft"><a href="https://tucsoneventconnections.com">Back to Tucson Event Connections</a></div>
+            `;
+        }
 
-            } else if (status === 'sold_out') {
-                card.innerHTML = `
-                    <div class="card-header" style="background:#D4942A"><h1>Lead Fully Claimed</h1></div>
-                    <div class="err-body"><h2>3 vendors already claimed this lead</h2><p>To keep quality high, each customer is matched with a max of 3 vendors. New leads are sent regularly — keep an eye on your inbox.</p></div>
-                    <div class="ft"><a href="https://tucsoneventconnections.com">Back to Tucson Event Connections</a></div>
-                `;
+        function renderError(title, message, color) {
+            card.innerHTML = `
+                <div class="card-header" style="background:${color || '#E8623A'}"><h1>${title}</h1></div>
+                <div class="err-body"><h2>${title}</h2><p>${message}</p></div>
+                <div class="ft"><a href="https://tucsoneventconnections.com">Back to Tucson Event Connections</a></div>
+            `;
+        }
 
-            } else if (status === 'no_credits') {
-                card.innerHTML = `
-                    <div class="card-header" style="background:#E8623A"><h1>No Credits Remaining</h1></div>
-                    <div class="err-body"><h2>Your balance is 0</h2><p>To continue receiving and claiming leads, contact us to purchase more credits.</p><p style="margin-top:12px"><strong>Email:</strong> vendor@theory-solutions.com</p></div>
-                    <div class="ft"><a href="https://tucsoneventconnections.com">Back to Tucson Event Connections</a></div>
-                `;
-
-            } else {
-                const msg = params.get('msg') || 'Something went wrong. Try clicking the link in your email again.';
-                card.innerHTML = `
-                    <div class="card-header" style="background:#E8623A"><h1>Error</h1></div>
-                    <div class="err-body"><h2>Something went wrong</h2><p>${msg}</p><p style="margin-top:12px">Contact <strong>vendor@theory-solutions.com</strong> for help.</p></div>
-                    <div class="ft"><a href="https://tucsoneventconnections.com">Back to Tucson Event Connections</a></div>
-                `;
+        async function init() {
+            // Handle error/status states that don't need a data fetch
+            if (status === 'sold_out') {
+                return renderError('Lead Fully Claimed', 'This lead has been claimed by 3 vendors already. New leads are sent regularly.', '#D4942A');
             }
+            if (status === 'no_credits') {
+                return renderError('No Credits Remaining', 'Your balance is 0. Contact vendor@theory-solutions.com to purchase more.', '#E8623A');
+            }
+            if (status === 'error') {
+                const msg = params.get('msg') || 'Something went wrong. Try clicking the link in your email again.';
+                return renderError('Error', msg, '#E8623A');
+            }
+
+            // For success/repeat, fetch the data securely using the token
+            if ((status === 'success' || status === 'repeat') && token) {
+                try {
+                    const res = await fetch(`${CLAIM_URL}?token=${token}`);
+                    if (!res.ok) throw new Error('Failed to load');
+                    const data = await res.json();
+                    renderContact(data, status === 'repeat');
+                } catch (err) {
+                    renderError('Error', 'Could not load lead details. Try clicking the link in your email again.', '#E8623A');
+                }
+                return;
+            }
+
+            // No valid params
+            renderError('Invalid Link', 'This link is missing required information. Try clicking the button in your email again.', '#E8623A');
         }
 
-        render();
+        init();
     </script>
 </body>
 </html>
