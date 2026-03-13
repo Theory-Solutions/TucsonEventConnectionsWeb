@@ -63,13 +63,16 @@ const tucsonPricing = {
 window.onload = () => { 
     setTimeout(() => { 
         const widget = document.getElementById('chat-widget');
-        widget.style.display = 'flex'; 
+        
+        // Detect category pages (widget starts hidden in their HTML)
+        const isCategoryPage = widget.getAttribute('style') && widget.getAttribute('style').includes('display');
         
         const savedState = loadChatState();
         const savedMsgs = loadChatMessages();
         
         // If user has an in-progress session, restore it expanded
         if (savedState !== 'fresh' && savedState !== 'submitted' && savedState !== 'started' && (chatData.eventDate || chatData.name || chatData.vendors.length > 0 || chatData.isVendorFlow)) {
+            widget.style.display = 'flex';
             widget.classList.remove('collapsed');
             
             if (savedMsgs) {
@@ -93,14 +96,24 @@ window.onload = () => {
             } else {
                 startChat();
             }
-        } else if (savedState === 'submitted') {
-            clearSession();
-            chatData = loadChatData();
-            // Start collapsed — user will click to open
-            widget.classList.add('collapsed');
         } else {
-            // Fresh visit — show as collapsed FAB
-            widget.classList.add('collapsed');
+            // Fresh or submitted — clear old data if needed
+            if (savedState === 'submitted') {
+                clearSession();
+                chatData = loadChatData();
+            }
+            
+            // Always initialize chat so it's ready when opened
+            startChat();
+            
+            if (isCategoryPage) {
+                // Category pages: stay hidden until CTA clicked
+                widget.style.display = 'none';
+            } else {
+                // Homepage: show as collapsed FAB bubble
+                widget.style.display = 'flex';
+                widget.classList.add('collapsed');
+            }
         }
     }, 1500); 
 };
@@ -294,7 +307,8 @@ window.showRecap = async () => {
                 <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="askPhone()">📞 Phone</button></div>
                 <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="handleInitial(true)">📅 Date</button></div>
                 <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveDate()">👥 Guests</button></div>
-                <div class="column is-12 p-1"><button class="button is-small is-fullwidth" onclick="selectVendorStep()">🛠️ Edit Services (${chatData.vendors.length})</button></div>
+                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="askEmail()">📧 Email</button></div>
+                <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="selectVendorStep()">🛠️ Services (${chatData.vendors.length})</button></div>
             </div>
             <hr style="margin: 10px 0;"><button class="button is-success is-medium is-fullwidth" onclick="askConsent()">✅ EVERYTHING IS CORRECT</button>`;
     }

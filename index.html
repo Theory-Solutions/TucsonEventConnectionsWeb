@@ -87,6 +87,8 @@
         #chat-controls .input{width:100%;background:var(--bg);border:1.5px solid var(--border);color:var(--text);border-radius:10px;padding:0.7rem 0.95rem;font-family:var(--font-body);font-size:0.86rem;outline:none;margin-bottom:0.5rem;transition:border-color 0.2s}
         #chat-controls .input:focus{border-color:var(--coral);box-shadow:0 0 0 3px var(--coral-dim)}
         #chat-controls .input::placeholder{color:var(--text-faint)}
+        #chat-controls .input[type="date"]{color-scheme:dark;-webkit-appearance:none}
+        #chat-controls .input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7);cursor:pointer}
 
         #chat-controls .button{font-family:var(--font-body);font-size:0.82rem;font-weight:600;padding:0.6rem 1.1rem;border-radius:10px;cursor:pointer;border:1.5px solid var(--border);transition:all 0.2s ease;background:var(--surface-2);color:var(--text)}
         #chat-controls .button:hover{border-color:rgba(255,255,255,0.15);background:var(--surface-3);transform:translateY(-1px)}
