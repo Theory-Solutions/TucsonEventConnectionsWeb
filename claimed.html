@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Details - Tucson Event Connections</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'DM Sans',sans-serif;background:#F5F7FA;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;color:#1B2A4A}
+        .card{background:white;border-radius:16px;box-shadow:0 12px 40px rgba(27,42,74,0.1);max-width:480px;width:100%;overflow:hidden}
+        .card-header{padding:28px 32px;text-align:center}
+        .card-header h1{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:white;letter-spacing:-0.02em}
+        .card-header p{color:rgba(255,255,255,0.8);font-size:0.88rem;margin-top:6px}
+        .card-body{padding:28px 32px 32px}
+        .subtitle{color:#5E6D8A;font-size:0.88rem;margin-bottom:20px;text-align:center;line-height:1.5}
+        .info-row{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:#F5F7FA;border-radius:10px;margin-bottom:8px}
+        .ico{width:28px;height:28px;background:#E8EDF3;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#5E6D8A;font-weight:700;font-size:0.82rem;flex-shrink:0;margin-top:2px}
+        .lbl{font-size:0.72rem;color:#5E6D8A;text-transform:uppercase;letter-spacing:0.05em;font-weight:600}
+        .val{font-size:1rem;color:#1B2A4A;font-weight:600;margin-top:2px}
+        .val a{color:#2AA198;text-decoration:none}
+        .val a:hover{text-decoration:underline}
+        .cta-row{margin-top:24px;display:flex;gap:10px}
+        .cta-row a{flex:1;text-align:center;padding:14px;border-radius:10px;font-weight:600;font-size:0.9rem;text-decoration:none;color:white;transition:all 0.2s}
+        .btn-call{background:#1B2A4A}.btn-call:hover{background:#2D4166}
+        .btn-email{background:#2AA198}.btn-email:hover{background:#239089}
+        .note{font-size:0.78rem;color:#94A0B8;text-align:center;margin-top:20px;line-height:1.5}
+        .ft{text-align:center;padding:20px 32px;border-top:1px solid #eee}
+        .ft a{color:#2AA198;font-size:0.82rem;text-decoration:none;font-weight:600}
+        .err-body{padding:40px 32px;text-align:center}
+        .err-body h2{font-family:'Syne',sans-serif;font-size:1.3rem;color:#1B2A4A;margin-bottom:10px}
+        .err-body p{color:#5E6D8A;font-size:0.9rem;line-height:1.6}
+        .credit-ok{background:#F0FAF9;color:#2AA198}
+        .credit-low{background:#FFF5F5;color:#E8623A}
+        .loading{padding:60px 32px;text-align:center;color:#5E6D8A;font-size:0.95rem}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .spinner{width:32px;height:32px;border:3px solid #E8EDF3;border-top-color:#2AA198;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px}
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            Loading lead details...
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const status = params.get('status');
+        const card = document.getElementById('card');
+
+        function formatDate(dateStr) {
+            if (!dateStr || dateStr === 'null') return 'TBD';
+            try {
+                const d = new Date(dateStr);
+                return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+            } catch { return dateStr; }
+        }
+
+        function cleanPhoneForTel(phone) {
+            return phone.replace(/\D/g, '');
+        }
+
+        function render() {
+            if (status === 'success' || status === 'repeat') {
+                const name = params.get('name') || '';
+                const phone = params.get('phone') || '';
+                const email = params.get('email') || '';
+                const date = params.get('date') || '';
+                const guests = params.get('guests') || '';
+                const service = params.get('service') || '';
+                const credits = params.get('credits') || '0';
+                const biz = params.get('biz') || '';
+                const cleanPhone = cleanPhoneForTel(phone);
+                const displayDate = formatDate(date);
+                const isRepeat = status === 'repeat';
+                const creditsNum = parseInt(credits);
+
+                let headerColor = '#2AA198';
+                let headerTitle = 'Lead Claimed!';
+                let subtitle = 'Here are the contact details for your new lead. Reach out within 24 hours for the best chance of booking.';
+
+                if (isRepeat) {
+                    headerTitle = 'Lead Already Claimed';
+                    subtitle = 'You already claimed this lead. Here is the info again — no extra credit charged.';
+                }
+
+                card.innerHTML = `
+                    <div class="card-header" style="background:${headerColor}">
+                        <h1>${headerTitle}</h1>
+                        ${biz ? `<p>${biz}</p>` : ''}
+                    </div>
+                    <div class="card-body">
+                        <p class="subtitle">${subtitle}</p>
+                        <div class="info-row"><div class="ico">N</div><div><div class="lbl">Customer Name</div><div class="val">${name}</div></div></div>
+                        ${phone ? `<div class="info-row"><div class="ico">P</div><div><div class="lbl">Phone</div><div class="val"><a href="tel:${cleanPhone}">${phone}</a></div></div></div>` : ''}
+                        ${email ? `<div class="info-row"><div class="ico">E</div><div><div class="lbl">Email</div><div class="val"><a href="mailto:${email}">${email}</a></div></div></div>` : ''}
+                        <div class="info-row"><div class="ico">D</div><div><div class="lbl">Event Date</div><div class="val">${displayDate}</div></div></div>
+                        ${guests && guests !== 'null' && guests !== '0' ? `<div class="info-row"><div class="ico">G</div><div><div class="lbl">Guest Count</div><div class="val">${guests}</div></div></div>` : ''}
+                        ${service ? `<div class="info-row"><div class="ico">S</div><div><div class="lbl">Service Requested</div><div class="val">${service}</div></div></div>` : ''}
+                        <div class="info-row ${creditsNum <= 0 ? 'credit-low' : 'credit-ok'}"><div class="ico">C</div><div><div class="lbl">Your Credits</div><div class="val">${credits} remaining</div></div></div>
+                        <div class="cta-row">
+                            ${cleanPhone ? `<a href="tel:${cleanPhone}" class="btn-call">Call Now</a>` : ''}
+                            ${email ? `<a href="mailto:${email}" class="btn-email">Send Email</a>` : ''}
+                        </div>
+                        <p class="note">Tip: Vendors who respond within 2 hours are 5x more likely to book the event.</p>
+                    </div>
+                    <div class="ft"><a href="https://tucsoneventconnections.com">Back to Tucson Event Connections</a></div>
+                `;
+
+            } else if (status === 'sold_out') {
+                card.innerHTML = `
+                    <div class="card-header" style="background:#D4942A"><h1>Lead Fully Claimed</h1></div>
+                    <div class="err-body"><h2>3 vendors already claimed this lead</h2><p>To keep quality high, each customer is matched with a max of 3 vendors. New leads are sent regularly — keep an eye on your inbox.</p></div>
+                    <div class="ft"><a href="https://tucsoneventconnections.com">Back to Tucson Event Connections</a></div>
+                `;
+
+            } else if (status === 'no_credits') {
+                card.innerHTML = `
+                    <div class="card-header" style="background:#E8623A"><h1>No Credits Remaining</h1></div>
+                    <div class="err-body"><h2>Your balance is 0</h2><p>To continue receiving and claiming leads, contact us to purchase more credits.</p><p style="margin-top:12px"><strong>Email:</strong> vendor@theory-solutions.com</p></div>
+                    <div class="ft"><a href="https://tucsoneventconnections.com">Back to Tucson Event Connections</a></div>
+                `;
+
+            } else {
+                const msg = params.get('msg') || 'Something went wrong. Try clicking the link in your email again.';
+                card.innerHTML = `
+                    <div class="card-header" style="background:#E8623A"><h1>Error</h1></div>
+                    <div class="err-body"><h2>Something went wrong</h2><p>${msg}</p><p style="margin-top:12px">Contact <strong>vendor@theory-solutions.com</strong> for help.</p></div>
+                    <div class="ft"><a href="https://tucsoneventconnections.com">Back to Tucson Event Connections</a></div>
+                `;
+            }
+        }
+
+        render();
+    </script>
+</body>
+</html>
