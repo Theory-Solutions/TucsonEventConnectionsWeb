@@ -4,10 +4,49 @@ const VONT_URL = 'https://vksrsmxjrpnjtfwvhjin.supabase.co/functions/v1/vendor-o
 const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZrc3JzbXhqcnBuanRmd3ZoamluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI0OTAzMDEsImV4cCI6MjA4ODA2NjMwMX0.cSTaLQXlQzMAP65xJGT24qz1p3cCr0WyA3oVL8Q3HMg';
 const THEORY_AUTH = 'Tucson-Lead-2026';
 
-let chatData = { 
-    vendors: [], name: '', phone: '', email: '', eventDate: '', guests: '',
-    isVendorFlow: false, businessName: '', vendorCat: '', marketingConsent: false
-};
+// --- SESSION PERSISTENCE ---
+// Load existing chat state from sessionStorage (survives page navigations)
+const CHAT_KEY = 'tec_chat_data';
+const MSG_KEY = 'tec_chat_msgs';
+const STATE_KEY = 'tec_chat_state'; // tracks where user is in the flow
+
+function loadChatData() {
+    try {
+        const saved = sessionStorage.getItem(CHAT_KEY);
+        if (saved) return JSON.parse(saved);
+    } catch(e) {}
+    return { vendors: [], name: '', phone: '', email: '', eventDate: '', guests: '',
+             isVendorFlow: false, businessName: '', vendorCat: '', marketingConsent: false };
+}
+
+function persistChat() {
+    try { sessionStorage.setItem(CHAT_KEY, JSON.stringify(chatData)); } catch(e) {}
+}
+
+function saveChatState(state) {
+    try { sessionStorage.setItem(STATE_KEY, state); } catch(e) {}
+}
+
+function loadChatState() {
+    try { return sessionStorage.getItem(STATE_KEY) || 'fresh'; } catch(e) { return 'fresh'; }
+}
+
+function saveChatMessages() {
+    try {
+        const display = document.getElementById('chat-display');
+        if (display) sessionStorage.setItem(MSG_KEY, display.innerHTML);
+    } catch(e) {}
+}
+
+function loadChatMessages() {
+    try { return sessionStorage.getItem(MSG_KEY) || ''; } catch(e) { return ''; }
+}
+
+function clearSession() {
+    try { sessionStorage.removeItem(CHAT_KEY); sessionStorage.removeItem(MSG_KEY); sessionStorage.removeItem(STATE_KEY); } catch(e) {}
+}
+
+let chatData = loadChatData();
 
 const tucsonPricing = {
     "Catering / Food Truck / Food Carts": "$10-$20 per person",
@@ -21,7 +60,50 @@ const tucsonPricing = {
 };
 
 // --- STARTUP & UI HELPERS ---
-window.onload = () => { setTimeout(() => { document.getElementById('chat-widget').style.display = 'flex'; startChat(); }, 2000); };
+window.onload = () => { 
+    setTimeout(() => { 
+        const widget = document.getElementById('chat-widget');
+        widget.style.display = 'flex'; 
+        
+        const savedState = loadChatState();
+        const savedMsgs = loadChatMessages();
+        
+        // If user has an in-progress session, restore it expanded
+        if (savedState !== 'fresh' && savedState !== 'submitted' && savedState !== 'started' && (chatData.eventDate || chatData.name || chatData.vendors.length > 0 || chatData.isVendorFlow)) {
+            widget.classList.remove('collapsed');
+            
+            if (savedMsgs) {
+                document.getElementById('chat-display').innerHTML = savedMsgs;
+            }
+            
+            renderMessage("Welcome back! Your quote info is saved. 🌵");
+            
+            if (savedState === 'recap' && chatData.email) {
+                showRecap();
+            } else if (savedState === 'vendors' || savedState === 'selectVendor') {
+                selectVendorStep();
+            } else if (chatData.email) {
+                showRecap();
+            } else if (chatData.guests) {
+                selectVendorStep();
+            } else if (chatData.eventDate) {
+                renderMessage("How many guests?");
+                document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" type="number" id="gCount" value="${chatData.guests}" placeholder="e.g. 50"><button class="button is-link is-fullwidth" onclick="saveGuests()">NEXT</button>`;
+                focusInput('gCount');
+            } else {
+                startChat();
+            }
+        } else if (savedState === 'submitted') {
+            clearSession();
+            chatData = loadChatData();
+            // Start collapsed — user will click to open
+            widget.classList.add('collapsed');
+        } else {
+            // Fresh visit — show as collapsed FAB
+            widget.classList.add('collapsed');
+        }
+    }, 1500); 
+};
 function scrollToBottom() { const display = document.getElementById('chat-display'); display.scrollTop = display.scrollHeight; }
 function clearInputs() { document.getElementById('chat-controls').innerHTML = ''; }
 function focusInput(id) { setTimeout(() => { const el = document.getElementById(id); if (el) el.focus(); }, 100); }
@@ -29,7 +111,6 @@ function focusInput(id) { setTimeout(() => { const el = document.getElementById(
 async function renderMessage(text, side = 'bot') {
     const display = document.getElementById('chat-display');
     const msg = document.createElement('div');
-    // 'user' side gets the green bubble on the right
     msg.className = side === 'bot' ? 'chat-msg bot-msg' : 'chat-msg user-msg';
     
     if (side === 'bot') { 
@@ -43,15 +124,17 @@ async function renderMessage(text, side = 'bot') {
         display.appendChild(msg);
     }
     scrollToBottom();
+    saveChatMessages();
 }
 
 // --- VENDOR INTAKE FLOW ---
 window.openVendorIntake = async () => {
     chatData = { vendors: [], name: '', phone: '', email: '', eventDate: '', guests: '', isVendorFlow: true, businessName: '', vendorCat: '', marketingConsent: false };
+    persistChat(); saveChatState('vendorFlow');
     document.getElementById('chat-display').innerHTML = ''; 
     toggleChat(false); clearInputs();
     await renderMessage("Welcome to the Theory Solutions Partner Network! 🌵");
-    await renderMessage("Ready to join and receive vetted Tucson leads?");
+    await renderMessage("Ready to join and receive Tucson leads?");
     document.getElementById('chat-controls').innerHTML = `
         <button class="button is-warning is-fullwidth mb-2" onclick="handleVendorStart(true)">YES, START APPLICATION</button>
         <button class="button is-light is-fullwidth" onclick="startChat()">NO, I'M A PLANNER</button>`;
@@ -69,7 +152,7 @@ window.askBizName = async () => {
 
 window.saveBizName = async () => {
     const val = document.getElementById('vBiz').value; if (!val) return;
-    chatData.businessName = val; await renderMessage(val, "user"); clearInputs();
+    chatData.businessName = val; persistChat(); await renderMessage(val, "user"); clearInputs();
     if (chatData.email) { showRecap(); return; }
     await renderMessage("Which primary category do you serve in Tucson?");
     document.getElementById('chat-controls').innerHTML = `
@@ -92,11 +175,11 @@ window.askOtherCat = async () => {
     focusInput('vOther');
 };
 
-window.saveVendorCat = async (cat) => { chatData.vendorCat = cat; await renderMessage(cat, "user"); if (chatData.email) { showRecap(); } else { askName(); } };
+window.saveVendorCat = async (cat) => { chatData.vendorCat = cat; persistChat(); await renderMessage(cat, "user"); if (chatData.email) { showRecap(); } else { askName(); } };
 
 // --- PLANNER FLOW ---
 async function startChat() {
-    chatData.isVendorFlow = false; clearInputs();
+    chatData.isVendorFlow = false; clearInputs(); saveChatState('started');
     await renderMessage("Hey, I'm the Theory Assistant! 👋");
     await renderMessage("Ready to find some vendors for your Tucson event?");
     document.getElementById('chat-controls').innerHTML = `<button class="button is-link is-fullwidth mb-2" onclick="handleInitial(true)">YES</button><button class="button is-light is-fullwidth" onclick="handleInitial(false)">NO</button>`;
@@ -111,7 +194,7 @@ window.handleInitial = async (yes) => {
 
 window.saveDate = async () => {
     const val = document.getElementById('eDate').value; if (!val) return;
-    chatData.eventDate = val; await renderMessage(val, "user"); clearInputs();
+    chatData.eventDate = val; persistChat(); saveChatState('date'); await renderMessage(val, "user"); clearInputs();
     if (chatData.email) { showRecap(); return; }
     await renderMessage("How many guests?");
     document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" type="number" id="gCount" value="${chatData.guests}" placeholder="e.g. 50"><button class="button is-link is-fullwidth" onclick="saveGuests()">NEXT</button>`;
@@ -120,13 +203,13 @@ window.saveDate = async () => {
 
 window.saveGuests = async () => {
     const val = document.getElementById('gCount').value; if (!val) return;
-    chatData.guests = val; await renderMessage(`${val} guests`, "user"); clearInputs();
+    chatData.guests = val; persistChat(); saveChatState('guests'); await renderMessage(`${val} guests`, "user"); clearInputs();
     if (chatData.email) { showRecap(); return; }
     selectVendorStep();
 };
 
 window.selectVendorStep = async () => {
-    clearInputs(); await renderMessage("What do you need help with?");
+    clearInputs(); saveChatState('selectVendor'); await renderMessage("What do you need help with?");
     document.getElementById('chat-controls').innerHTML = `
         <div class="columns is-mobile is-multiline" style="margin: 0;">
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Catering')">🚚 Food</button></div>
@@ -172,7 +255,7 @@ window.askQuotes = async (type) => {
 };
 
 window.saveVendor = async (type, count) => {
-    chatData.vendors.push({ type, count }); await renderMessage(`${count} quotes for ${type}`, "user"); clearInputs();
+    chatData.vendors.push({ type, count }); persistChat(); saveChatState('vendors'); await renderMessage(`${count} quotes for ${type}`, "user"); clearInputs();
     if (chatData.email) { showRecap(); return; }
     await renderMessage(`Got it. Need anything else?`);
     document.getElementById('chat-controls').innerHTML = `<button class="button is-link is-fullwidth mb-2" onclick="selectVendorStep()">YES, ADD MORE</button><button class="button is-light is-fullwidth" onclick="askName()">NO, THAT'S ALL</button>`;
@@ -180,13 +263,14 @@ window.saveVendor = async (type, count) => {
 
 // --- CONTACT INFO & RECAP ---
 window.askName = async () => { clearInputs(); await renderMessage("Excellent. What is your full name?"); document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" id="cName" value="${chatData.name}" placeholder="Full Name"><button class="button is-link is-fullwidth" onclick="saveName()">NEXT</button>`; focusInput('cName'); };
-window.saveName = async () => { const val = document.getElementById('cName').value; if (!val) return; chatData.name = val; await renderMessage(val, "user"); clearInputs(); if (chatData.email) { showRecap(); return; } askPhone(); };
+window.saveName = async () => { const val = document.getElementById('cName').value; if (!val) return; chatData.name = val; persistChat(); await renderMessage(val, "user"); clearInputs(); if (chatData.email) { showRecap(); return; } askPhone(); };
 window.askPhone = async () => { clearInputs(); await renderMessage("What's a good contact number?"); document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" id="cPhone" value="${chatData.phone}" placeholder="520-XXX-XXXX"><button class="button is-link is-fullwidth" onclick="savePhone()">NEXT</button>`; focusInput('cPhone'); };
-window.savePhone = async () => { const val = document.getElementById('cPhone').value; if (!val) return; chatData.phone = val; await renderMessage(val, "user"); clearInputs(); if (chatData.email) { showRecap(); return; } askEmail(); };
+window.savePhone = async () => { const val = document.getElementById('cPhone').value; if (!val) return; chatData.phone = val; persistChat(); await renderMessage(val, "user"); clearInputs(); if (chatData.email) { showRecap(); return; } askEmail(); };
 window.askEmail = async () => { clearInputs(); await renderMessage("And finally, your email?"); document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" id="cEmail" value="${chatData.email}" placeholder="email@example.com"><button class="button is-link is-fullwidth" onclick="showRecap()">RECAP MY REQUEST</button>`; focusInput('cEmail'); };
 
 window.showRecap = async () => {
     const emailInput = document.getElementById('cEmail'); if (emailInput) chatData.email = emailInput.value;
+    persistChat(); saveChatState('recap');
     clearInputs();
     await renderMessage("Please review your details. Click any item to change it:");
     
@@ -247,6 +331,10 @@ window.finish = async () => {
     } else {
         await pushToSupabase(chatData, targetUrl);
     }
+    
+    // Clear session after successful submission
+    clearSession();
+    saveChatState('submitted');
 };
 
 async function pushToSupabase(payload, url) { 
@@ -260,14 +348,48 @@ async function pushToSupabase(payload, url) {
     } catch (err) { console.error("Error:", err); } 
 }
 
-window.openDrawer = (title, desc, mediaUrl) => { 
+// ─── MODIFIED: openDrawer now accepts categoryUrl (4th param) ───
+window.openDrawer = (title, desc, mediaUrl, categoryUrl) => { 
     document.getElementById('drawer-title').innerText = title; 
     document.getElementById('drawer-desc').innerHTML = `${desc}<br><br><strong>Avg. Price:</strong> ${tucsonPricing[title] || "Request Quote"}<br><hr><small><a href="legal.html" target="_blank">Terms & Disclaimer</a></small>`; 
     document.getElementById('drawer-media-box').style.backgroundImage = `url('${mediaUrl}')`; 
     document.getElementById('drawer').classList.add('is-active'); 
     document.getElementById('overlay').classList.add('is-active'); 
     document.getElementById('drawer-action-btn').onclick = () => { closeDrawer(); jumpToCategory(title); }; 
+
+    // ─── NEW: Set the "Learn More" link if a category URL exists ───
+    const learnMoreEl = document.getElementById('drawer-learn-more');
+    if (learnMoreEl) {
+        if (categoryUrl) {
+            learnMoreEl.href = categoryUrl;
+            learnMoreEl.style.display = 'block';
+        } else {
+            learnMoreEl.style.display = 'none';
+        }
+    }
 };
 
 window.closeDrawer = () => { document.getElementById('drawer').classList.remove('is-active'); document.getElementById('overlay').classList.remove('is-active'); };
-window.toggleChat = (force) => { const w = document.getElementById('chat-widget'); const collapse = force !== undefined ? force : !w.classList.contains('collapsed'); if (collapse) w.classList.add('collapsed'); else w.classList.remove('collapsed'); };
+window.toggleChat = (force) => { 
+    const w = document.getElementById('chat-widget'); 
+    if (!w) return;
+    
+    // Show widget if hidden
+    if (w.style.display === 'none') w.style.display = 'flex';
+    
+    const shouldCollapse = force !== undefined ? force : !w.classList.contains('collapsed'); 
+    
+    if (shouldCollapse) {
+        w.classList.add('collapsed');
+    } else {
+        w.classList.remove('collapsed');
+        // If chat hasn't started yet, kick it off
+        const display = document.getElementById('chat-display');
+        if (display && display.children.length === 0) {
+            const savedState = loadChatState();
+            if (savedState === 'fresh' || !savedState) {
+                startChat();
+            }
+        }
+    }
+};

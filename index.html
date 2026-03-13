@@ -2,252 +2,211 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3M5JB8V0WL"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-3M5JB8V0WL');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tucson Event Connections | Local Party & Event Vendors</title>
-    <meta name="description" content="Find the best local Tucson event vendors. From taco carts and jumping castles to wedding photographers and tent rentals.">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3M5JB8V0WL');</script>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tucson Event Connections | Find Local Vendors for Any Event</title>
+    <meta name="description" content="Tell us what you need, we match you with Tucson event vendors in minutes. Catering, DJs, photo booths, bounce houses, decor & more. Free quotes, zero hassle.">
+    <link rel="canonical" href="https://tucsoneventconnections.com/">
+    <meta property="og:title" content="Tucson Event Connections | Top Local Event Vendors">
+    <meta property="og:description" content="Get matched with Tucson's best event vendors. Free quotes in minutes.">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        :root { --tucson-blue: #2c3e50; --user-bg: #3498db; --bot-bg: #f1f0f0; --font-friendly: 'Quicksand', sans-serif; }
-        body { font-family: 'Inter', sans-serif; background: #fdfdfd; color: #333; font-size: 1.1rem; overflow-x: hidden; }
-        .hero { background: linear-gradient(rgba(44, 62, 80, 0.75), rgba(44, 62, 80, 0.75)), url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1600'); background-size: cover; background-position: center; color: white; padding: 5rem 1rem; }
-        .vendor-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 1.5rem; border-radius: 12px; height: 100%; transition: 0.3s; cursor: pointer; background: white; }
-        .vendor-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
-        .grid-img { 
-            width: 100%; 
-            aspect-ratio: 1/1; 
-            object-fit: cover; 
-            border-radius: 4px; 
-            border: 1px solid #ddd;
-            image-rendering: -webkit-optimize-contrast; 
-            image-rendering: crisp-edges;
-            transform: translateZ(0); 
-            backface-visibility: hidden;
-        }
-        .cta-box { 
-            background: #f9fbfd; 
-            border: none; 
-            border-left: 6px solid var(--tucson-blue); 
-            padding: 1.25rem 2rem; 
-            border-radius: 4px; 
-            margin-top: 2rem; 
-            box-shadow: none; 
-            display: inline-block; 
-        }
-        .drawer { position: fixed; top: 0; right: -100%; width: 45%; height: 100%; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.15); z-index: 10000; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); padding: 40px; overflow-y: auto; }
-        .drawer.is-active { right: 0; }
-        .drawer-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(44, 62, 80, 0.5); backdrop-filter: blur(4px); display: none; z-index: 9999; }
-        .drawer-overlay.is-active { display: block; }
-        #chat-widget { position: fixed; bottom: 20px; right: 20px; width: 380px; background: white; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.25); z-index: 9998; overflow: hidden; display: none; flex-direction: column; font-family: var(--font-friendly); transition: 0.3s; }
-        #chat-widget.collapsed { width: 220px; height: 50px !important; }
-        #chat-header { background: var(--tucson-blue); color: white; padding: 15px 20px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
-        #chat-body { height: 500px; display: flex; flex-direction: column; }
-        #chat-display { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 18px; font-size: 0.95rem; }
-        .bot-msg { align-self: flex-start; background: #f1f0f0; }
-        .user-msg { align-self: flex-end; background: #3498db; color: white; }
-        #chat-controls { padding: 15px; background: #fafafa; border-top: 1px solid #eee; min-height: 100px; }
-        @media screen and (max-width: 1024px) { .drawer { width: 100%; } #chat-widget { width: 95%; right: 2.5%; } }
+        :root{--bg:#0C0F14;--surface:#13161E;--surface-2:#1A1E2A;--surface-3:#222736;--coral:#E8623A;--coral-dim:rgba(232,98,58,0.15);--coral-glow:rgba(232,98,58,0.35);--gold:#F5B83D;--gold-dim:rgba(245,184,61,0.12);--text:#F0EAE2;--text-muted:#7C8299;--text-faint:#444C66;--border:rgba(255,255,255,0.06);--border-hover:rgba(232,98,58,0.45);--radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;--font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;--transition:0.35s cubic-bezier(0.16,1,0.3,1)}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:1rem;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;background:none;font-family:inherit}
+        body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:0.025;pointer-events:none;z-index:9999}
+        nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:68px;background:rgba(12,15,20,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+        .nav-logo{font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--text);letter-spacing:-0.02em;display:flex;align-items:center;gap:0.5rem;text-decoration:none}.nav-logo span{color:var(--coral)}.nav-logo .dot{width:8px;height:8px;background:var(--coral);border-radius:50%;display:inline-block;animation:pulse-dot 2s ease-in-out infinite}
+        .nav-right{display:flex;align-items:center;gap:1.5rem}.nav-link{font-size:0.85rem;font-weight:500;color:var(--text-muted);transition:color 0.2s}.nav-link:hover{color:var(--text)}
+        .nav-cta{background:transparent;border:1px solid rgba(232,98,58,0.4);color:var(--coral);font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:0.5rem 1.25rem;border-radius:100px;transition:var(--transition)}.nav-cta:hover{background:var(--coral);color:white;border-color:var(--coral);box-shadow:0 0 20px var(--coral-glow)}
+        @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
+        .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;overflow:hidden}
+        .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 35%,rgba(232,98,58,0.14) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 75% 65%,rgba(245,184,61,0.08) 0%,transparent 55%),radial-gradient(ellipse 40% 50% at 15% 55%,rgba(232,98,58,0.06) 0%,transparent 55%);animation:hero-glow 8s ease-in-out infinite alternate}@keyframes hero-glow{0%{opacity:0.7}100%{opacity:1}}
+        .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 55% at 50% 35%,black 0%,transparent 65%)}
+        .hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:var(--coral-dim);border:1px solid rgba(232,98,58,0.25);border-radius:100px;padding:0.4rem 1.1rem;font-size:0.78rem;font-weight:600;color:var(--coral);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:2rem;animation:fade-up 0.7s ease both}
+        .hero h1{font-family:var(--font-display);font-size:clamp(2.6rem,6.5vw,5rem);font-weight:800;line-height:1.06;letter-spacing:-0.035em;color:var(--text);max-width:820px;animation:fade-up 0.7s 0.08s ease both}
+        .hero h1 .grad{background:linear-gradient(135deg,var(--coral) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero-sub{margin-top:1.25rem;font-size:clamp(1rem,2vw,1.15rem);color:var(--text-muted);font-weight:400;max-width:520px;line-height:1.75;animation:fade-up 0.7s 0.16s ease both}
+        .hero-cta-row{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;justify-content:center;animation:fade-up 0.7s 0.24s ease both}
+        .btn-hero{background:var(--coral);color:white;font-family:var(--font-body);font-size:1rem;font-weight:600;padding:1rem 2.4rem;border-radius:100px;transition:var(--transition);box-shadow:0 6px 24px var(--coral-glow);display:inline-flex;align-items:center;gap:0.6rem}
+        .btn-hero:hover{transform:translateY(-2px);box-shadow:0 10px 36px var(--coral-glow);background:#ef6f47}
+        .btn-hero-ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.1);font-family:var(--font-body);font-size:0.95rem;font-weight:500;padding:1rem 2rem;border-radius:100px;transition:var(--transition);display:inline-flex;align-items:center;gap:0.5rem}
+        .btn-hero-ghost:hover{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.04)}
+        .how-strip{display:flex;justify-content:center;gap:0;padding:0 2rem;margin-bottom:4rem;animation:fade-up 0.7s 0.35s ease both}
+        .how-step{display:flex;align-items:center;gap:1rem;padding:1.5rem 2.5rem;border:1px solid var(--border);position:relative}.how-step:first-child{border-radius:var(--radius-md) 0 0 var(--radius-md)}.how-step:last-child{border-radius:0 var(--radius-md) var(--radius-md) 0;border-left:none}.how-step:nth-child(2){border-left:none}
+        .how-step__num{width:38px;height:38px;border-radius:50%;background:var(--coral);border:none;display:flex;align-items:center;justify-content:center;font-family:var(--font-body);font-size:0.9rem;font-weight:700;color:white;flex-shrink:0}
+        .how-step__text{font-size:0.88rem;font-weight:500;color:var(--text)}.how-step__sub{font-size:0.78rem;color:var(--text-muted);margin-top:0.15rem}.how-arrow{color:var(--text-faint);font-size:0.7rem;position:absolute;right:-8px;z-index:1}
+        .trust-bar{display:flex;justify-content:center;gap:3rem;padding:0 2rem;margin-bottom:5rem;flex-wrap:wrap}.trust-item{display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--text-muted);animation:fade-up 0.6s ease both}.trust-item .check{color:var(--coral);font-size:1rem}.trust-item strong{color:var(--text);font-weight:600}
+        .section-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--coral);margin-bottom:1rem}.section-label::before{content:'';display:block;width:20px;height:1px;background:var(--coral)}.section-wrap{max-width:1300px;margin:0 auto;padding:0 2.5rem}
+        .hub{padding-bottom:6rem}.hub-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}.hub-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1}.hub-title span{color:var(--text-muted);font-weight:700}.hub-sub{color:var(--text-muted);font-size:0.95rem;max-width:360px;text-align:right;line-height:1.6}
+        .vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+        .vcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:var(--transition);position:relative;opacity:0;transform:translateY(20px);animation:fade-up 0.5s ease forwards}
+        .vcard:nth-child(1){animation-delay:0.05s}.vcard:nth-child(2){animation-delay:0.1s}.vcard:nth-child(3){animation-delay:0.15s}.vcard:nth-child(4){animation-delay:0.2s}.vcard:nth-child(5){animation-delay:0.25s}.vcard:nth-child(6){animation-delay:0.3s}.vcard:nth-child(7){animation-delay:0.35s}.vcard:nth-child(8){animation-delay:0.4s}
+        .vcard:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.4),0 0 0 1px rgba(232,98,58,0.2)}.vcard:hover .vcard-overlay{opacity:1}.vcard:hover .vcard-arrow{background:var(--coral);color:white;transform:translate(2px,-2px)}.vcard:hover .img-grid img{transform:scale(1.05)}
+        .img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;height:140px;overflow:hidden}.img-grid img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;display:block}
+        .vcard-body{padding:1.1rem 1.25rem 1.25rem;position:relative}.vcard-icon{font-size:1.3rem;margin-bottom:0.4rem;display:block}.vcard-title{font-family:var(--font-display);font-size:0.92rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;line-height:1.25}.vcard-price{display:inline-block;margin-top:0.55rem;font-size:0.72rem;font-weight:600;color:var(--gold);background:var(--gold-dim);border:1px solid rgba(245,184,61,0.2);padding:0.2rem 0.6rem;border-radius:100px}.vcard-arrow{position:absolute;bottom:1.1rem;right:1.1rem;width:28px;height:28px;background:var(--surface-3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;transition:all 0.3s ease;color:var(--coral)}.vcard-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,98,58,0.06) 0%,transparent 100%);opacity:0;transition:opacity 0.35s ease;pointer-events:none;border-radius:var(--radius-lg)}
+        .mid-cta{padding:5rem 2.5rem;max-width:1300px;margin:0 auto}.mid-cta-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:3.5rem;display:flex;align-items:center;gap:3rem;position:relative;overflow:hidden}.mid-cta-box::before{content:'';position:absolute;top:-50%;right:-15%;width:350px;height:350px;background:radial-gradient(circle,rgba(232,98,58,0.12) 0%,transparent 70%);pointer-events:none}.mid-cta-left{flex:1;position:relative;z-index:1}.mid-cta-left h3{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:0.75rem}.mid-cta-left p{color:var(--text-muted);font-size:0.95rem;line-height:1.65;max-width:420px}.mid-cta-right{flex-shrink:0;position:relative;z-index:1}
+        .tips{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 2.5rem}.tips-inner{max-width:1300px;margin:0 auto}.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+        .tip{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem 1.75rem;position:relative;overflow:hidden;transition:var(--transition)}.tip:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.1)}.tip::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}.tip.t-blue::before{background:linear-gradient(90deg,#3B82F6,#60A5FA)}.tip.t-gold::before{background:linear-gradient(90deg,var(--gold),#FCD34D)}.tip.t-coral::before{background:linear-gradient(90deg,var(--coral),#FB923C)}
+        .tip-num{font-family:var(--font-display);font-size:3.5rem;font-weight:800;color:var(--text-faint);line-height:1;margin-bottom:0.75rem}.tip-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:var(--text)}.tip-text{font-size:0.9rem;color:var(--text-muted);line-height:1.7}.tip-text strong{color:var(--text);font-weight:500}
+        .vendor-cta{padding:5rem 2.5rem 6rem;max-width:1300px;margin:0 auto}.vendor-cta-box{background:linear-gradient(135deg,var(--coral) 0%,#C8451E 100%);border-radius:var(--radius-xl);padding:4rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;position:relative;overflow:hidden}.vendor-cta-box::before{content:'🌵';position:absolute;right:5rem;top:50%;transform:translateY(-50%);font-size:8rem;opacity:0.12;pointer-events:none}.vendor-cta-box::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:0.06;pointer-events:none}
+        .vendor-cta-text{position:relative;z-index:1}.vendor-cta-text h3{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.5rem);font-weight:800;color:white;letter-spacing:-0.03em;line-height:1.1}.vendor-cta-text p{color:rgba(255,255,255,0.75);font-size:1rem;margin-top:0.75rem}
+        .btn-vendor{position:relative;z-index:1;flex-shrink:0;background:white;color:var(--coral);font-family:var(--font-display);font-size:0.9rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:1.1rem 2.5rem;border-radius:100px;transition:var(--transition);white-space:nowrap;box-shadow:0 8px 30px rgba(0,0,0,0.25)}.btn-vendor:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 40px rgba(0,0,0,0.35)}
+        footer{border-top:1px solid var(--border);padding:3rem 2.5rem}.footer-inner{max-width:1300px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center}.footer-logo{font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--text-muted)}.footer-links{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;justify-content:center}.footer-links a{color:var(--text-muted);font-size:0.85rem;transition:color 0.2s}.footer-links a:hover{color:var(--coral)}.footer-cat-label{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-top:0.5rem}.footer-cats{display:flex;flex-wrap:wrap;gap:0.4rem 1rem;justify-content:center;margin-top:0.25rem}.footer-cats a{color:var(--text-faint);font-size:0.78rem;transition:color 0.2s}.footer-cats a:hover{color:var(--coral)}.footer-disc{font-size:0.75rem;color:var(--text-faint);max-width:600px;line-height:1.6;margin-top:0.5rem}.footer-pow{font-size:0.8rem;color:var(--text-faint)}.footer-pow a{color:var(--coral);text-decoration:none;font-weight:600}
+        .drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);display:none;z-index:9999}.drawer-overlay.is-active{display:block}.drawer{position:fixed;top:0;right:-100%;width:min(480px,100%);height:100%;background:var(--surface);border-left:1px solid var(--border);box-shadow:-20px 0 60px rgba(0,0,0,0.5);z-index:10000;transition:right 0.5s cubic-bezier(0.16,1,0.3,1);overflow-y:auto;display:flex;flex-direction:column}.drawer.is-active{right:0}.drawer-close{position:absolute;top:1.25rem;right:1.25rem;width:36px;height:36px;background:var(--surface-2);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;color:var(--text-muted);z-index:1;transition:var(--transition)}.drawer-close:hover{background:var(--surface-3);color:var(--text)}#drawer-media-box{width:100%;height:240px;background-size:cover;background-position:center;position:relative;flex-shrink:0}#drawer-media-box::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(to top,var(--surface),transparent)}.drawer-content{padding:1.5rem 2rem 2rem;flex:1}#drawer-title{font-family:var(--font-display);font-size:1.6rem;font-weight:800;letter-spacing:-0.03em;color:var(--text);margin-bottom:1rem}#drawer-desc{font-size:0.9rem;color:var(--text-muted);line-height:1.75}#drawer-desc strong{color:var(--gold)}#drawer-desc a{color:var(--coral)}.drawer-divider{border:none;border-top:1px solid var(--border);margin:1.5rem 0}#drawer-action-btn{width:100%;background:var(--coral);color:white;border:none;font-family:var(--font-display);font-size:0.9rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:1.1rem;border-radius:var(--radius-md);cursor:pointer;transition:var(--transition);box-shadow:0 4px 20px var(--coral-glow)}#drawer-action-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--coral-glow)}.drawer-learn-link{display:block;text-align:center;margin-top:0.75rem;padding:0.85rem;font-size:0.82rem;font-weight:600;color:var(--coral);border:1px solid rgba(232,98,58,0.3);border-radius:var(--radius-md);transition:var(--transition)}.drawer-learn-link:hover{background:var(--coral-dim);border-color:rgba(232,98,58,0.5)}
+        /* ── CHAT WIDGET — REDESIGNED ── */
+        #chat-widget{position:fixed;bottom:24px;right:24px;width:390px;background:var(--surface);border:1px solid rgba(255,255,255,0.08);border-radius:20px;box-shadow:0 24px 64px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.03);z-index:9998;overflow:hidden;display:none;flex-direction:column;font-family:var(--font-body);transition:all 0.4s cubic-bezier(0.16,1,0.3,1)}
+        #chat-widget.collapsed{width:64px;height:64px !important;border-radius:50%;box-shadow:0 8px 32px rgba(232,98,58,0.35),0 0 0 1px rgba(232,98,58,0.2);cursor:pointer}
+        #chat-widget.collapsed #chat-body{display:none}
+        #chat-widget.collapsed #chat-header{border-radius:50%;padding:0;justify-content:center;height:100%}
+        #chat-widget.collapsed .chat-header-label span:not(.chat-fab-icon){display:none}
+        #chat-widget.collapsed .chat-fab-icon{display:flex}
+        #chat-widget.collapsed #chat-toggle-icon{display:none}
+
+        #chat-header{background:linear-gradient(135deg,var(--coral) 0%,#C44125 100%);color:white;padding:0.9rem 1.2rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;flex-shrink:0;position:relative;overflow:hidden}
+        #chat-header::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.06;pointer-events:none}
+        #chat-header .chat-header-label{display:flex;align-items:center;gap:0.6rem;position:relative;z-index:1}
+        .chat-header-status{display:flex;align-items:center;gap:0.4rem;font-size:0.68rem;font-weight:500;color:rgba(255,255,255,0.7);letter-spacing:0.03em}
+        .chat-header-status .live-dot{width:6px;height:6px;background:#4ADE80;border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;box-shadow:0 0 6px rgba(74,222,128,0.5)}
+        .chat-header-title{font-family:var(--font-display);font-size:0.95rem;font-weight:800;letter-spacing:-0.02em}
+        .chat-fab-icon{display:none;align-items:center;justify-content:center;font-size:1.4rem}
+        #chat-toggle-icon{position:relative;z-index:1;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:0.8rem;transition:background 0.2s}
+        #chat-toggle-icon:hover{background:rgba(255,255,255,0.25)}
+
+        #chat-body{height:480px;display:flex;flex-direction:column}
+        #chat-display{flex:1;padding:1.2rem;overflow-y:auto;display:flex;flex-direction:column;gap:8px;background:var(--bg)}
+        #chat-display::-webkit-scrollbar{width:3px}
+        #chat-display::-webkit-scrollbar-track{background:transparent}
+        #chat-display::-webkit-scrollbar-thumb{background:var(--surface-3);border-radius:3px}
+
+        .chat-msg{max-width:82%;padding:0.7rem 1rem;border-radius:18px;font-size:0.86rem;line-height:1.55;animation:msg-in 0.3s ease both}
+        @keyframes msg-in{from{opacity:0;transform:translateY(6px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+        .bot-msg{align-self:flex-start;background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-bottom-left-radius:6px}
+        .user-msg{align-self:flex-end;background:var(--coral);color:white;border-bottom-right-radius:6px;border:none}
+
+        #chat-controls{padding:0.9rem 1.2rem;background:var(--surface);border-top:1px solid var(--border);min-height:70px}
+        #chat-controls .input{width:100%;background:var(--bg);border:1.5px solid var(--border);color:var(--text);border-radius:10px;padding:0.7rem 0.95rem;font-family:var(--font-body);font-size:0.86rem;outline:none;margin-bottom:0.5rem;transition:border-color 0.2s}
+        #chat-controls .input:focus{border-color:var(--coral);box-shadow:0 0 0 3px var(--coral-dim)}
+        #chat-controls .input::placeholder{color:var(--text-faint)}
+
+        #chat-controls .button{font-family:var(--font-body);font-size:0.82rem;font-weight:600;padding:0.6rem 1.1rem;border-radius:10px;cursor:pointer;border:1.5px solid var(--border);transition:all 0.2s ease;background:var(--surface-2);color:var(--text)}
+        #chat-controls .button:hover{border-color:rgba(255,255,255,0.15);background:var(--surface-3);transform:translateY(-1px)}
+        #chat-controls .button:active{transform:translateY(0)}
+        #chat-controls .button.is-link{background:var(--coral);color:white;border-color:var(--coral)}
+        #chat-controls .button.is-link:hover{background:#ef6f47;box-shadow:0 4px 12px var(--coral-glow)}
+        #chat-controls .button.is-success{background:#22C55E;color:white;border-color:#22C55E}
+        #chat-controls .button.is-success:hover{background:#16a34a;box-shadow:0 4px 12px rgba(34,197,94,0.3)}
+        #chat-controls .button.is-warning{background:var(--gold);color:#1a1200;border-color:var(--gold)}
+        #chat-controls .button.is-info{background:var(--surface-3);color:var(--text);border-color:var(--border)}
+        #chat-controls .button.is-info.is-light{background:rgba(59,130,246,0.1);color:#60A5FA;border-color:rgba(59,130,246,0.25)}
+        #chat-controls .button.is-info.is-light:hover{background:rgba(59,130,246,0.18)}
+        #chat-controls .button.is-dark{background:var(--surface-3);color:var(--text-muted);border-color:var(--border)}
+        #chat-controls .button.is-light{background:var(--surface-2);color:var(--text-muted);border-color:var(--border)}
+        #chat-controls .button.is-danger.is-light{background:rgba(239,68,68,0.1);color:#F87171;border-color:rgba(239,68,68,0.25)}
+        #chat-controls .button.is-danger.is-light:hover{background:rgba(239,68,68,0.18)}
+        #chat-controls .button.is-small{font-size:0.78rem;padding:0.5rem 0.85rem;border-radius:8px}
+        #chat-controls .button.is-medium{font-size:0.88rem;padding:0.75rem 1.1rem}
+        #chat-controls .button.is-large{font-size:0.92rem;padding:0.85rem 1.1rem}
+        #chat-controls .button.is-fullwidth{width:100%;display:block;text-align:center}
+
+        #chat-controls .columns{display:flex;flex-wrap:wrap;gap:0;margin:0}
+        #chat-controls .column{padding:0.25rem}
+        #chat-controls .column.is-6{width:50%}
+        #chat-controls .column.is-12{width:100%}
+        #chat-controls .buttons{display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center}
+        #chat-controls .columns.is-multiline{flex-wrap:wrap}
+        #chat-controls .columns.is-mobile{flex-direction:row}
+        #chat-controls hr{border:none;border-top:1px solid var(--border);margin:0.75rem 0}
+        #chat-controls .box{background:var(--surface-2);border:1px solid var(--border);border-radius:10px}
+        #chat-controls .checkbox{display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-muted);cursor:pointer}
+        #chat-controls .checkbox input{accent-color:var(--coral);width:16px;height:16px}
+        #chat-controls a{color:var(--coral)}
+        #chat-controls label{display:flex;align-items:center;gap:0.5rem}
+        #chat-controls .mb-2{margin-bottom:0.5rem}
+        #chat-controls .mt-2{margin-top:0.5rem}
+        #chat-controls .p-1{padding:0.25rem}
+        #chat-controls .p-3{padding:0.75rem}
+        @keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+        @media(max-width:1100px){.vgrid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){nav{padding:0 1.25rem}.nav-link{display:none}.section-wrap{padding:0 1.25rem}.how-strip{flex-direction:column;padding:0 1.25rem;gap:0}.how-step{border-radius:0 !important;border-left:1px solid var(--border) !important}.how-step:first-child{border-radius:var(--radius-md) var(--radius-md) 0 0 !important}.how-step:last-child{border-radius:0 0 var(--radius-md) var(--radius-md) !important}.how-arrow{display:none}.hub{padding-bottom:4rem}.hub-header{flex-direction:column;align-items:flex-start}.hub-sub{text-align:left}.vgrid{grid-template-columns:repeat(2,1fr);gap:0.75rem}.tips{padding:4rem 1.25rem}.tips-grid{grid-template-columns:1fr}.mid-cta{padding:3rem 1.25rem}.mid-cta-box{flex-direction:column;text-align:center;padding:2.5rem 2rem}.vendor-cta{padding:3rem 1.25rem}.vendor-cta-box{flex-direction:column;text-align:center;padding:2.5rem 2rem}.vendor-cta-box::before{display:none}.trust-bar{gap:1.5rem;padding:0 1.25rem}#chat-widget{width:calc(100% - 2rem);right:1rem;bottom:1rem}#chat-widget.collapsed{width:60px;height:60px !important;bottom:1rem;right:1rem}.drawer{width:100%}}
+        @media(max-width:480px){.vgrid{grid-template-columns:1fr}.hero-cta-row{flex-direction:column;align-items:center}}
     </style>
 </head>
 <body>
 
-    <section class="hero has-text-centered">
-        <div class="container">
-            <h1 class="title is-1 has-text-white">Tucson Event Connections</h1>
-            <p class="subtitle is-4 has-text-grey-lighter">Connecting Planners to Local Tucson Pros</p>
-        </div>
-    </section>
+<nav><a href="#" class="nav-logo"><span class="dot"></span>Tucson<span>&nbsp;Event</span></a><div class="nav-right"><a href="#categories" class="nav-link">Categories</a><a href="#tips" class="nav-link">Pro Tips</a><button class="nav-cta" onclick="openVendorIntake()">Join as Vendor</button></div></nav>
 
-    <section class="section has-background-white-bis">
-        <div class="container has-text-centered">
-            <h2 class="title is-3">Tucson's Premier Event Vendor Network</h2>
-            <p class="is-size-5">
-                Planning an event in <strong>Tucson</strong>? From <strong>Oro Valley</strong> to <strong>Sahuarita</strong>, we simplify your search. Find the best local professionals—including taco trucks, jumping castles, and wedding photographers— All here for one stop connections.
-            </p>
-            <div class="cta-box">
-                <p class="is-size-5 has-text-weight-medium">
-                    🌵 <strong>Ready to get started?</strong> Our Theory Assistant is ready to help you find the perfect vendors below!
-                </p>
-            </div>
-        </div>
-    </section>
+<section class="hero"><div class="hero-bg"></div><div class="hero-grid"></div>
+    <div class="hero-eyebrow">🌵 Serving All of Pima County</div>
+    <h1>Tell Us What You Need.<br>We'll <span class="grad">Find Who's Best.</span></h1>
+    <p class="hero-sub">Get matched with Tucson event vendors in minutes — catering, DJs, photo booths, rentals, and more. Free quotes, zero hassle.</p>
+    <div class="hero-cta-row"><button class="btn-hero" onclick="toggleChat(false)">💬 Get Matched Now</button><button class="btn-hero-ghost" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">Browse Categories ↓</button></div>
+</section>
 
-    <section class="section">
-        <div class="container">
-            <div class="columns is-multiline is-mobile">
-                <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Catering / Food Truck / Food Carts', 'Experience the best of Tucson’s vibrant food scene with our hand-picked selection of local catering professionals. Whether you are looking for an authentic Tucson taco truck experience, slow-smoked Arizona BBQ, or a sophisticated full-service catering team for weddings and corporate galas, we connect you with vetted experts who specialize in desert hospitality. Serving the entire Pima County area—including Oro Valley, Sahuarita, and the Catalina Foothills—our partners ensure your event menu is as memorable as the sunset.', 'img/tucson-taco-food-event.jpg')">
-                        <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="img/food-truck-tucson-az.jpg" alt="Local Tucson food truck" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/taco-cart-rentals-tucson.jpg" alt="Taco cart rentals in Pima County" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/wedding-catering-services-oro-valley.jpg" alt="Event catering in Oro Valley" class="grid-img"></div>
-                        </div>
-                        <h4 class="title is-5">Catering / Food Truck / Food Carts</h4>
-                    </div>
-                </div>
+<div class="how-strip">
+    <div class="how-step"><div class="how-step__num">1</div><div><div class="how-step__text">Tell Us Your Event</div><div class="how-step__sub">Date, guests, what you need</div></div><span class="how-arrow">▸</span></div>
+    <div class="how-step"><div class="how-step__num">2</div><div><div class="how-step__text">We Match You</div><div class="how-step__sub">With trusted local vendors</div></div><span class="how-arrow">▸</span></div>
+    <div class="how-step"><div class="how-step__num">3</div><div><div class="how-step__text">Get Free Quotes</div><div class="how-step__sub">Compare and book with confidence</div></div></div>
+</div>
 
-                <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Tables / Chairs / Tents', 'Build a seamless foundation for your next event with our curated network of Tucson event rental specialists. From high-capacity wedding chair rentals and professional event tables to heavy-duty shade tents and engineered canopies designed to withstand the Arizona sun, we provide the essential infrastructure for any gathering. Our partners serve the entire Pima County region, delivering reliable inventory to hosts in Oro Valley, Marana, Sahuarita, and the Catalina Foothills.', 'img/table.jpg')">
-                        <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="img/eventtable.jpg" alt="Local Tucson table event setup" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/shadetent.jpg" alt="Tucson sun shade" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/chairs.jpg" alt="Local event chairs" class="grid-img"></div>
-                        </div>
-                        <h4 class="title is-5">Tables / Chairs / Tents</h4>
-                    </div>
-                </div>
+<div class="trust-bar">
+    <div class="trust-item" style="animation-delay:0.1s"><span class="check">✓</span> <strong>100% Free</strong> for event planners</div>
+    <div class="trust-item" style="animation-delay:0.2s"><span class="check">✓</span> <strong>Local</strong> vendors you can trust</div>
+    <div class="trust-item" style="animation-delay:0.3s"><span class="check">✓</span> <strong>Fast</strong> — most respond in 24hrs</div>
+    <div class="trust-item" style="animation-delay:0.4s"><span class="check">✓</span> Serving <strong>Tucson, Marana & Oro Valley</strong></div>
+</div>
 
-                <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Jumping Houses / Slides', 'Elevate your outdoor celebration with our premier network of Tucson jumping castle and inflatable rental experts. From high-throughput commercial-grade bounce houses to massive water slides and interactive inflatables designed for the Arizona heat, we provide the ultimate entertainment for all ages. Our partners prioritize safety and cleanliness, serving neighborhoods across Pima County—including Oro Valley, Marana, and Sahuarita.', 'img/backgroundjump.jpg')">
-                        <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="img/castle.jpg" alt="Local Tucson Jumping Castle Rental" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/slide.jpg" alt="Local Oro Valley Water Slide" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/playset.jpg" alt="Local Soft Play Set" class="grid-img"></div>
-                        </div>
-                        <h4 class="title is-5">Jumping Houses / Slides</h4>
-                    </div>
-                </div>
-
-                <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Photography / Photo Booth / Videography', 'Capture every moment with our elite network of Tucson event photographers and digital media specialists. From high-resolution wedding photography and cinematic videography to modern interactive photobooths and 360-degree video stations, we provide the creative talent to document your celebration in style. Our partners serve the entire Pima County area, delivering professional media services to clients in Oro Valley, Marana, and the Catalina Foothills.', 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800')">
-                        <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=200" class="grid-img"></div>
-                        </div>
-                        <h4 class="title is-5">Photography / Photo Booth / Videography</h4>
-                    </div>
-                </div>
-
-                <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Cakes / Sweets / Treats', 'Indulge your guests with the finest creations from our curated network of Tucson custom bakeries and artisanal dessert specialists. From stunning custom wedding cakes and gourmet dessert tables to local hand-crafted treats tailored to your event’s theme, we connect you with the most talented pastry chefs in the desert. Our partners serve the entire Pima County region, delivering exquisite sweets to celebrations in Oro Valley, Marana, and the Catalina Foothills.', 'img/cake-full.jpg')">
-                        <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="img/cake.jpg" alt="Local Tucson Cake" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/cookie.jpg" alt="Local Oro Valley Cookie" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/macroons.jpg" alt="Local Tucson Macroons" class="grid-img"></div>
-                        </div>
-                        <h4 class="title is-5">Cakes / Sweets / Treats</h4>
-                    </div>
-                </div>
-
-                <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Transportation / Shuttles / Limos', 'Streamline your event logistics with our premier network of Tucson transportation and shuttle service providers. From professional wedding shuttles and limousine services to high-capacity passenger vans and group transit, we ensure your guests arrive safely and on time. Our partners serve the entire Pima County region, providing reliable shuttle solutions to venues in Oro Valley, Marana, and the Catalina Foothills.', 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800')">
-                        <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="img/bus.jpg" alt="Local Tucson bus" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/limo.jpg" alt="Local Tucson limo" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/suv.jpg" alt="Local Tucson transport" class="grid-img"></div>
-                        </div>
-                        <h4 class="title is-5">Transportation / Shuttles / Limos</h4>
-                    </div>
-                </div>
-
-                <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Music / DJ', 'Set the perfect tone for your event with our premier network of Tucson DJs and live entertainment specialists. From high-energy wedding DJs and professional emcees to curated musical sets tailored to your event’s unique energy, we provide the soundtrack for a flawless celebration. Our partners serve the entire Pima County region, bringing world-class sound and lighting to venues in Oro Valley, Marana, and the Catalina Foothills.', 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800')">
-                        <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=200" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/dj.jpg" alt="Local DJ for Tucson Events" class="grid-img"></div>
-                            <div class="column p-1"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=200" class="grid-img"></div>
-                        </div>
-                        <h4 class="title is-5">Music / DJ</h4>
-                    </div>
-                </div>
-
-                <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                    <div class="box vendor-card" onclick="openDrawer('Decor / Balloons / Pinatas', 'Transform your venue with our elite network of Tucson event decor and visual styling specialists. From bespoke balloon installations and custom-crafted piñatas to elegant floral arrangements and themed party backdrops, we provide the creative elements that define your event’s atmosphere. Our partners serve the entire Pima County region, delivering high-end design solutions to hosts in Oro Valley, Marana, and the Catalina Foothills.', 'img/party-full.jpg')">
-                        <div class="columns is-mobile is-gapless mb-2">
-                            <div class="column p-1"><img src="img/balloon.jpg" alt="Local Tucson ballon" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/decor.jpg" alt="Local Tucson decor" class="grid-img"></div>
-                            <div class="column p-1"><img src="img/pinata.jpg" alt="Local Tucson Pintata" class="grid-img"></div>
-                        </div>
-                        <h4 class="title is-5">Decor / Balloons / Pinatas</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section has-background-white">
-        <div class="container">
-            <h2 class="title is-3 has-text-centered">🌵 Tucson Event Pro-Tips</h2>
-            <p class="subtitle is-5 has-text-centered mb-6">Ask these 3 questions before you book any vendor!</p>
-            
-            <div class="columns">
-                <div class="column">
-                    <div class="cta-box" style="border-left-color: #3498db; width: 100%; height: 100%;">
-                        <h4 class="title is-5">1. Access & Power</h4>
-                        <p class="is-size-6">Confirm if they need a <strong>dedicated 20-amp circuit</strong> or a 4ft wide gate for <strong>Jumping Houses</strong>. Don't let a narrow gate stop the party!</p>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="cta-box" style="border-left-color: #ffdd57; width: 100%; height: 100%;">
-                        <h4 class="title is-5">2. Setup Surfaces</h4>
-                        <p class="is-size-6">Will they be on grass or pavement? Tucson winds require different <strong>weighting systems</strong> for safety on hard surfaces.</p>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="cta-box" style="border-left-color: #ff3860; width: 100%; height: 100%;">
-                        <h4 class="title is-5">3. Clean-up & Trash</h4>
-                        <p class="is-size-6">For <strong>Catering</strong>, clarify if they haul away trash or if the host is responsible. Avoid hidden clean-up fees!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section has-background-link">
-        <div class="container">
-            <div class="columns is-vcentered">
-                <div class="column is-8">
-                    <h3 class="title is-3 has-text-white">Are you a Tucson Event Vendor?</h3>
-                    <p class="is-size-5 has-text-white">Join our network to grow your business in Tucson.</p>
-                </div>
-                <div class="column is-4">
-                    <button class="button is-warning is-large is-fullwidth has-text-weight-bold" onclick="openVendorIntake()">JOIN THE NETWORK</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer has-background-white" style="padding: 3rem 1.5rem; border-top: 1px solid #eee;">
-        <div class="container has-text-centered">
-            <p>
-                <strong>Tucson Event Connections</strong> | 
-                <a href="legal.html" target="_blank">Terms & Privacy</a>
-            </p>
-            <p class="is-size-7 has-text-grey mt-2">
-                Theory Solutions is a Connection platform. We are NOT LIABLE for any services conducted or performed by independent vendors.
-            </p>
-            <p class="is-size-7 mt-4">
-                Powered by <a href="https://theory-solutions.com" target="_blank" style="font-weight: bold; color: var(--tucson-blue);">Theory Solutions</a>
-            </p>
-            <p class="is-size-7 has-text-grey mt-2">
-                © 2026. Serving Tucson, Marana, and Oro Valley, AZ.
-            </p>
-        </div>
-    </footer>
-
-    <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
-    <div class="drawer" id="drawer">
-        <span onclick="closeDrawer()" style="font-size:2rem; cursor:pointer; float:right;">&times;</span>
-        <h2 class="title is-2" id="drawer-title" style="margin-top:20px;">Category</h2>
-        <div id="drawer-media-box" style="width:100%; height:250px; background-size:cover; border-radius:12px; margin-bottom:20px;"></div>
-        <p class="is-size-5" id="drawer-desc"></p>
-        <hr><button class="button is-link is-fullwidth is-large" id="drawer-action-btn">GET QUOTES IN CHAT</button>
+<section id="categories" class="hub section-wrap">
+    <div class="hub-header"><div><div class="section-label">Vendor Hub</div><h2 class="hub-title">Browse by<br><span>Category</span></h2></div><p class="hub-sub">Click any category for details, pricing guides, and instant quote access.</p></div>
+    <div class="vgrid">
+        <div class="vcard" onclick="openDrawer('Catering / Food Truck / Food Carts','Experience the best of Tucson\'s vibrant food scene — authentic taco trucks, slow-smoked Arizona BBQ, and full-service catering for weddings and corporate galas. Local experts serving all of Pima County.','img/tucson-taco-food-event.jpg','tucson/catering.html')"><div class="vcard-overlay"></div><div class="img-grid"><img src="img/food-truck-tucson-az.jpg" alt="Tucson food truck"><img src="img/taco-cart-rentals-tucson.jpg" alt="Taco cart"><img src="img/wedding-catering-services-oro-valley.jpg" alt="Catering"></div><div class="vcard-body"><span class="vcard-icon">🚚</span><div class="vcard-title">Catering / Food Trucks</div><span class="vcard-price">$10–$20 / person</span><div class="vcard-arrow">→</div></div></div>
+        <div class="vcard" onclick="openDrawer('Tables / Chairs / Tents','Professional event rental equipment built for the Arizona sun. Wedding chairs, banquet tables, and heavy-duty shade tents with full setup and takedown.','img/table.jpg','tucson/tables-chairs.html')"><div class="vcard-overlay"></div><div class="img-grid"><img src="img/eventtable.jpg" alt="Tables"><img src="img/shadetent.jpg" alt="Tent"><img src="img/chairs.jpg" alt="Chairs"></div><div class="vcard-body"><span class="vcard-icon">⛺</span><div class="vcard-title">Tables / Chairs / Tents</div><span class="vcard-price">$2–$15 / item</span><div class="vcard-arrow">→</div></div></div>
+        <div class="vcard" onclick="openDrawer('Jumping Houses / Slides','Commercial-grade bounce houses, water slides, and interactive inflatables. Insured vendors with full delivery, setup, and takedown across Pima County.','img/backgroundjump.jpg','tucson/jumping-houses.html')"><div class="vcard-overlay"></div><div class="img-grid"><img src="img/castle.jpg" alt="Bounce house"><img src="img/slide.jpg" alt="Slide"><img src="img/playset.jpg" alt="Play set"></div><div class="vcard-body"><span class="vcard-icon">🏰</span><div class="vcard-title">Bounce Houses / Slides</div><span class="vcard-price">$150–$450 / day</span><div class="vcard-arrow">→</div></div></div>
+        <div class="vcard" onclick="openDrawer('Photography / Photo Booth / Videography','Wedding photographers, event videographers, and interactive photo booths. From golden hour portraits to 360-degree video stations.','https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800','tucson/photography.html')"><div class="vcard-overlay"></div><div class="img-grid"><img src="https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=200" alt="Photo"><img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=200" alt="Video"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=200" alt="Booth"></div><div class="vcard-body"><span class="vcard-icon">📸</span><div class="vcard-title">Photo / Video / Booths</div><span class="vcard-price">$300–$1,500 / event</span><div class="vcard-arrow">→</div></div></div>
+        <div class="vcard" onclick="openDrawer('Cakes / Sweets / Treats','Custom wedding cakes, themed birthday cakes, dessert tables, and artisanal cookie boxes from Tucson\'s most talented local bakers.','img/cake-full.jpg','tucson/cakes.html')"><div class="vcard-overlay"></div><div class="img-grid"><img src="img/cake.jpg" alt="Cake"><img src="img/cookie.jpg" alt="Cookies"><img src="img/macroons.jpg" alt="Macaroons"></div><div class="vcard-body"><span class="vcard-icon">🎂</span><div class="vcard-title">Cakes / Sweets / Treats</div><span class="vcard-price">$50–$350 / order</span><div class="vcard-arrow">→</div></div></div>
+        <div class="vcard" onclick="openDrawer('Transportation / Shuttles / Limos','Wedding shuttles, party buses, and limousine services. Licensed and insured providers serving the greater Tucson area.','https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800','tucson/transportation.html')"><div class="vcard-overlay"></div><div class="img-grid"><img src="img/bus.jpg" alt="Bus"><img src="img/limo.jpg" alt="Limo"><img src="img/suv.jpg" alt="SUV"></div><div class="vcard-body"><span class="vcard-icon">🚐</span><div class="vcard-title">Shuttles / Limos / Transport</div><span class="vcard-price">$125–$250 / hour</span><div class="vcard-arrow">→</div></div></div>
+        <div class="vcard" onclick="openDrawer('Music / DJ','Wedding DJs, party DJs, MC services, and live musicians. Professional sound and lighting for any venue across Pima County.','https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800','tucson/music-dj.html')"><div class="vcard-overlay"></div><div class="img-grid"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=200" alt="DJ"><img src="img/dj.jpg" alt="DJ"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=200" alt="Music"></div><div class="vcard-body"><span class="vcard-icon">🎵</span><div class="vcard-title">Music / DJ / MC</div><span class="vcard-price">$450–$1,200 / event</span><div class="vcard-arrow">→</div></div></div>
+        <div class="vcard" onclick="openDrawer('Decor / Balloons / Pinatas','Balloon installations, custom piñatas, themed backdrops, and full event styling from Tucson\'s most creative local artists.','img/party-full.jpg','tucson/decor.html')"><div class="vcard-overlay"></div><div class="img-grid"><img src="img/balloon.jpg" alt="Balloons"><img src="img/decor.jpg" alt="Decor"><img src="img/pinata.jpg" alt="Piñata"></div><div class="vcard-body"><span class="vcard-icon">🎈</span><div class="vcard-title">Decor / Balloons / Piñatas</div><span class="vcard-price">$80–$400 / setup</span><div class="vcard-arrow">→</div></div></div>
     </div>
+</section>
 
-    <div id="chat-widget">
-        <div id="chat-header" onclick="toggleChat()"><span>💬 Theory Assistant</span><span id="chat-toggle-icon">−</span></div>
-        <div id="chat-body"><div id="chat-display"></div><div id="chat-controls"></div></div>
+<section class="mid-cta"><div class="mid-cta-box"><div class="mid-cta-left"><div class="section-label">Ready?</div><h3>Not sure what you need?<br>That's what we're here for.</h3><p>Tell our assistant about your event and we'll recommend the right vendors, the right questions to ask, and the right budget to expect.</p></div><div class="mid-cta-right"><button class="btn-hero" onclick="toggleChat(false)">💬 Chat with Us</button></div></div></section>
+
+<section id="tips" class="tips"><div class="tips-inner"><div class="section-label">Insider Knowledge</div><h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-0.03em;">Tucson Event Pro Tips</h2><p style="color:var(--text-muted);margin-top:0.5rem;font-size:0.95rem;">Ask these 3 questions before booking any vendor.</p>
+    <div class="tips-grid">
+        <div class="tip t-blue"><div class="tip-num">01</div><div class="tip-title">Access & Power</div><p class="tip-text">Confirm if they need a <strong>dedicated 20-amp circuit</strong> or a 4ft wide gate for <strong>inflatables</strong>. Don't let a narrow gate cancel the party!</p></div>
+        <div class="tip t-gold"><div class="tip-num">02</div><div class="tip-title">Setup Surfaces</div><p class="tip-text">Grass or pavement? Tucson winds require different <strong>weighting systems</strong>. Hard surfaces need special anchoring for safety.</p></div>
+        <div class="tip t-coral"><div class="tip-num">03</div><div class="tip-title">Clean-up & Trash</div><p class="tip-text">For <strong>catering</strong>, clarify who hauls away trash. This is the #1 hidden fee surprise at Tucson events.</p></div>
     </div>
+</div></section>
 
-    <script src="script.js"></script>
+<section class="vendor-cta"><div class="vendor-cta-box"><div class="vendor-cta-text"><h3>Are you a Tucson<br>Event Vendor?</h3><p>Join our network and get matched with clients planning events every week.</p></div><button class="btn-vendor" onclick="openVendorIntake()">Join the Network →</button></div></section>
+
+<footer><div class="footer-inner">
+    <div class="footer-logo">Tucson Event Connections</div>
+    <div class="footer-links"><a href="legal.html" target="_blank">Terms & Privacy</a><span style="color:var(--text-faint)">·</span><a href="https://theory-solutions.com" target="_blank">Theory Solutions</a></div>
+    <div class="footer-cat-label">Browse by Category</div>
+    <div class="footer-cats"><a href="tucson/catering.html">Catering & Food Trucks</a><a href="tucson/tables-chairs.html">Tables, Chairs & Tents</a><a href="tucson/jumping-houses.html">Bounce Houses & Slides</a><a href="tucson/photography.html">Photography & Photo Booths</a><a href="tucson/cakes.html">Cakes & Sweets</a><a href="tucson/transportation.html">Transportation & Shuttles</a><a href="tucson/music-dj.html">DJs & Live Music</a><a href="tucson/decor.html">Decor, Balloons & Piñatas</a></div>
+    <p class="footer-disc">Theory Solutions is a connection platform. We are NOT LIABLE for any services conducted or performed by independent vendors.</p>
+    <p class="footer-pow">Powered by <a href="https://theory-solutions.com" target="_blank">Theory Solutions</a> &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; Serving Tucson, Marana & Oro Valley, AZ</p>
+</div></footer>
+
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer"><div class="drawer-close" onclick="closeDrawer()">✕</div><div id="drawer-media-box"></div><div class="drawer-content"><h2 id="drawer-title">Category</h2><p id="drawer-desc"></p><hr class="drawer-divider"><button id="drawer-action-btn">GET QUOTES IN CHAT →</button><a id="drawer-learn-more" href="#" target="_self" class="drawer-learn-link" style="display:none;">See Pricing, Tips & FAQ →</a></div></div>
+
+<div id="chat-widget">
+    <div id="chat-header" onclick="toggleChat()">
+        <div class="chat-header-label">
+            <span class="chat-fab-icon">💬</span>
+            <div>
+                <div class="chat-header-title">Theory Assistant</div>
+                <div class="chat-header-status"><span class="live-dot"></span> Online now</div>
+            </div>
+        </div>
+        <span id="chat-toggle-icon">✕</span>
+    </div>
+    <div id="chat-body"><div id="chat-display"></div><div id="chat-controls"></div></div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
