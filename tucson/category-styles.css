@@ -418,6 +418,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 #chat-controls .input:focus { border-color: var(--coral); box-shadow: 0 0 0 3px var(--coral-dim); }
 #chat-controls .input::placeholder { color: var(--text-faint); }
+#chat-controls .input[type="date"] { color-scheme: dark; -webkit-appearance: none; }
+#chat-controls .input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.7); cursor: pointer; }
 
 #chat-controls .button {
     font-family: var(--font-body); font-size: 0.82rem; font-weight: 600;
