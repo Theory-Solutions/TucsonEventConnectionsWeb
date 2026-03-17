@@ -1,7 +1,8 @@
 // ═══════════════════════════════════════════════════════════════════
-//  TUCSON EVENT CONNECTIONS — CHATBOT v2
-//  Changes: help/guidance mode, nav links, combined Rentals category,
-//           customer notes (sanitized), updated vendor onboarding cats
+//  TUCSON EVENT CONNECTIONS — CHATBOT v2.1
+//  Changes: Added Catering sub-menu (General Catering, Donuts),
+//           Food Truck, Food Cart options under Food category.
+//           Updated vendor onboarding with Donut Catering.
 // ═══════════════════════════════════════════════════════════════════
 
 // --- CONFIGURATION & SECURITY ---
@@ -11,20 +12,13 @@ const SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsIn
 const THEORY_AUTH = 'Tucson-Lead-2026';
 
 // --- INPUT SANITIZATION ---
-// Strips all HTML/script tags, collapses whitespace, limits length.
-// Uses a temporary element so the browser's own parser does the work,
-// then we take only the .textContent (plain text, no markup).
 function sanitizeText(raw, maxLen = 500) {
     if (!raw || typeof raw !== 'string') return '';
-    // Step 1: strip anything that looks like a tag (defense-in-depth)
     let clean = raw.replace(/<[^>]*>/g, '');
-    // Step 2: decode any remaining HTML entities the safe way
     const tmp = document.createElement('div');
-    tmp.textContent = clean;            // assign as text, not HTML
-    clean = tmp.textContent;            // read back the plain text
-    // Step 3: collapse whitespace & trim
+    tmp.textContent = clean;
+    clean = tmp.textContent;
     clean = clean.replace(/\s+/g, ' ').trim();
-    // Step 4: length cap
     return clean.substring(0, maxLen);
 }
 
@@ -67,9 +61,9 @@ function clearSession() {
 let chatData = loadChatData();
 
 // ─── PRICING & CATEGORY KNOWLEDGE BASE ─────────────────────────────
-// Used by the help system and the drawer
 const tucsonPricing = {
     "Catering / Food Truck / Food Carts": "$10–$20 per person",
+    "Donut Catering": "$3–$8 per dozen",
     "Rentals (Tables, Chairs, Shade Tents)": "$2–$15 per item/setup",
     "Jumping Houses / Slides": "$150–$450 per day",
     "Photography / Photo Booth / Videography": "$300–$1,500 per event",
@@ -80,25 +74,20 @@ const tucsonPricing = {
 };
 
 // ─── DYNAMIC PATH RESOLVER ─────────────────────────────────────────
-// Works with both file:// (local testing) and https:// (production).
-// Detects whether we're inside the tucson/ folder or at root, then
-// builds correct relative paths so links never break.
 const _inTucsonFolder = window.location.pathname.toLowerCase().includes('/tucson/');
 function resolvePath(file) {
-    // file is stored as "tucson/catering.html" or "index.html" or "legal.html"
     if (file.startsWith('tucson/')) {
-        // Category page inside tucson/
         return _inTucsonFolder ? file.replace('tucson/', '') : file;
     }
-    // Root-level page
     return _inTucsonFolder ? '../' + file : file;
 }
 
-// Tips shown in help mode — Tucson-specific guidance
-// Links stored as relative-from-root (no leading slash), resolved at runtime
+// Tips shown in help mode
 const categoryTips = {
     "Rentals":       { emoji: "⛺", tip: "Tables, chairs & shade tents — essential for outdoor Tucson events. Most rental vendors carry all three, so one booking usually covers you.", price: "$2–$15 per item", link: "tucson/tables-chairs.html" },
-    "Catering":      { emoji: "🚚", tip: "Food trucks are huge in Tucson! Great for casual events. Traditional catering works better for seated dinners. Budget ~$15/head for trucks, ~$25+ for plated.", price: "$10–$20 per person", link: "tucson/catering.html" },
+    "Catering":      { emoji: "🍽️", tip: "Full-service catering for any event size. Great for weddings, corporate events, and large parties where you need a complete menu.", price: "$15–$30 per person", link: "tucson/catering.html" },
+    "Food Trucks":   { emoji: "🚚", tip: "Food trucks are huge in Tucson! Great for casual events. Budget ~$10–$20/head. Many trucks offer taco bars, BBQ, and fusion options.", price: "$10–$20 per person", link: "tucson/catering.html" },
+    "Donut Catering": { emoji: "🍩", tip: "Donut walls, donut bars, and bulk donut catering — perfect for birthdays, office events, brunch parties, and wedding dessert tables.", price: "$3–$8 per dozen", link: "tucson/catering.html" },
     "Inflatables":   { emoji: "🏰", tip: "Bounce houses & slides are a hit for kids' parties. Tucson heat means early morning or evening setups work best. Most vendors include delivery & setup.", price: "$150–$450 per day", link: "tucson/jumping-houses.html" },
     "Photo/Video":   { emoji: "📸", tip: "Photo booths are popular for parties & corporate events. For weddings, book a photographer + videographer combo to save. Golden hour in the desert is unbeatable.", price: "$300–$1,500 per event", link: "tucson/photography.html" },
     "Cakes/Sweets":  { emoji: "🍰", tip: "Tucson has amazing local bakers for custom cakes, cupcakes, and dessert tables. Order at least 2–3 weeks ahead for custom designs.", price: "$50–$350 custom", link: "tucson/cakes.html" },
@@ -109,13 +98,13 @@ const categoryTips = {
 
 // Event type definitions with recommended categories
 const eventTypes = [
-    { label: "🎂 Birthday Party",             key: "Birthday Party",        recs: ["Inflatables","Cakes/Sweets","Decor","Photo/Video"] },
+    { label: "🎂 Birthday Party",             key: "Birthday Party",        recs: ["Inflatables","Cakes/Sweets","Decor","Photo/Video","Donut Catering"] },
     { label: "💍 Wedding",                     key: "Wedding",               recs: ["Catering","Photo/Video","Music/DJ","Decor","Rentals","Transportation"] },
     { label: "🎓 Graduation",                  key: "Graduation",            recs: ["Catering","Rentals","Photo/Video","Decor"] },
-    { label: "🏢 Corporate Event",             key: "Corporate Event",       recs: ["Catering","Rentals","Photo/Video","Music/DJ"] },
+    { label: "🏢 Corporate Event",             key: "Corporate Event",       recs: ["Catering","Rentals","Photo/Video","Music/DJ","Donut Catering"] },
     { label: "👶 Baby Shower",                 key: "Baby Shower",           recs: ["Cakes/Sweets","Decor","Rentals","Photo/Video"] },
     { label: "🎉 Quinceañera / Sweet 16",      key: "Quinceañera / Sweet 16", recs: ["Catering","Music/DJ","Photo/Video","Decor","Rentals","Transportation"] },
-    { label: "🏘️ Block Party / Community",     key: "Block Party",           recs: ["Inflatables","Catering","Music/DJ","Rentals"] },
+    { label: "🏘️ Block Party / Community",     key: "Block Party",           recs: ["Inflatables","Catering","Music/DJ","Rentals","Food Trucks"] },
     { label: "🤷 Something else",              key: "Other",                 recs: [] }
 ];
 
@@ -150,7 +139,6 @@ async function renderMessage(text, side = 'bot') {
     saveChatMessages();
 }
 
-// Renders HTML content (for help cards) — only used with our own templates, never user input
 async function renderHTML(html, side = 'bot') {
     const display = document.getElementById('chat-display');
     const msg = document.createElement('div');
@@ -164,7 +152,6 @@ async function renderHTML(html, side = 'bot') {
     saveChatMessages();
 }
 
-// Persistent help/home button shown at bottom of controls during the quote flow
 function helpFooter() {
     return `<div style="display:flex;gap:6px;margin-top:8px;">
         <button class="button is-light is-small" style="flex:1;" onclick="showHelp()">❓ Help</button>
@@ -263,7 +250,6 @@ window.showEventTypeHelp = async () => {
     scrollToBottom();
 };
 
-// Main flow version — appears after budget in the quote flow
 window.askEventType = async () => {
     clearInputs(); saveChatState('eventType');
     await renderMessage("What type of event are you planning? This helps us recommend the right vendors.");
@@ -281,10 +267,8 @@ window.saveEventType = async (key, isHelpMode) => {
     await renderMessage(match ? match.label : key, 'user');
     clearInputs();
 
-    // If editing from recap, go straight back
     if (chatData.email) { showRecap(); return; }
 
-    // Show recommendations
     const recs = match ? match.recs : [];
     if (!recs || recs.length === 0) {
         await renderMessage("No worries! You can browse all our categories and pick what fits.");
@@ -314,7 +298,6 @@ window.showNav = async () => {
         `<a href="${resolvePath(href)}" class="button is-small is-fullwidth mb-1" style="justify-content:flex-start;">${label}</a>`
     ).join('');
 
-    // Also add category page links
     const catLinks = Object.entries(categoryTips)
         .filter(([, t]) => t.link)
         .map(([cat, t]) =>
@@ -333,7 +316,6 @@ window.showNav = async () => {
     scrollToBottom();
 };
 
-// Returns user to wherever they were, or starts fresh
 window.resumeOrStart = () => {
     const s = loadChatState();
     if (chatData.email)                   { showRecap(); }
@@ -351,7 +333,7 @@ window.resumeOrStart = () => {
 };
 
 // ═══════════════════════════════════════════════════════════════════
-//  VENDOR INTAKE FLOW  (updated categories)
+//  VENDOR INTAKE FLOW  (updated categories with Donut Catering)
 // ═══════════════════════════════════════════════════════════════════
 window.openVendorIntake = async () => {
     chatData = {
@@ -386,10 +368,13 @@ window.saveBizName = async () => {
     chatData.businessName = val; persistChat(); await renderMessage(val, "user"); clearInputs();
     if (chatData.email) { showRecap(); return; }
     await renderMessage("Which primary category do you serve in Tucson?");
-    // ─── UPDATED VENDOR CATEGORIES ─────────────────────────────────
+    // ─── UPDATED VENDOR CATEGORIES (added Donut Catering) ──────────
     document.getElementById('chat-controls').innerHTML = `
         <div class="columns is-mobile is-multiline" style="margin: 0;">
-            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Catering')">🚚 Catering</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Catering')">🍽️ Catering</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Donut Catering')">🍩 Donut Catering</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Food Truck')">🚚 Food Truck</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Food Cart')">🛒 Food Cart</button></div>
             <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Rentals')">⛺ Rentals</button></div>
             <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Inflatables')">🏰 Inflatables</button></div>
             <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Photography')">📸 Photo/Video</button></div>
@@ -417,7 +402,7 @@ window.saveVendorCat = async (cat) => {
 };
 
 // ═══════════════════════════════════════════════════════════════════
-//  PLANNER FLOW  — 3 options at start, updated categories
+//  PLANNER FLOW
 // ═══════════════════════════════════════════════════════════════════
 async function startChat() {
     chatData.isVendorFlow = false; clearInputs(); saveChatState('started');
@@ -460,7 +445,6 @@ window.saveGuests = async () => {
     askBudget();
 };
 
-// ─── Budget Range ──────────────────────────────────────────────────
 window.askBudget = async () => {
     clearInputs(); saveChatState('budget');
     await renderMessage("What's your estimated budget range for the full event?");
@@ -484,13 +468,13 @@ window.saveBudget = async (range) => {
     askEventType();
 };
 
-// ─── Vendor/Service Selection (UPDATED CATEGORIES) ─────────────────
+// ─── Vendor/Service Selection (UPDATED — Food sub-menu) ────────────
 window.selectVendorStep = async () => {
     clearInputs(); saveChatState('selectVendor');
     await renderMessage("What do you need help with?");
     document.getElementById('chat-controls').innerHTML = `
         <div class="columns is-mobile is-multiline" style="margin: 0;">
-            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Catering')">🚚 Food</button></div>
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Food')">🍽️ Food</button></div>
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Rentals')">⛺ Rentals</button></div>
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Inflatables')">🏰 Inflatables</button></div>
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Photo')">📸 Photo/Video</button></div>
@@ -510,6 +494,23 @@ window.jumpToCategory = async (cat) => {
     else { await renderMessage("Let's get your date first!"); document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" type="date" id="eDate"><button class="button is-link is-fullwidth" onclick="saveDate()">NEXT</button>` + helpFooter(); focusInput('eDate'); }
 };
 
+// ─── NEW: Catering sub-menu (General Catering → sub-types) ─────────
+window.routeToCateringSub = async () => {
+    clearInputs();
+    await renderMessage("What type of catering?");
+    const backBtn = chatData.email
+        ? `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="showRecap()">⬅️ DONE EDITING</button>`
+        : `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="routeToSub('Food')">⬅️ BACK</button>`;
+    document.getElementById('chat-controls').innerHTML = `
+        <div class="buttons is-centered" style="flex-wrap:wrap;">
+            <button class="button is-small" onclick="askQuotes('Catering')" title="Not sure what type — general catering">General Catering</button>
+            <button class="button is-small" onclick="askQuotes('Donut Catering')">🍩 Donuts</button>
+        </div>
+        <p style="font-size:0.7rem;color:#888;text-align:center;margin:4px 0 8px;">More catering types coming soon!</p>
+        ${backBtn}`;
+    scrollToBottom();
+};
+
 function routeToSub(cat) {
     clearInputs();
     const ctrl = document.getElementById('chat-controls');
@@ -517,9 +518,15 @@ function routeToSub(cat) {
         ? `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="showRecap()">⬅️ DONE EDITING</button>`
         : `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="selectVendorStep()">⬅️ BACK</button>`;
 
-    // ─── UPDATED: Rentals = Tables + Chairs + Shade Tents ──────────
-    if (cat.includes('Catering') || cat.includes('Food')) {
-        ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Catering')">Catering</button></div>${backBtn}`;
+    // ─── UPDATED: Food → Catering / Food Truck / Food Cart ─────────
+    //     Catering → General Catering / Donuts (expandable)
+    if (cat === 'Food' || cat.includes('Catering') && !cat.includes('Donut')) {
+        ctrl.innerHTML = `
+            <div class="buttons is-centered" style="flex-wrap:wrap;">
+                <button class="button is-small" onclick="routeToCateringSub()">🍽️ Catering</button>
+                <button class="button is-small" onclick="askQuotes('Food Truck')">🚚 Food Truck</button>
+                <button class="button is-small" onclick="askQuotes('Food Cart')">🛒 Food Cart</button>
+            </div>${backBtn}`;
     } else if (cat.includes('Rental') || cat.includes('Tables') || cat.includes('Chairs') || cat.includes('Tent')) {
         ctrl.innerHTML = `<div class="buttons is-centered">
             <button class="button is-small" onclick="askQuotes('Tables/Chairs')">Tables & Chairs</button>
@@ -618,7 +625,6 @@ window.saveEmail = async () => {
     askNotes();
 };
 
-// ─── NEW: Customer Notes (sanitized) ───────────────────────────────
 window.askNotes = async () => {
     clearInputs(); saveChatState('notes');
     await renderMessage("Almost done! Any special requests or details you'd like vendors to know? (optional)");
@@ -648,7 +654,6 @@ window.saveNotes = async (skip) => {
 };
 
 window.showRecap = async () => {
-    // Grab email if coming from askEmail step
     const emailInput = document.getElementById('cEmail');
     if (emailInput) chatData.email = sanitizeText(emailInput.value, 120);
     persistChat(); saveChatState('recap');
@@ -753,7 +758,6 @@ window.finish = async () => {
 
 async function pushToSupabase(payload, url) {
     if (!payload.email) return;
-    // Double-sanitize notes before sending to backend
     const safePayload = {
         ...payload,
         notes: sanitizeText(payload.notes, 500),
