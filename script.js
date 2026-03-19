@@ -1,8 +1,8 @@
 // ═══════════════════════════════════════════════════════════════════
-//  TUCSON EVENT CONNECTIONS — CHATBOT v2.1
-//  Changes: Added Catering sub-menu (General Catering, Donuts),
-//           Food Truck, Food Cart options under Food category.
-//           Updated vendor onboarding with Donut Catering.
+//  TUCSON EVENT CONNECTIONS — CHATBOT v2.2
+//  Changes: Transportation sub-menu (SUV, Limo, Party Bus),
+//           Balloon Decor vendor category + routing,
+//           Mobile nav helpers, Outfit font class updates.
 // ═══════════════════════════════════════════════════════════════════
 
 // --- CONFIGURATION & SECURITY ---
@@ -63,14 +63,16 @@ let chatData = loadChatData();
 // ─── PRICING & CATEGORY KNOWLEDGE BASE ─────────────────────────────
 const tucsonPricing = {
     "Catering / Food Truck / Food Carts": "$10–$20 per person",
-    "Donut Catering": "$3–$8 per dozen",
+    "Donut Catering":                     "$3–$8 per dozen",
     "Rentals (Tables, Chairs, Shade Tents)": "$2–$15 per item/setup",
-    "Jumping Houses / Slides": "$150–$450 per day",
+    "Jumping Houses / Slides":            "$150–$450 per day",
     "Photography / Photo Booth / Videography": "$300–$1,500 per event",
-    "Cakes / Sweets / Treats": "$50–$350 custom orders",
-    "Transportation / Shuttles / Limos": "$125–$250 per hour",
-    "Music / DJ": "$450–$1,200 per event",
-    "Decor / Balloons / Pinatas": "$80–$400 per setup"
+    "Cakes / Sweets / Treats":            "$50–$350 custom orders",
+    "Transportation / Shuttles / Limos":  "$125–$250 per hour",
+    "SUV / Limo / Party Bus":             "$125–$250 per hour",
+    "Music / DJ":                         "$450–$1,200 per event",
+    "Decor / Balloons / Pinatas":         "$80–$400 per setup",
+    "Balloon Decor":                      "$80–$300 per setup"
 };
 
 // ─── DYNAMIC PATH RESOLVER ─────────────────────────────────────────
@@ -84,34 +86,35 @@ function resolvePath(file) {
 
 // Tips shown in help mode
 const categoryTips = {
-    "Rentals":       { emoji: "⛺", tip: "Tables, chairs & shade tents — essential for outdoor Tucson events. Most rental vendors carry all three, so one booking usually covers you.", price: "$2–$15 per item", link: "tucson/tables-chairs.html" },
-    "Catering":      { emoji: "🍽️", tip: "Full-service catering for any event size. Great for weddings, corporate events, and large parties where you need a complete menu.", price: "$15–$30 per person", link: "tucson/catering.html" },
-    "Food Trucks":   { emoji: "🚚", tip: "Food trucks are huge in Tucson! Great for casual events. Budget ~$10–$20/head. Many trucks offer taco bars, BBQ, and fusion options.", price: "$10–$20 per person", link: "tucson/catering.html" },
+    "Rentals":        { emoji: "⛺", tip: "Tables, chairs & shade tents — essential for outdoor Tucson events. Most rental vendors carry all three, so one booking usually covers you.", price: "$2–$15 per item", link: "tucson/tables-chairs.html" },
+    "Catering":       { emoji: "🍽️", tip: "Full-service catering for any event size. Great for weddings, corporate events, and large parties where you need a complete menu.", price: "$15–$30 per person", link: "tucson/catering.html" },
+    "Food Trucks":    { emoji: "🚚", tip: "Food trucks are huge in Tucson! Great for casual events. Budget ~$10–$20/head. Many trucks offer taco bars, BBQ, and fusion options.", price: "$10–$20 per person", link: "tucson/catering.html" },
     "Donut Catering": { emoji: "🍩", tip: "Donut walls, donut bars, and bulk donut catering — perfect for birthdays, office events, brunch parties, and wedding dessert tables.", price: "$3–$8 per dozen", link: "tucson/catering.html" },
-    "Inflatables":   { emoji: "🏰", tip: "Bounce houses & slides are a hit for kids' parties. Tucson heat means early morning or evening setups work best. Most vendors include delivery & setup.", price: "$150–$450 per day", link: "tucson/jumping-houses.html" },
-    "Photo/Video":   { emoji: "📸", tip: "Photo booths are popular for parties & corporate events. For weddings, book a photographer + videographer combo to save. Golden hour in the desert is unbeatable.", price: "$300–$1,500 per event", link: "tucson/photography.html" },
-    "Cakes/Sweets":  { emoji: "🍰", tip: "Tucson has amazing local bakers for custom cakes, cupcakes, and dessert tables. Order at least 2–3 weeks ahead for custom designs.", price: "$50–$350 custom", link: "tucson/cakes.html" },
-    "Transportation": { emoji: "🚐", tip: "Shuttles are smart for venue parking issues. Party buses work for bachelor/ette events. Limos for weddings — book early, Tucson has limited fleet.", price: "$125–$250 per hour", link: "tucson/transportation.html" },
-    "Music/DJ":      { emoji: "🎵", tip: "DJs handle most Tucson events — bilingual DJs are popular for quinceañeras & multicultural events. Live bands typically start at $1,500+.", price: "$450–$1,200 per event", link: "tucson/music-dj.html" },
-    "Decor":         { emoji: "🎈", tip: "Balloon arches, piñatas & themed decor. For outdoor events, ask about wind-resistant setups — Tucson breezes are real! Many vendors offer setup + teardown.", price: "$80–$400 per setup", link: "tucson/decor.html" }
+    "Inflatables":    { emoji: "🏰", tip: "Bounce houses & slides are a hit for kids' parties. Tucson heat means early morning or evening setups work best. Most vendors include delivery & setup.", price: "$150–$450 per day", link: "tucson/jumping-houses.html" },
+    "Photo/Video":    { emoji: "📸", tip: "Photo booths are popular for parties & corporate events. For weddings, book a photographer + videographer combo to save. Golden hour in the desert is unbeatable.", price: "$300–$1,500 per event", link: "tucson/photography.html" },
+    "Cakes/Sweets":   { emoji: "🍰", tip: "Tucson has amazing local bakers for custom cakes, cupcakes, and dessert tables. Order at least 2–3 weeks ahead for custom designs.", price: "$50–$350 custom", link: "tucson/cakes.html" },
+    "Transportation": { emoji: "🚐", tip: "SUVs, limos & party buses for weddings, bachelorette events, and group transport. Tucson has a limited fleet so book early — especially on weekends.", price: "$125–$250 per hour", link: "tucson/transportation.html" },
+    "Music/DJ":       { emoji: "🎵", tip: "DJs handle most Tucson events — bilingual DJs are popular for quinceañeras & multicultural events. Live bands typically start at $1,500+.", price: "$450–$1,200 per event", link: "tucson/music-dj.html" },
+    "Balloon Decor":  { emoji: "🎈", tip: "Balloon arches, columns, and custom installations — a huge trend at Tucson events right now. Great for backdrops, entrances, and photo ops.", price: "$80–$300 per setup", link: "tucson/decor.html" },
+    "Decor":          { emoji: "✨", tip: "Themed decor, piñatas & full event styling. For outdoor events, ask about wind-resistant setups — Tucson breezes are real! Many vendors offer setup + teardown.", price: "$80–$400 per setup", link: "tucson/decor.html" }
 };
 
 // Event type definitions with recommended categories
 const eventTypes = [
-    { label: "🎂 Birthday Party",             key: "Birthday Party",        recs: ["Inflatables","Cakes/Sweets","Decor","Photo/Video","Donut Catering"] },
-    { label: "💍 Wedding",                     key: "Wedding",               recs: ["Catering","Photo/Video","Music/DJ","Decor","Rentals","Transportation"] },
-    { label: "🎓 Graduation",                  key: "Graduation",            recs: ["Catering","Rentals","Photo/Video","Decor"] },
-    { label: "🏢 Corporate Event",             key: "Corporate Event",       recs: ["Catering","Rentals","Photo/Video","Music/DJ","Donut Catering"] },
-    { label: "👶 Baby Shower",                 key: "Baby Shower",           recs: ["Cakes/Sweets","Decor","Rentals","Photo/Video"] },
-    { label: "🎉 Quinceañera / Sweet 16",      key: "Quinceañera / Sweet 16", recs: ["Catering","Music/DJ","Photo/Video","Decor","Rentals","Transportation"] },
-    { label: "🏘️ Block Party / Community",     key: "Block Party",           recs: ["Inflatables","Catering","Music/DJ","Rentals","Food Trucks"] },
-    { label: "🤷 Something else",              key: "Other",                 recs: [] }
+    { label: "🎂 Birthday Party",             key: "Birthday Party",         recs: ["Inflatables","Cakes/Sweets","Balloon Decor","Photo/Video","Donut Catering"] },
+    { label: "💍 Wedding",                     key: "Wedding",                recs: ["Catering","Photo/Video","Music/DJ","Balloon Decor","Rentals","Transportation"] },
+    { label: "🎓 Graduation",                  key: "Graduation",             recs: ["Catering","Rentals","Photo/Video","Balloon Decor"] },
+    { label: "🏢 Corporate Event",             key: "Corporate Event",        recs: ["Catering","Rentals","Photo/Video","Music/DJ","Donut Catering"] },
+    { label: "👶 Baby Shower",                 key: "Baby Shower",            recs: ["Cakes/Sweets","Balloon Decor","Rentals","Photo/Video"] },
+    { label: "🎉 Quinceañera / Sweet 16",      key: "Quinceañera / Sweet 16", recs: ["Catering","Music/DJ","Photo/Video","Balloon Decor","Rentals","Transportation"] },
+    { label: "🏘️ Block Party / Community",     key: "Block Party",            recs: ["Inflatables","Catering","Music/DJ","Rentals","Food Trucks"] },
+    { label: "🤷 Something else",              key: "Other",                  recs: [] }
 ];
 
 // Quick-nav links for site sections
 const navLinks = {
-    "Browse All Services":   "index.html#services",
-    "Terms & Privacy":       "legal.html"
+    "Browse All Services": "index.html#services",
+    "Terms & Privacy":     "legal.html"
 };
 
 // ═══════════════════════════════════════════════════════════════════
@@ -280,9 +283,7 @@ window.saveEventType = async (key, isHelpMode) => {
             const t = categoryTips[r];
             return t ? `${t.emoji} <strong>${r}</strong> — ${t.price}` : `• ${r}`;
         }).join('<br>');
-        await renderHTML(
-            `For a typical <strong>${key}</strong> in Tucson, we'd recommend:<br><br>${recList}`
-        );
+        await renderHTML(`For a typical <strong>${key}</strong> in Tucson, we'd recommend:<br><br>${recList}`);
         await renderMessage("Ready to pick your services? I'll walk you through it.");
         document.getElementById('chat-controls').innerHTML =
             `<button class="button is-success is-small is-fullwidth mb-1" onclick="selectVendorStep()">✅ Choose my services</button>` +
@@ -317,12 +318,11 @@ window.showNav = async () => {
 };
 
 window.resumeOrStart = () => {
-    const s = loadChatState();
-    if (chatData.email)                   { showRecap(); }
-    else if (chatData.eventType)          { selectVendorStep(); }
-    else if (chatData.budget)             { askEventType(); }
-    else if (chatData.guests)             { askBudget(); }
-    else if (chatData.eventDate)          {
+    if (chatData.email)         { showRecap(); }
+    else if (chatData.eventType){ selectVendorStep(); }
+    else if (chatData.budget)   { askEventType(); }
+    else if (chatData.guests)   { askBudget(); }
+    else if (chatData.eventDate) {
         renderMessage("How many guests?");
         document.getElementById('chat-controls').innerHTML =
             `<input class="input mb-2" type="number" id="gCount" value="${chatData.guests}" placeholder="e.g. 50">` +
@@ -333,12 +333,13 @@ window.resumeOrStart = () => {
 };
 
 // ═══════════════════════════════════════════════════════════════════
-//  VENDOR INTAKE FLOW  (updated categories with Donut Catering)
+//  VENDOR INTAKE FLOW
 // ═══════════════════════════════════════════════════════════════════
 window.openVendorIntake = async () => {
     chatData = {
         vendors: [], name: '', phone: '', email: '', eventDate: '', guests: '',
-        budget: '', eventType: '', notes: '', isVendorFlow: true, businessName: '', vendorCat: '', marketingConsent: false
+        budget: '', eventType: '', notes: '', isVendorFlow: true,
+        businessName: '', vendorCat: '', marketingConsent: false
     };
     persistChat(); saveChatState('vendorFlow');
     document.getElementById('chat-display').innerHTML = '';
@@ -368,7 +369,6 @@ window.saveBizName = async () => {
     chatData.businessName = val; persistChat(); await renderMessage(val, "user"); clearInputs();
     if (chatData.email) { showRecap(); return; }
     await renderMessage("Which primary category do you serve in Tucson?");
-    // ─── UPDATED VENDOR CATEGORIES (added Donut Catering) ──────────
     document.getElementById('chat-controls').innerHTML = `
         <div class="columns is-mobile is-multiline" style="margin: 0;">
             <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Catering')">🍽️ Catering</button></div>
@@ -379,9 +379,10 @@ window.saveBizName = async () => {
             <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Inflatables')">🏰 Inflatables</button></div>
             <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Photography')">📸 Photo/Video</button></div>
             <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Cakes/Sweets')">🍰 Sweets</button></div>
-            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Transportation')">🚐 Transport</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Balloon Decor')">🎈 Balloon Decor</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Decor')">✨ General Decor</button></div>
+            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Limo / SUV / Party Bus')">🚐 Transport</button></div>
             <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Music/DJ')">🎵 Music/DJ</button></div>
-            <div class="column is-6 p-1"><button class="button is-small is-fullwidth" onclick="saveVendorCat('Decor')">🎈 Decor</button></div>
             <div class="column is-12 p-1"><button class="button is-dark is-small is-fullwidth" onclick="askOtherCat()">❌ NOT LISTED / OTHER</button></div>
         </div>`;
 };
@@ -468,7 +469,7 @@ window.saveBudget = async (range) => {
     askEventType();
 };
 
-// ─── Vendor/Service Selection (UPDATED — Food sub-menu) ────────────
+// ─── Vendor/Service Selection ────────────────────────────────────
 window.selectVendorStep = async () => {
     clearInputs(); saveChatState('selectVendor');
     await renderMessage("What do you need help with?");
@@ -479,7 +480,7 @@ window.selectVendorStep = async () => {
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Inflatables')">🏰 Inflatables</button></div>
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Photo')">📸 Photo/Video</button></div>
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Cakes')">🍰 Cakes/Sweets</button></div>
-            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Transportation')">🚐 Transport</button></div>
+            <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Transport')">🚐 Transport</button></div>
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Music')">🎵 Music/DJ</button></div>
             <div class="column is-6 p-1"><button class="button is-info is-light is-small is-fullwidth" onclick="routeToSub('Decor')">🎈 Decor</button></div>
         </div>
@@ -494,7 +495,7 @@ window.jumpToCategory = async (cat) => {
     else { await renderMessage("Let's get your date first!"); document.getElementById('chat-controls').innerHTML = `<input class="input mb-2" type="date" id="eDate"><button class="button is-link is-fullwidth" onclick="saveDate()">NEXT</button>` + helpFooter(); focusInput('eDate'); }
 };
 
-// ─── NEW: Catering sub-menu (General Catering → sub-types) ─────────
+// ─── Catering sub-menu ───────────────────────────────────────────
 window.routeToCateringSub = async () => {
     clearInputs();
     await renderMessage("What type of catering?");
@@ -503,7 +504,7 @@ window.routeToCateringSub = async () => {
         : `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="routeToSub('Food')">⬅️ BACK</button>`;
     document.getElementById('chat-controls').innerHTML = `
         <div class="buttons is-centered" style="flex-wrap:wrap;">
-            <button class="button is-small" onclick="askQuotes('Catering')" title="Not sure what type — general catering">General Catering</button>
+            <button class="button is-small" onclick="askQuotes('Catering')">General Catering</button>
             <button class="button is-small" onclick="askQuotes('Donut Catering')">🍩 Donuts</button>
         </div>
         <p style="font-size:0.7rem;color:#888;text-align:center;margin:4px 0 8px;">More catering types coming soon!</p>
@@ -511,6 +512,42 @@ window.routeToCateringSub = async () => {
     scrollToBottom();
 };
 
+// ─── Transportation sub-menu (NEW: SUV, Limo, Party Bus) ─────────
+window.routeToTransportSub = async () => {
+    clearInputs();
+    await renderMessage("What type of transportation?");
+    const backBtn = chatData.email
+        ? `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="showRecap()">⬅️ DONE EDITING</button>`
+        : `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="selectVendorStep()">⬅️ BACK</button>`;
+    document.getElementById('chat-controls').innerHTML = `
+        <div class="buttons is-centered" style="flex-wrap:wrap;">
+            <button class="button is-small" onclick="askQuotes('SUV')">🚙 SUV</button>
+            <button class="button is-small" onclick="askQuotes('Limo')">🚘 Limo</button>
+            <button class="button is-small" onclick="askQuotes('Party Bus')">🚌 Party Bus</button>
+            <button class="button is-small" onclick="askQuotes('Transportation')">🚐 Not sure / Any</button>
+        </div>
+        ${backBtn}`;
+    scrollToBottom();
+};
+
+// ─── Decor sub-menu (NEW: Balloon Decor prominently routed) ──────
+window.routeToDecorSub = async () => {
+    clearInputs();
+    await renderMessage("What type of decor?");
+    const backBtn = chatData.email
+        ? `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="showRecap()">⬅️ DONE EDITING</button>`
+        : `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="selectVendorStep()">⬅️ BACK</button>`;
+    document.getElementById('chat-controls').innerHTML = `
+        <div class="buttons is-centered" style="flex-wrap:wrap;">
+            <button class="button is-small" onclick="askQuotes('Balloon Decor')">🎈 Balloon Decor</button>
+            <button class="button is-small" onclick="askQuotes('Decor')">✨ General Decor</button>
+            <button class="button is-small" onclick="askQuotes('Pinatas')">🎭 Piñatas</button>
+        </div>
+        ${backBtn}`;
+    scrollToBottom();
+};
+
+// ─── Main routing dispatcher ─────────────────────────────────────
 function routeToSub(cat) {
     clearInputs();
     const ctrl = document.getElementById('chat-controls');
@@ -518,9 +555,7 @@ function routeToSub(cat) {
         ? `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="showRecap()">⬅️ DONE EDITING</button>`
         : `<button class="button is-danger is-light is-small is-fullwidth mt-2" onclick="selectVendorStep()">⬅️ BACK</button>`;
 
-    // ─── UPDATED: Food → Catering / Food Truck / Food Cart ─────────
-    //     Catering → General Catering / Donuts (expandable)
-    if (cat === 'Food' || cat.includes('Catering') && !cat.includes('Donut')) {
+    if (cat === 'Food' || cat === 'Catering' || cat === 'Food Truck' || cat === 'Food Cart') {
         ctrl.innerHTML = `
             <div class="buttons is-centered" style="flex-wrap:wrap;">
                 <button class="button is-small" onclick="routeToCateringSub()">🍽️ Catering</button>
@@ -528,24 +563,47 @@ function routeToSub(cat) {
                 <button class="button is-small" onclick="askQuotes('Food Cart')">🛒 Food Cart</button>
             </div>${backBtn}`;
     } else if (cat.includes('Rental') || cat.includes('Tables') || cat.includes('Chairs') || cat.includes('Tent')) {
-        ctrl.innerHTML = `<div class="buttons is-centered">
-            <button class="button is-small" onclick="askQuotes('Tables/Chairs')">Tables & Chairs</button>
-            <button class="button is-small" onclick="askQuotes('Shade Tents')">Shade Tents</button>
-            <button class="button is-small" onclick="askQuotes('Rentals Full Package')">Full Package</button>
-        </div>${backBtn}`;
+        ctrl.innerHTML = `
+            <div class="buttons is-centered">
+                <button class="button is-small" onclick="askQuotes('Tables/Chairs')">Tables & Chairs</button>
+                <button class="button is-small" onclick="askQuotes('Shade Tents')">Shade Tents</button>
+                <button class="button is-small" onclick="askQuotes('Rentals Full Package')">Full Package</button>
+            </div>${backBtn}`;
     } else if (cat.includes('Inflatable') || cat.includes('Jumper') || cat.includes('Slide')) {
-        ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Jumpers/Slides')">Jumpers & Slides</button></div>${backBtn}`;
+        ctrl.innerHTML = `
+            <div class="buttons is-centered">
+                <button class="button is-small" onclick="askQuotes('Jumpers/Slides')">Jumpers & Slides</button>
+            </div>${backBtn}`;
     } else if (cat.includes('Photo')) {
-        ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Photography')">Photo</button><button class="button is-small" onclick="askQuotes('Photo Booth')">Booth</button><button class="button is-small" onclick="askQuotes('Videography')">Video</button></div>${backBtn}`;
+        ctrl.innerHTML = `
+            <div class="buttons is-centered">
+                <button class="button is-small" onclick="askQuotes('Photography')">Photo</button>
+                <button class="button is-small" onclick="askQuotes('Photo Booth')">Booth</button>
+                <button class="button is-small" onclick="askQuotes('Videography')">Video</button>
+            </div>${backBtn}`;
     } else if (cat.includes('Cake') || cat.includes('Sweet')) {
-        ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Cakes')">Cakes</button><button class="button is-small" onclick="askQuotes('Sweets/Treats')">Sweets</button></div>${backBtn}`;
-    } else if (cat.includes('Transport')) {
-        ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Transportation')">Transport</button></div>${backBtn}`;
+        ctrl.innerHTML = `
+            <div class="buttons is-centered">
+                <button class="button is-small" onclick="askQuotes('Cakes')">Cakes</button>
+                <button class="button is-small" onclick="askQuotes('Sweets/Treats')">Sweets</button>
+            </div>${backBtn}`;
+    } else if (cat === 'Transport' || cat.includes('Transport') || cat.includes('Limo') || cat.includes('Shuttle')) {
+        // Route through the new transport sub-menu
+        routeToTransportSub();
+        return;
     } else if (cat.includes('Music') || cat.includes('DJ')) {
-        ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('DJ')">DJ</button><button class="button is-small" onclick="askQuotes('Live Band')">Live Band</button></div>${backBtn}`;
-    } else if (cat.includes('Decor')) {
-        ctrl.innerHTML = `<div class="buttons is-centered"><button class="button is-small" onclick="askQuotes('Decor')">Decor</button><button class="button is-small" onclick="askQuotes('Balloons')">Balloons</button></div>${backBtn}`;
-    } else { askQuotes(cat); }
+        ctrl.innerHTML = `
+            <div class="buttons is-centered">
+                <button class="button is-small" onclick="askQuotes('DJ')">DJ</button>
+                <button class="button is-small" onclick="askQuotes('Live Band')">Live Band</button>
+            </div>${backBtn}`;
+    } else if (cat === 'Decor' || cat.includes('Decor') || cat.includes('Balloon') || cat.includes('Pinata')) {
+        // Route through the new decor sub-menu
+        routeToDecorSub();
+        return;
+    } else {
+        askQuotes(cat);
+    }
     scrollToBottom();
 }
 
@@ -644,11 +702,8 @@ window.saveNotes = async (skip) => {
         chatData.notes = sanitizeText(raw, 500);
     }
     persistChat();
-    if (chatData.notes) {
-        await renderMessage(chatData.notes, "user");
-    } else {
-        await renderMessage("No notes — skipped", "user");
-    }
+    if (chatData.notes) { await renderMessage(chatData.notes, "user"); }
+    else { await renderMessage("No notes — skipped", "user"); }
     clearInputs();
     showRecap();
 };
@@ -760,10 +815,10 @@ async function pushToSupabase(payload, url) {
     if (!payload.email) return;
     const safePayload = {
         ...payload,
-        notes: sanitizeText(payload.notes, 500),
-        name: sanitizeText(payload.name, 100),
-        phone: sanitizeText(payload.phone, 20),
-        eventType: sanitizeText(payload.eventType, 60),
+        notes:        sanitizeText(payload.notes, 500),
+        name:         sanitizeText(payload.name, 100),
+        phone:        sanitizeText(payload.phone, 20),
+        eventType:    sanitizeText(payload.eventType, 60),
         businessName: sanitizeText(payload.businessName, 150)
     };
     try {

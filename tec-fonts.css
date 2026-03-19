@@ -1,0 +1,38 @@
+/*
+ * ═══════════════════════════════════════════════════════
+ *  TEC SHARED FONT — tec-fonts.css
+ *  Add this one <link> tag to every page (after your
+ *  Google Fonts <link>) to keep display fonts in sync:
+ *
+ *  <link rel="stylesheet" href="tec-fonts.css">
+ *
+ *  For pages inside /tucson/ use:
+ *  <link rel="stylesheet" href="../tec-fonts.css">
+ *
+ *  To change the display font site-wide, edit only
+ *  this file — no need to touch individual pages.
+ * ═══════════════════════════════════════════════════════
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
+
+:root {
+    --font-display: 'Exo 2', sans-serif;
+}
+
+/* Apply to all elements that use the display font */
+h1, h2, h3, h4,
+.nav-logo,
+.hub-title,
+.tip-title,
+.tip-num,
+.value-title,
+.vcard-title,
+.chat-header-title,
+.btn-vendor,
+.footer-logo,
+#drawer-title,
+[style*="font-family:var(--font-display)"],
+[class*="font-display"] {
+    font-family: 'Exo 2', sans-serif !important;
+}
