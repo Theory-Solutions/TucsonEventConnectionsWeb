@@ -82,6 +82,12 @@
   </url>
 
   <!-- ── Blog Posts (Moats appends below this line) ── -->
+    <url>
+    <loc>https://tucsoneventconnections.com/blog/corporate-catering-tucson.html</loc>
+    <lastmod></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- SITEMAP_BLOG_INSERT -->
 
 </urlset>
