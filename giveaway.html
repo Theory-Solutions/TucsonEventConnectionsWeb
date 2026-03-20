@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vendor Giveaway – Tucson Event Connections</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --tucson-blue: #2c3e50;
+    --user-bg: #3498db;
+    --bot-bg: #f1f0f0;
+    --tucson-blue-dark: #1a252f;
+    --accent-hover: #2980b9;
+    --text-primary: #1a1a1a;
+    --text-muted: #666;
+    --text-fine: #999;
+    --border: #eee;
+    --surface: #fafafa;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--surface);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--tucson-blue);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 58px;
+  }
+  .nav-logo {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .nav-cta {
+    background: var(--user-bg);
+    color: white;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.45rem 1.1rem;
+    border-radius: 6px;
+    transition: background 0.18s;
+  }
+  .nav-cta:hover { background: var(--accent-hover); }
+
+  /* HERO */
+  .hero {
+    background: var(--tucson-blue);
+    color: white;
+    text-align: center;
+    padding: 4rem 1.5rem 5rem;
+    position: relative;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 48px;
+    background: var(--surface);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(52,152,219,0.2);
+    border: 1px solid rgba(52,152,219,0.45);
+    color: #a8d4f0;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1.4rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5.5vw, 3.1rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.9rem;
+  }
+  .hero h1 span { color: #5dade2; }
+  .hero p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.72);
+    max-width: 440px;
+    margin: 0 auto 1.75rem;
+  }
+  .hero-deadline {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.8);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.35rem 1rem;
+    border-radius: 6px;
+  }
+
+  /* LAYOUT */
+  .content {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* PRIZE CARD */
+  .prize-wrap {
+    margin-top: -1.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 10;
+  }
+  .prize-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.6rem 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  }
+  .prize-icon-box {
+    flex-shrink: 0;
+    width: 68px; height: 68px;
+    background: var(--bot-bg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.9rem;
+  }
+  .prize-kicker {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--user-bg);
+    margin-bottom: 0.25rem;
+  }
+  .prize-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--tucson-blue);
+    margin-bottom: 0.25rem;
+  }
+  .prize-card p { font-size: 0.84rem; color: var(--text-muted); }
+
+  /* SECTION HEADER */
+  .section-header {
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+  .section-header h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--tucson-blue);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3rem;
+  }
+  .section-header p { font-size: 0.87rem; color: var(--text-muted); }
+
+  /* ENTRY CARD */
+  .entry-card {
+    background: var(--white);
+    border: 1.5px solid var(--user-bg);
+    border-radius: 12px;
+    padding: 1.6rem 1.75rem;
+    margin-bottom: 1rem;
+  }
+  .entry-steps { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.4rem; }
+  .entry-step { display: flex; gap: 0.9rem; align-items: flex-start; }
+  .step-num {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    background: var(--user-bg);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .step-body strong {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.1rem;
+  }
+  .step-body span { font-size: 0.83rem; color: var(--text-muted); }
+  .btn-signup {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--user-bg);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.78rem 1.5rem;
+    border-radius: 8px;
+    transition: background 0.18s, transform 0.1s;
+  }
+  .btn-signup:hover { background: var(--accent-hover); transform: translateY(-1px); }
+  .btn-signup:active { transform: none; }
+
+  /* ELIGIBILITY */
+  .elig-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+  .elig-pill {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.77rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    padding: 0.28rem 0.8rem;
+  }
+
+  /* RULES CARD */
+  .rules-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.6rem 1.75rem;
+    margin-bottom: 1rem;
+  }
+  .rules-card h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--tucson-blue);
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.01em;
+  }
+  .rule {
+    display: grid;
+    grid-template-columns: 1.3rem 1fr;
+    gap: 0 0.7rem;
+    margin-bottom: 0.85rem;
+    font-size: 0.83rem;
+  }
+  .rule-n { color: var(--user-bg); font-weight: 600; padding-top: 1px; }
+  .rule-t { color: var(--text-muted); line-height: 1.6; }
+  .rule-t strong { color: var(--text-primary); font-weight: 600; }
+  .rule-t a { color: var(--user-bg); text-decoration: none; }
+  .rule-t a:hover { text-decoration: underline; }
+  .rule-divider { border: none; border-top: 1px solid var(--border); margin: 0.8rem 0; }
+
+  /* FINE PRINT */
+  .fine-print {
+    font-size: 0.71rem;
+    color: var(--text-fine);
+    line-height: 1.65;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .fine-print a { color: var(--text-fine); text-decoration: underline; }
+  .fine-print a:hover { color: var(--text-muted); }
+
+  /* FOOTER */
+  footer {
+    background: var(--tucson-blue);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 0.77rem;
+    margin-top: 3rem;
+  }
+  footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+  footer a:hover { color: white; }
+  footer p + p { margin-top: 0.3rem; }
+
+  @media (max-width: 480px) {
+    .prize-card { flex-direction: column; text-align: center; }
+    .prize-icon-box { margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://www.tucsoneventconnections.com" class="nav-logo">Tucson Event Connections</a>
+  <a href="https://www.tucsoneventconnections.com" class="nav-cta">Join as Vendor →</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">🎁 Vendor Giveaway</div>
+  <h1>Sign up. Get entered.<br><span>Win $50.</span></h1>
+  <p>New vendors who join Tucson Event Connections before March 31 are automatically entered to win.</p>
+  <div class="hero-deadline">Entries close March 31, 2025 · 11:59 PM MST</div>
+</section>
+
+<div class="content">
+
+  <div class="prize-wrap">
+    <div class="prize-card">
+      <div class="prize-icon-box">🎁</div>
+      <div>
+        <div class="prize-kicker">Grand Prize</div>
+        <h2>$50 Amazon Gift Card</h2>
+        <p>One winner drawn at random on or about April 1st. Non-transferable.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2>How to Enter</h2>
+    <p>Takes about two minutes.</p>
+  </div>
+
+  <div class="entry-card">
+    <div class="entry-steps">
+      <div class="entry-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Sign up as a vendor</strong>
+          <span>Create your free vendor profile on Tucson Event Connections.</span>
+        </div>
+      </div>
+      <div class="entry-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>You're entered</strong>
+          <span>Every completed sign-up during the promotion period is automatically entered. No extra steps.</span>
+        </div>
+      </div>
+      <div class="entry-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Winner notified April 1st</strong>
+          <span>Selected at random and contacted via email. Must respond within 48 hours.</span>
+        </div>
+      </div>
+    </div>
+    <a href="https://www.tucsoneventconnections.com" class="btn-signup">Sign Up Free — Enter Now →</a>
+  </div>
+
+  <div class="elig-row">
+    <div class="elig-pill">US residents only</div>
+    <div class="elig-pill">18 years or older</div>
+    <div class="elig-pill">Event-related business</div>
+    <div class="elig-pill">One entry per business</div>
+  </div>
+
+  <div class="rules-card">
+    <h2>Official Rules</h2>
+
+    <div class="rule"><div class="rule-n">1.</div><div class="rule-t"><strong>Sponsor:</strong> Tucson Event Connections, powered by Theory Solutions.</div></div>
+    <hr class="rule-divider" />
+    <div class="rule"><div class="rule-n">2.</div><div class="rule-t"><strong>Eligibility:</strong> Open to legal US residents, 18+, who operate or represent an event-related business. Void where prohibited.</div></div>
+    <hr class="rule-divider" />
+    <div class="rule"><div class="rule-n">3.</div><div class="rule-t"><strong>Promotion Period:</strong> Begins upon posting; ends <strong>March 31 at 11:59 PM MST</strong>.</div></div>
+    <hr class="rule-divider" />
+    <div class="rule"><div class="rule-n">4.</div><div class="rule-t"><strong>How to Enter:</strong> Sign up as a vendor at tucsoneventconnections.com during the promotion period. Limit one (1) entry per person/business. See fine print below for the no-purchase alternative entry method.</div></div>
+    <hr class="rule-divider" />
+    <div class="rule"><div class="rule-n">5.</div><div class="rule-t"><strong>Prize:</strong> One (1) winner receives a <strong>$50 Amazon Gift Card</strong>. Non-transferable; no cash alternative.</div></div>
+    <hr class="rule-divider" />
+    <div class="rule"><div class="rule-n">6.</div><div class="rule-t"><strong>Winner Selection:</strong> Selected at random on or about <strong>April 1</strong>; contacted by email. No response within 48 hours may result in an alternate winner being selected.</div></div>
+    <hr class="rule-divider" />
+    <div class="rule"><div class="rule-n">7.</div><div class="rule-t"><strong>Odds:</strong> Depend on total number of eligible entries received.</div></div>
+    <hr class="rule-divider" />
+    <div class="rule"><div class="rule-n">8.</div><div class="rule-t"><strong>General Conditions:</strong> By entering, participants agree to comply with these rules. Sponsor reserves the right to disqualify entrants who engage in fraudulent behavior.</div></div>
+    <hr class="rule-divider" />
+    <div class="rule"><div class="rule-n">9.</div><div class="rule-t"><strong>Limitation of Liability:</strong> Sponsor is not responsible for technical failures, incomplete entries, or issues affecting participation.</div></div>
+    <hr class="rule-divider" />
+    <div class="rule"><div class="rule-n">10.</div><div class="rule-t"><strong>Platform Disclaimer:</strong> Not sponsored, endorsed, or administered by Facebook or Instagram.</div></div>
+    <hr class="rule-divider" />
+    <div class="rule"><div class="rule-n">11.</div><div class="rule-t"><strong>Contact:</strong> <a href="mailto:socials@theorysolutions.com">socials@theorysolutions.com</a></div></div>
+
+    <p class="fine-print">
+      No purchase necessary. A purchase does not improve your odds of winning. Free Alternative Method of Entry (AMOE): To enter without signing up, email your full name, business name (if applicable), and contact email to <a href="mailto:socials@theorysolutions.com">socials@theorysolutions.com</a> with the subject line "Vendor Giveaway Entry" before the March 31 deadline. Limit one (1) entry per person/business regardless of method. This promotion is not affiliated with, sponsored by, or administered by Facebook, Instagram, or any other social media platform. All Sponsor decisions are final and binding.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2025 Tucson Event Connections &mdash; Powered by <a href="https://theory-solutions.com">Theory Solutions</a></p>
+  <p>Questions? <a href="mailto:socials@theorysolutions.com">socials@theorysolutions.com</a></p>
+</footer>
+
+</body>
+</html>
