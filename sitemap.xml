@@ -88,6 +88,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+    <url>
+    <loc>https://tucsoneventconnections.com/blog/tucson-wedding-planning-guide.html</loc>
+    <lastmod></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- SITEMAP_BLOG_INSERT -->
 
 </urlset>
