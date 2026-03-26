@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3M5JB8V0WL"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3M5JB8V0WL');</script>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tucson Events Calendar 2026 | Events Near Me in Tucson AZ</title>
+    <meta name="description" content="Find upcoming events in Tucson AZ — farmers markets, festivals, fairs, and community gatherings. Your go-to Tucson events calendar for 2026.">
+    <meta name="keywords" content="Tucson events, events near me Tucson, Tucson events this weekend, Tucson farmers market, Tucson festivals 2026, things to do in Tucson, Tucson event calendar">
+    <link rel="canonical" href="https://tucsoneventconnections.com/events.html">
+    <meta property="og:title" content="Tucson Events Calendar 2026 | Events Near Me">
+    <meta property="og:description" content="Find the best upcoming events in Tucson AZ — farmers markets, festivals, concerts, and community events.">
+    <meta property="og:url" content="https://tucsoneventconnections.com/events.html">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tec-fonts.css">
+    <style>
+        :root{
+            --bg:#FFFFFF;--surface:#F5F7FA;--surface-2:#EBEEF3;--surface-3:#DDE1E9;
+            --navy:#1B2A4A;--navy-light:#2D4166;--navy-deep:#0F1A2E;--navy-card:#1E3050;
+            --teal:#2AA198;--teal-dim:rgba(42,161,152,0.08);--teal-glow:rgba(42,161,152,0.2);--teal-hover:#239089;--teal-bright:#35B8AE;
+            --gold:#D4942A;--gold-dim:rgba(212,148,42,0.1);
+            --text:#1B2A4A;--text-muted:#5E6D8A;--text-faint:#94A0B8;--text-on-navy:rgba(255,255,255,0.92);--text-on-navy-muted:rgba(255,255,255,0.55);
+            --border:rgba(27,42,74,0.08);--border-hover:rgba(42,161,152,0.4);
+            --radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;
+            --font-display:'Exo 2',sans-serif;--font-body:'DM Sans',sans-serif;
+            --transition:0.35s cubic-bezier(0.16,1,0.3,1);
+            --shadow-sm:0 1px 3px rgba(27,42,74,0.06);--shadow-md:0 4px 16px rgba(27,42,74,0.08);--shadow-lg:0 12px 40px rgba(27,42,74,0.1);--shadow-xl:0 24px 60px rgba(27,42,74,0.12);
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+        body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:1rem;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+        a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+        /* NAV */
+        nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:68px;background:rgba(255,255,255,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+        .nav-logo{font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--navy);letter-spacing:-0.01em;display:flex;align-items:center;gap:0.5rem;text-decoration:none;white-space:nowrap;flex-shrink:0}
+        .nav-logo span{color:var(--teal)}
+        .nav-logo .dot{width:8px;height:8px;background:var(--teal);border-radius:50%;display:inline-block;animation:pulse-dot 2s ease-in-out infinite;flex-shrink:0}
+        .nav-right{display:flex;align-items:center;gap:1.5rem;flex-shrink:0}
+        .nav-link{font-size:0.85rem;font-weight:500;color:var(--text-muted);transition:color 0.2s}.nav-link:hover{color:var(--navy)}.nav-link.active{color:var(--teal);font-weight:600}
+        .nav-cta{background:var(--teal);border:none;color:white;font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:0.55rem 1.3rem;border-radius:100px;transition:var(--transition);white-space:nowrap}
+        .nav-cta:hover{background:var(--teal-hover);box-shadow:0 4px 16px var(--teal-glow)}
+        .nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:40px;height:40px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;flex-shrink:0;transition:var(--transition)}
+        .nav-hamburger span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px;transition:var(--transition)}
+        .nav-hamburger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+        .nav-hamburger.is-open span:nth-child(2){opacity:0;transform:scaleX(0)}
+        .nav-hamburger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+        .mobile-menu{position:fixed;top:68px;left:0;right:0;background:white;border-bottom:1px solid var(--border);box-shadow:var(--shadow-lg);z-index:999;padding:1.5rem 1.5rem 2rem;display:flex;flex-direction:column;gap:0.25rem;transform:translateY(-10px);opacity:0;pointer-events:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
+        .mobile-menu.is-open{transform:translateY(0);opacity:1;pointer-events:all}
+        .mobile-nav-link{font-size:1rem;font-weight:500;color:var(--navy);padding:0.85rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;text-decoration:none}
+        .mobile-nav-link::after{content:'→';color:var(--text-faint);font-size:0.85rem}
+        .mobile-cta-btn{width:100%;background:var(--teal);color:white;font-family:var(--font-body);font-size:0.9rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:1rem;border-radius:var(--radius-md);margin-top:1rem;transition:var(--transition);text-align:center;cursor:pointer;border:none}
+        .mobile-cta-btn:hover{background:var(--teal-hover)}
+        @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
+
+        /* PAGE HERO */
+        .page-hero{padding:7rem 2rem 3.5rem;background:var(--navy-deep);text-align:center;position:relative;overflow:hidden}
+        .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 40%,rgba(42,161,152,0.12) 0%,transparent 65%)}
+        .page-hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(42,161,152,0.12);border:1px solid rgba(42,161,152,0.2);border-radius:100px;padding:0.4rem 1.1rem;font-size:0.78rem;font-weight:600;color:var(--teal-bright);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem}
+        .page-hero h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-0.02em;line-height:1.1;color:white;max-width:700px;margin:0 auto}
+        .page-hero h1 .grad{background:linear-gradient(135deg,var(--teal-bright) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .page-hero p{margin-top:1rem;color:rgba(255,255,255,0.55);font-size:1.05rem;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75}
+
+        /* FILTER BAR */
+        .filter-bar{background:var(--bg);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;justify-content:center;position:sticky;top:68px;z-index:100}
+        .filter-btn{font-family:var(--font-body);font-size:0.82rem;font-weight:600;padding:0.45rem 1.1rem;border-radius:100px;border:1.5px solid var(--border);background:var(--bg);color:var(--text-muted);cursor:pointer;transition:var(--transition)}
+        .filter-btn:hover,.filter-btn.active{background:var(--teal);color:white;border-color:var(--teal);box-shadow:0 2px 10px var(--teal-glow)}
+
+        /* MAIN LAYOUT */
+        .cal-wrap{max-width:1200px;margin:0 auto;padding:3rem 2rem 5rem;display:grid;grid-template-columns:1fr 320px;gap:2.5rem;align-items:start}
+
+        /* EVENTS LIST */
+        .month-section{margin-bottom:3rem}
+        .month-heading{font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--navy);letter-spacing:0.04em;text-transform:uppercase;padding-bottom:0.75rem;border-bottom:2px solid var(--teal);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem}
+        .month-heading .count{font-size:0.72rem;font-weight:600;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(42,161,152,0.15);padding:0.2rem 0.6rem;border-radius:100px}
+
+        .event-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1rem;transition:var(--transition);display:flex;gap:1.25rem;align-items:flex-start}
+        .event-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:rgba(42,161,152,0.25)}
+        .event-date-box{flex-shrink:0;width:56px;text-align:center;background:var(--navy);border-radius:var(--radius-md);padding:0.5rem 0.25rem;color:white}
+        .event-date-box .month{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal-bright)}
+        .event-date-box .day{font-family:var(--font-display);font-size:1.6rem;font-weight:800;line-height:1;color:white}
+        .event-date-box .day-name{font-size:0.6rem;color:rgba(255,255,255,0.5);margin-top:0.1rem}
+        .event-body{flex:1}
+        .event-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+        .event-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--navy);line-height:1.25}
+        .event-badge{font-size:0.68rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:100px;white-space:nowrap;flex-shrink:0}
+        .badge-free{background:rgba(34,197,94,0.1);color:#16A34A;border:1px solid rgba(34,197,94,0.2)}
+        .badge-paid{background:var(--gold-dim);color:var(--gold);border:1px solid rgba(212,148,42,0.2)}
+        .badge-recurring{background:rgba(59,130,246,0.1);color:#2563EB;border:1px solid rgba(59,130,246,0.15)}
+        .event-meta{display:flex;gap:1rem;margin-top:0.4rem;flex-wrap:wrap}
+        .event-meta span{font-size:0.78rem;color:var(--text-muted);display:flex;align-items:center;gap:0.3rem}
+        .event-desc{margin-top:0.6rem;font-size:0.87rem;color:var(--text-muted);line-height:1.65}
+        .event-tags{display:flex;gap:0.4rem;margin-top:0.75rem;flex-wrap:wrap}
+        .event-tag{font-size:0.7rem;font-weight:600;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);padding:0.18rem 0.6rem;border-radius:100px}
+        .event-link{display:inline-flex;align-items:center;gap:0.3rem;margin-top:0.75rem;font-size:0.78rem;font-weight:600;color:var(--teal);transition:gap 0.2s}
+        .event-card:hover .event-link{gap:0.5rem}
+
+        /* RECURRING BADGE */
+        .event-card.recurring{border-left:3px solid var(--teal)}
+
+        /* SIDEBAR */
+        .sidebar{position:sticky;top:120px}
+        .sidebar-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem}
+        .sidebar-title{font-family:var(--font-display);font-size:0.9rem;font-weight:800;color:var(--navy);margin-bottom:1rem;letter-spacing:-0.01em}
+        .sidebar-item{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid var(--border);font-size:0.83rem}
+        .sidebar-item:last-child{border-bottom:none}
+        .sidebar-item .icon{font-size:1.1rem;flex-shrink:0}
+        .sidebar-item .label{font-weight:600;color:var(--navy);line-height:1.2}
+        .sidebar-item .sub{font-size:0.75rem;color:var(--text-muted);margin-top:0.1rem}
+
+        .vendor-cta-side{background:var(--navy);border-radius:var(--radius-lg);padding:1.5rem;color:white;text-align:center}
+        .vendor-cta-side h4{font-family:var(--font-display);font-size:1rem;font-weight:800;margin-bottom:0.5rem}
+        .vendor-cta-side p{font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.6;margin-bottom:1rem}
+        .vendor-cta-side a{display:block;background:var(--teal);color:white;font-size:0.82rem;font-weight:700;padding:0.75rem;border-radius:var(--radius-md);text-align:center;transition:var(--transition)}
+        .vendor-cta-side a:hover{background:var(--teal-hover)}
+
+        /* SEO SECTION */
+        .seo-section{background:var(--surface);border-top:1px solid var(--border);padding:4rem 2rem}
+        .seo-inner{max-width:900px;margin:0 auto}
+        .seo-inner h2{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:1rem}
+        .seo-inner h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--navy);margin:1.5rem 0 0.5rem}
+        .seo-inner p{font-size:0.92rem;color:var(--text-muted);line-height:1.8;margin-bottom:0.75rem}
+        .seo-inner ul{list-style:none;padding:0;margin-bottom:1rem}
+        .seo-inner ul li{font-size:0.9rem;color:var(--text-muted);padding:0.3rem 0;padding-left:1.2rem;position:relative;line-height:1.6}
+        .seo-inner ul li::before{content:'→';position:absolute;left:0;color:var(--teal);font-size:0.75rem;top:0.35rem}
+
+        /* FOOTER */
+        footer{background:var(--navy-deep);padding:3rem 2.5rem}
+        .footer-inner{max-width:1300px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center}
+        .footer-logo{font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:rgba(255,255,255,0.6)}.footer-links{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;justify-content:center}
+        .footer-links a{color:rgba(255,255,255,0.4);font-size:0.85rem;transition:color 0.2s}.footer-links a:hover{color:var(--teal-bright)}
+        .footer-disc{font-size:0.75rem;color:rgba(255,255,255,0.2);max-width:600px;line-height:1.6;margin-top:0.5rem}
+        .footer-pow{font-size:0.8rem;color:rgba(255,255,255,0.2)}.footer-pow a{color:var(--teal-bright);text-decoration:none;font-weight:600}
+        .footer-cats{display:flex;flex-wrap:wrap;gap:0.4rem 1rem;justify-content:center;margin-top:0.25rem}
+        .footer-cats a{color:rgba(255,255,255,0.3);font-size:0.78rem;transition:color 0.2s}.footer-cats a:hover{color:var(--teal-bright)}
+        .footer-cat-label{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:0.5rem}
+
+        @keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+        @media(max-width:900px){.cal-wrap{grid-template-columns:1fr}.sidebar{position:static}}
+        @media(max-width:768px){
+            nav{padding:0 1rem}.nav-link{display:none}.nav-cta{display:none}.nav-hamburger{display:flex}
+            .page-hero{padding:5.5rem 1.25rem 2.5rem}
+            .cal-wrap{padding:2rem 1.25rem 4rem;gap:1.5rem}
+            .filter-bar{padding:0.75rem 1rem;gap:0.5rem}
+            .event-card{flex-direction:column;gap:0.75rem}
+            .event-date-box{display:flex;align-items:center;gap:0.75rem;width:100%;background:var(--surface);border-radius:var(--radius-sm);padding:0.5rem 0.75rem}
+            .event-date-box .month,.event-date-box .day,.event-date-box .day-name{color:var(--navy)}
+            .event-date-box .month{font-size:0.7rem;color:var(--teal)}
+            .event-date-box .day{font-size:1.1rem;color:var(--navy)}
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <a href="/" class="nav-logo"><span class="dot"></span>Tucson<span>&nbsp;Event Connections</span></a>
+    <div class="nav-right">
+        <a href="/#categories" class="nav-link">Categories</a>
+        <a href="/blog/index.html" class="nav-link">Blog</a>
+        <a href="/events.html" class="nav-link active">Events</a>
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="/" class="nav-cta">Find Vendors</a>
+        <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="/#categories" class="mobile-nav-link" onclick="closeMobileMenu()">Categories</a>
+    <a href="/blog/index.html" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>
+    <a href="/events.html" class="mobile-nav-link" onclick="closeMobileMenu()">Events Calendar</a>
+    <a href="/about.html" class="mobile-nav-link" onclick="closeMobileMenu()">About</a>
+    <a href="/" class="mobile-cta-btn" onclick="closeMobileMenu()">Find Vendors →</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+    <div class="page-hero-eyebrow">📅 Updated Monthly</div>
+    <h1>Tucson <span class="grad">Events Calendar</span> 2026</h1>
+    <p>Farmers markets, festivals, fairs, and community events happening near you in Tucson, Marana, and Oro Valley.</p>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+    <button class="filter-btn active" onclick="filterEvents('all', this)">All Events</button>
+    <button class="filter-btn" onclick="filterEvents('market', this)">🌿 Markets</button>
+    <button class="filter-btn" onclick="filterEvents('festival', this)">🎉 Festivals</button>
+    <button class="filter-btn" onclick="filterEvents('community', this)">🏘️ Community</button>
+    <button class="filter-btn" onclick="filterEvents('arts', this)">🎨 Arts & Culture</button>
+    <button class="filter-btn" onclick="filterEvents('family', this)">👨‍👩‍👧 Family</button>
+    <button class="filter-btn" onclick="filterEvents('recurring', this)">🔄 Weekly/Monthly</button>
+</div>
+
+<!-- MAIN -->
+<div class="cal-wrap">
+<div class="events-main">
+
+    <!-- RECURRING EVENTS -->
+    <div class="month-section" data-section="recurring">
+        <div class="month-heading">🔄 Recurring Events <span class="count">Every Week &amp; Month</span></div>
+
+        <div class="event-card recurring" data-tags="market recurring">
+            <div class="event-date-box"><div class="month">SAT</div><div class="day">WKL</div><div class="day-name">Weekly</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Rillito Regional Park Farmers Market</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Rillito Regional Park, N. 1st Ave</span>
+                    <span>🕗 8:00 AM – 12:00 PM</span>
+                    <span>📅 Every Saturday</span>
+                </div>
+                <p class="event-desc">One of Tucson's largest and most beloved farmers markets. Fresh produce, local honey, artisan breads, handmade goods, food trucks, and live music every week. Perfect for families, foodies, and anyone who loves supporting local vendors.</p>
+                <div class="event-tags"><span class="event-tag">Farmers Market</span><span class="event-tag">Local Produce</span><span class="event-tag">Family Friendly</span></div>
+                <a href="https://www.rillitofarmersmarket.com" target="_blank" class="event-link">Visit website →</a>
+            </div>
+        </div>
+
+        <div class="event-card recurring" data-tags="market recurring">
+            <div class="event-date-box"><div class="month">SUN</div><div class="day">WKL</div><div class="day-name">Weekly</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Santa Cruz River Farmers Market</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Mercado San Agustín, 100 S. Avenida del Convento</span>
+                    <span>🕗 9:00 AM – 1:00 PM</span>
+                    <span>📅 Every Sunday</span>
+                </div>
+                <p class="event-desc">A vibrant Sunday market in the Mercado district featuring local farmers, artisan vendors, prepared foods, and a community gathering atmosphere. Dog-friendly and located near the beautiful Santa Cruz River Park trail.</p>
+                <div class="event-tags"><span class="event-tag">Farmers Market</span><span class="event-tag">Artisans</span><span class="event-tag">Dog Friendly</span></div>
+                <a href="https://www.mercadosanagustin.com" target="_blank" class="event-link">Visit website →</a>
+            </div>
+        </div>
+
+        <div class="event-card recurring" data-tags="market arts recurring">
+            <div class="event-date-box"><div class="month">1ST</div><div class="day">SUN</div><div class="day-name">Monthly</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">4th Avenue Street Fair — Art Market Weekends</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 4th Avenue, Downtown Tucson</span>
+                    <span>🕗 10:00 AM – 5:00 PM</span>
+                    <span>📅 Select Sundays (see website)</span>
+                </div>
+                <p class="event-desc">Tucson's iconic 4th Avenue hosts regular art market weekends outside the major fairs. Browse local artists, vintage goods, handmade jewelry, and eclectic finds along one of Arizona's most unique streets.</p>
+                <div class="event-tags"><span class="event-tag">Art Market</span><span class="event-tag">Local Artists</span><span class="event-tag">Downtown</span></div>
+                <a href="https://www.4thavenue.org" target="_blank" class="event-link">Visit website →</a>
+            </div>
+        </div>
+
+        <div class="event-card recurring" data-tags="community family recurring">
+            <div class="event-date-box"><div class="month">SAT</div><div class="day">WKL</div><div class="day-name">Weekly</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Hoff's Hut Swap Meet & Market</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 3320 N. Romero Rd, Tucson</span>
+                    <span>🕗 6:00 AM – 1:00 PM</span>
+                    <span>📅 Every Saturday & Sunday</span>
+                </div>
+                <p class="event-desc">A Tucson tradition — this weekend swap meet features hundreds of vendors selling everything from tools and collectibles to fresh produce and handmade crafts. Great for bargain hunters and treasure seekers.</p>
+                <div class="event-tags"><span class="event-tag">Swap Meet</span><span class="event-tag">Flea Market</span><span class="event-tag">Budget Friendly</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- APRIL 2026 -->
+    <div class="month-section" data-section="april">
+        <div class="month-heading">April 2026 <span class="count">5 Events</span></div>
+
+        <div class="event-card" data-tags="arts community festival">
+            <div class="event-date-box"><div class="month">APR</div><div class="day">4</div><div class="day-name">SAT</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Tucson Celtic Festival & Scottish Highland Games</div>
+                    <span class="event-badge badge-paid">Ticketed</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Rillito Regional Park</span>
+                    <span>🕗 9:00 AM – 6:00 PM</span>
+                </div>
+                <p class="event-desc">A celebration of Celtic heritage featuring Highland athletic competitions, Celtic music and dance, pipe and drum bands, Irish step dancing, and authentic Scottish and Irish food and crafts vendors.</p>
+                <div class="event-tags"><span class="event-tag">Cultural Festival</span><span class="event-tag">Music</span><span class="event-tag">Family</span></div>
+                <a href="https://tucsonceltfest.com" target="_blank" class="event-link">Get tickets →</a>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="arts community">
+            <div class="event-date-box"><div class="month">APR</div><div class="day">11</div><div class="day-name">SAT</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Tucson Earth Day Festival</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Brandi Fenton Memorial Park</span>
+                    <span>🕗 10:00 AM – 4:00 PM</span>
+                </div>
+                <p class="event-desc">Tucson's annual Earth Day celebration featuring environmental vendors, sustainability exhibitors, local food trucks, live music, kids activities, and community organizations focused on our desert ecosystem.</p>
+                <div class="event-tags"><span class="event-tag">Environmental</span><span class="event-tag">Community</span><span class="event-tag">Family</span></div>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="arts festival">
+            <div class="event-date-box"><div class="month">APR</div><div class="day">18</div><div class="day-name">SAT</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Tucson Gem, Mineral & Fossil Showcase (Spring)</div>
+                    <span class="event-badge badge-paid">Ticketed</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Tucson Convention Center</span>
+                    <span>🕗 10:00 AM – 5:00 PM</span>
+                </div>
+                <p class="event-desc">A smaller spring edition of Tucson's world-famous gem show. Browse rare minerals, fossils, crystals, and gemstones from dealers worldwide. A must-visit for collectors and geology enthusiasts.</p>
+                <div class="event-tags"><span class="event-tag">Gems & Minerals</span><span class="event-tag">Collectibles</span><span class="event-tag">Educational</span></div>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="community family festival">
+            <div class="event-date-box"><div class="month">APR</div><div class="day">25</div><div class="day-name">SAT</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Tucson Food & Wine Festival</div>
+                    <span class="event-badge badge-paid">Ticketed</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Armory Park, Downtown Tucson</span>
+                    <span>🕗 12:00 PM – 8:00 PM</span>
+                </div>
+                <p class="event-desc">Celebrate Tucson's incredible food scene with tastings from local restaurants, wine and craft beer pairings, live culinary demonstrations, and music. A highlight of the spring social calendar.</p>
+                <div class="event-tags"><span class="event-tag">Food & Wine</span><span class="event-tag">Local Restaurants</span><span class="event-tag">Live Music</span></div>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="arts community">
+            <div class="event-date-box"><div class="month">APR</div><div class="day">26</div><div class="day-name">SUN</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Tucson Greek Festival</div>
+                    <span class="event-badge badge-paid">Ticketed</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 St. Demetrios Greek Orthodox Church</span>
+                    <span>🕗 11:00 AM – 9:00 PM</span>
+                </div>
+                <p class="event-desc">Authentic Greek food, live Hellenic music, traditional dancing, and a marketplace with Greek imports. One of Tucson's most beloved cultural events, drawing thousands each spring.</p>
+                <div class="event-tags"><span class="event-tag">Cultural</span><span class="event-tag">Food</span><span class="event-tag">Music & Dance</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAY 2026 -->
+    <div class="month-section" data-section="may">
+        <div class="month-heading">May 2026 <span class="count">4 Events</span></div>
+
+        <div class="event-card" data-tags="arts festival">
+            <div class="event-date-box"><div class="month">MAY</div><div class="day">2</div><div class="day-name">SAT</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Tucson Symphony Orchestra — Season Finale</div>
+                    <span class="event-badge badge-paid">Ticketed</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Tucson Music Hall</span>
+                    <span>🕗 7:30 PM</span>
+                </div>
+                <p class="event-desc">The Tucson Symphony Orchestra's season finale is always a spectacular evening. World-class classical performances in a beautiful historic venue. A perfect date night or special occasion outing.</p>
+                <div class="event-tags"><span class="event-tag">Classical Music</span><span class="event-tag">Arts</span><span class="event-tag">Evening Event</span></div>
+                <a href="https://tucsonsymphony.org" target="_blank" class="event-link">Get tickets →</a>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="community family">
+            <div class="event-date-box"><div class="month">MAY</div><div class="day">9</div><div class="day-name">SAT</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Cinco de Mayo Tucson Celebration</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Armory Park / El Presidio Park, Downtown</span>
+                    <span>🕗 11:00 AM – 8:00 PM</span>
+                </div>
+                <p class="event-desc">Tucson's vibrant Cinco de Mayo celebration features mariachi performances, folklórico dancing, authentic Mexican cuisine, family activities, and a festive atmosphere that celebrates the deep cultural ties between Tucson and Mexico.</p>
+                <div class="event-tags"><span class="event-tag">Cultural Festival</span><span class="event-tag">Music</span><span class="event-tag">Food</span></div>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="festival arts community">
+            <div class="event-date-box"><div class="month">MAY</div><div class="day">16</div><div class="day-name">SAT</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Maker Faire Tucson</div>
+                    <span class="event-badge badge-paid">Ticketed</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Tucson Convention Center Area</span>
+                    <span>🕗 10:00 AM – 6:00 PM</span>
+                </div>
+                <p class="event-desc">The celebration of invention, creativity, and STEM. See 3D printers, robots, electronics projects, art installations, and hands-on activities. A must for tech enthusiasts, makers, and families with curious kids.</p>
+                <div class="event-tags"><span class="event-tag">Technology</span><span class="event-tag">STEM</span><span class="event-tag">Family</span></div>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="market community">
+            <div class="event-date-box"><div class="month">MAY</div><div class="day">24</div><div class="day-name">SUN</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Tucson Night Market</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Downtown Tucson</span>
+                    <span>🕗 6:00 PM – 10:00 PM</span>
+                </div>
+                <p class="event-desc">An evening market experience featuring local artisans, street food vendors, live entertainment, and the cool Tucson desert night. A social scene that feels like a block party meets art fair.</p>
+                <div class="event-tags"><span class="event-tag">Night Market</span><span class="event-tag">Artisans</span><span class="event-tag">Street Food</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FALL EVENTS -->
+    <div class="month-section" data-section="fall">
+        <div class="month-heading">Fall 2026 — Major Annual Events <span class="count">4 Signature Events</span></div>
+
+        <div class="event-card" data-tags="festival arts community">
+            <div class="event-date-box"><div class="month">OCT</div><div class="day">TBD</div><div class="day-name">2026</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Tucson Meet Yourself Festival</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Downtown Tucson (El Presidio Park)</span>
+                    <span>🕗 All Weekend</span>
+                </div>
+                <p class="event-desc">Tucson's iconic multicultural festival celebrating the 60+ cultures that make up our community. Authentic food from dozens of countries, folk performances, traditional crafts, and one of the most diverse event experiences in the Southwest. A true Tucson institution.</p>
+                <div class="event-tags"><span class="event-tag">Cultural</span><span class="event-tag">Food</span><span class="event-tag">Free</span><span class="event-tag">Signature Event</span></div>
+                <a href="https://tucsonmeetyourself.org" target="_blank" class="event-link">Learn more →</a>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="festival arts">
+            <div class="event-date-box"><div class="month">NOV</div><div class="day">TBD</div><div class="day-name">2026</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">4th Avenue Street Fair (Fall)</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 4th Avenue, Tucson</span>
+                    <span>🕗 All Weekend</span>
+                </div>
+                <p class="event-desc">One of Arizona's largest arts and crafts street fairs. Over 400 artists and vendors fill 4th Avenue with handmade jewelry, ceramics, paintings, clothing, and unique gifts. Draws 100,000+ visitors each year.</p>
+                <div class="event-tags"><span class="event-tag">Arts & Crafts</span><span class="event-tag">Street Fair</span><span class="event-tag">Signature Event</span></div>
+                <a href="https://www.4thavenue.org" target="_blank" class="event-link">Learn more →</a>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="festival community family">
+            <div class="event-date-box"><div class="month">OCT</div><div class="day">TBD</div><div class="day-name">2026</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">All Souls Procession</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Downtown Tucson (Procession Route)</span>
+                    <span>🕗 Evening</span>
+                </div>
+                <p class="event-desc">One of the most unique events in all of America — a massive community procession honoring the deceased, inspired by Día de los Muertos traditions. Participants dress in elaborate costumes and carry urns with messages. Deeply moving and visually spectacular.</p>
+                <div class="event-tags"><span class="event-tag">Cultural</span><span class="event-tag">Community</span><span class="event-tag">Signature Event</span></div>
+                <a href="https://allsoulsprocession.org" target="_blank" class="event-link">Learn more →</a>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="festival market">
+            <div class="event-date-box"><div class="month">JAN</div><div class="day">TBD</div><div class="day-name">2027</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Tucson Gem & Mineral Show (Annual)</div>
+                    <span class="event-badge badge-paid">Ticketed</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Multiple venues across Tucson</span>
+                    <span>🕗 All Week (usually Feb)</span>
+                </div>
+                <p class="event-desc">The world's largest gem, mineral, and fossil show — draws dealers and buyers from 100+ countries. Over 40 venues across Tucson are transformed into showrooms. Even if you're not buying, it's a spectacular experience worth attending at least once.</p>
+                <div class="event-tags"><span class="event-tag">World's Largest</span><span class="event-tag">Gems</span><span class="event-tag">International</span></div>
+                <a href="https://www.tgms.org" target="_blank" class="event-link">Learn more →</a>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end events-main -->
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+    <div class="sidebar-box">
+        <div class="sidebar-title">📍 Tucson Event Hotspots</div>
+        <div class="sidebar-item"><span class="icon">🌿</span><div><div class="label">Rillito Regional Park</div><div class="sub">N. 1st Ave — largest park events venue</div></div></div>
+        <div class="sidebar-item"><span class="icon">🏛️</span><div><div class="label">Tucson Convention Center</div><div class="sub">260 S. Church Ave — major conventions</div></div></div>
+        <div class="sidebar-item"><span class="icon">🛍️</span><div><div class="label">4th Avenue</div><div class="sub">Historic arts & culture district</div></div></div>
+        <div class="sidebar-item"><span class="icon">🏜️</span><div><div class="label">Armory / El Presidio Park</div><div class="sub">Downtown — community events hub</div></div></div>
+        <div class="sidebar-item"><span class="icon">🛒</span><div><div class="label">Mercado San Agustín</div><div class="sub">Sunday market + restaurants</div></div></div>
+    </div>
+
+    <div class="sidebar-box">
+        <div class="sidebar-title">🌡️ Best Times to Visit</div>
+        <div class="sidebar-item"><span class="icon">🌸</span><div><div class="label">Spring (Mar–May)</div><div class="sub">Perfect weather, peak event season</div></div></div>
+        <div class="sidebar-item"><span class="icon">🍂</span><div><div class="label">Fall (Sep–Nov)</div><div class="sub">Festivals return, cooler evenings</div></div></div>
+        <div class="sidebar-item"><span class="icon">❄️</span><div><div class="label">Winter (Dec–Feb)</div><div class="sub">Gem show, holiday events, mild temps</div></div></div>
+        <div class="sidebar-item"><span class="icon">☀️</span><div><div class="label">Summer (Jun–Aug)</div><div class="sub">Fewer outdoor events, monsoon season</div></div></div>
+    </div>
+
+    <div class="vendor-cta-side">
+        <h4>Planning an Event?</h4>
+        <p>Find local Tucson vendors for your next event — catering, DJs, photographers, and more.</p>
+        <a href="/">Find Vendors →</a>
+    </div>
+
+    <div class="sidebar-box" style="margin-top:1.5rem">
+        <div class="sidebar-title">📝 Submit Your Event</div>
+        <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.65;margin-bottom:0.75rem">Know of a Tucson event we should list? We update this calendar monthly.</p>
+        <a href="mailto:hello@tucsoneventconnections.com" style="display:block;background:var(--teal);color:white;font-size:0.8rem;font-weight:700;padding:0.65rem;border-radius:var(--radius-md);text-align:center;text-decoration:none">Submit an Event →</a>
+    </div>
+
+</aside>
+</div><!-- end cal-wrap -->
+
+<!-- SEO CONTENT SECTION -->
+<section class="seo-section">
+    <div class="seo-inner">
+        <h2>Tucson Events Near Me — Your Local Guide</h2>
+        <p>Looking for things to do in Tucson AZ? Whether you're searching for "Tucson events this weekend," farmers markets near me, or upcoming festivals in the Tucson area — you've found the right place. This calendar covers Tucson, Marana, Oro Valley, and the surrounding Pima County area.</p>
+
+        <h3>Farmers Markets in Tucson AZ</h3>
+        <p>Tucson has a thriving local food scene, and its farmers markets are among the best in the Southwest. The <strong>Rillito Regional Park Farmers Market</strong> runs every Saturday morning and is one of the largest in Arizona. The <strong>Santa Cruz River Farmers Market</strong> at Mercado San Agustín offers a more intimate Sunday experience with local farms, artisan food producers, and handmade goods.</p>
+
+        <h3>Annual Tucson Festivals Not to Miss</h3>
+        <ul>
+            <li><strong>Tucson Meet Yourself</strong> — Free multicultural festival, one of the best in the country</li>
+            <li><strong>4th Avenue Street Fair</strong> — Spring and Fall editions, 400+ artists and vendors</li>
+            <li><strong>All Souls Procession</strong> — A once-in-a-lifetime community event every fall</li>
+            <li><strong>Tucson Gem & Mineral Show</strong> — World's largest, draws dealers from 100+ countries</li>
+            <li><strong>Tucson Celtic Festival</strong> — Highland games, Celtic music, authentic food</li>
+        </ul>
+
+        <h3>Planning an Event in Tucson?</h3>
+        <p>If this calendar inspired you to plan your own event — a wedding, quinceañera, birthday party, or corporate gathering — <strong>Tucson Event Connections</strong> can help you find the right local vendors. We connect you with vetted Tucson caterers, DJs, photographers, florists, rental companies, and more. Browse our vendor categories and get free quotes today.</p>
+
+        <h3>Events in Marana and Oro Valley AZ</h3>
+        <p>Many Tucson-area events extend into the neighboring communities of Marana and Oro Valley. Both communities host their own farmers markets, art walks, and seasonal festivals. Keep an eye on this page for updates as we expand our coverage of the greater Tucson metro area.</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer><div class="footer-inner">
+    <div class="footer-logo">Tucson Event Connections</div>
+    <div class="footer-links">
+        <a href="legal.html">Terms & Privacy</a><span style="color:rgba(255,255,255,0.2)">·</span>
+        <a href="about.html">About</a><span style="color:rgba(255,255,255,0.2)">·</span>
+        <a href="events.html">Events Calendar</a><span style="color:rgba(255,255,255,0.2)">·</span>
+        <a href="https://theory-solutions.com" target="_blank">Theory Solutions</a>
+    </div>
+    <div class="footer-cat-label">Browse by Category</div>
+    <div class="footer-cats"><a href="tucson/catering.html">Catering & Food Trucks</a><a href="tucson/tables-chairs.html">Tables, Chairs & Tents</a><a href="tucson/jumping-houses.html">Bounce Houses & Slides</a><a href="tucson/photography.html">Photography & Photo Booths</a><a href="tucson/cakes.html">Cakes & Sweets</a><a href="tucson/transportation.html">Transportation & Shuttles</a><a href="tucson/music-dj.html">DJs & Live Music</a><a href="tucson/decor.html">Decor, Balloons & Piñatas</a></div>
+    <p class="footer-disc">Theory Solutions is a connection platform. We are NOT LIABLE for any services conducted or performed by independent vendors.</p>
+    <p class="footer-pow">Powered by <a href="https://theory-solutions.com" target="_blank">Theory Solutions</a> &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; Serving Tucson, Marana & Oro Valley, AZ</p>
+</div></footer>
+
+<script>
+function toggleMobileMenu(){const m=document.getElementById('mobileMenu'),b=document.getElementById('navHamburger'),o=m.classList.contains('is-open');m.classList.toggle('is-open',!o);b.classList.toggle('is-open',!o)}
+function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('is-open');document.getElementById('navHamburger').classList.remove('is-open')}
+document.addEventListener('click',function(e){const m=document.getElementById('mobileMenu'),b=document.getElementById('navHamburger');if(m.classList.contains('is-open')&&!m.contains(e.target)&&!b.contains(e.target)){closeMobileMenu()}});
+
+function filterEvents(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cards = document.querySelectorAll('.event-card');
+    cards.forEach(card => {
+        if (type === 'all') { card.style.display = 'flex'; return; }
+        if (type === 'recurring') {
+            card.style.display = card.classList.contains('recurring') ? 'flex' : 'none';
+        } else {
+            const tags = (card.dataset.tags || '');
+            card.style.display = tags.includes(type) ? 'flex' : 'none';
+        }
+    });
+    // Show/hide month headings based on visible cards
+    document.querySelectorAll('.month-section').forEach(section => {
+        const visible = [...section.querySelectorAll('.event-card')].some(c => c.style.display !== 'none');
+        section.style.display = visible ? 'block' : 'none';
+    });
+}
+</script>
+</body>
+</html>
