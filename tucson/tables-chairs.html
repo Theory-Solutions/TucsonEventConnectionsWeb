@@ -1,70 +1,582 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3M5JB8V0WL"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3M5JB8V0WL');</script>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Table, Chair & Tent Rentals in Tucson, AZ | Tucson Event Connections</title>
-    <meta name="description" content="Rent tables, chairs, tents & canopies for events in Tucson. Shade solutions for Arizona heat. Free quotes from local rental companies across Pima County.">
-    <link rel="canonical" href="https://tucsoneventconnections.com/tucson/tables-chairs">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much do table and chair rentals cost in Tucson?","acceptedAnswer":{"@type":"Answer","text":"Tables run $8-$15 each, folding chairs $2-$4 each, and premium chiavari chairs $8-$12 each. Package deals for 50+ guests often reduce per-item costs. Delivery fees typically add $50-$150."}},{"@type":"Question","name":"What size tent do I need for my Tucson event?","acceptedAnswer":{"@type":"Answer","text":"A general rule is 10-12 sq ft per seated guest or 6-8 sq ft for standing. A 20x30 tent fits about 50 seated guests. For Tucson's sun, always oversize your shade coverage by 20%."}},{"@type":"Question","name":"Do tent rentals include setup and takedown?","acceptedAnswer":{"@type":"Answer","text":"Most Tucson rental companies include delivery, setup, and takedown in their pricing. Confirm timing — most need 2-4 hours before the event for tent installation."}}]}</script>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="category-styles.css">
-    <link rel="stylesheet" href="../tec-fonts.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tucson Table, Chair & Tent Rentals 2026 | Tucson Event Connections</title>
+    <meta name="description" content="Professional event rental equipment for Arizona outdoor events. Wedding chairs, banquet tables, shade tents with full setup and takedown. Browse local vendors.">
+    <link rel="canonical" href="https://tucsoneventconnections.com/tucson/tables-chairs.html">
+    <meta property="og:title" content="Tucson Table, Chair & Tent Rentals 2026 | Tucson Event Connections">
+    <meta property="og:description" content="Professional event rental equipment for Arizona outdoor events. Wedding chairs, banquet tables, shade tents with full setup and takedown. Browse local vendors.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tucsoneventconnections.com/tucson/tables-chairs.html">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&q=80">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much do table and chair rentals cost in Tucson?", "acceptedAnswer": {"@type": "Answer", "text": "Folding chairs run $2\u2013$4 each. Tables are $8\u2013$15. Tents vary from $150 for small to $500+ for large frames."}}, {"@type": "Question", "name": "Do rental companies deliver and set up in Tucson?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, most include delivery and pickup. Setup and takedown services are usually available for an extra fee."}}, {"@type": "Question", "name": "What surface can tents be set up on in Tucson?", "acceptedAnswer": {"@type": "Answer", "text": "Grass, concrete, and gravel all work. Hard surfaces require different anchoring. Always confirm with vendor."}}, {"@type": "Question", "name": "How much wind can Tucson event tents handle?", "acceptedAnswer": {"@type": "Answer", "text": "Commercial frame tents are rated for Tucson's afternoon winds. Stakes and weights are critical \u2014 discuss anchoring with your vendor."}}]}</script>
+
+    <style>
+        :root {
+            --bg: #FFFFFF;
+            --surface: #F5F7FA;
+            --navy: #1B2A4A;
+            --navy-deep: #0F1A2E;
+            --navy-card: #1E3050;
+            --teal: #2AA198;
+            --teal-hover: #239089;
+            --teal-bright: #35B8AE;
+            --teal-glow: rgba(42,161,152,0.2);
+            --gold: #D4942A;
+            --gold-light: rgba(212,148,42,0.15);
+            --text: #1B2A4A;
+            --text-muted: #5E6D8A;
+            --text-faint: #94A0B8;
+            --border: rgba(27,42,74,0.08);
+            --font-display: 'Exo 2', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(15,26,46,0.96);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(42,161,152,0.15);
+            height: 64px; display: flex; align-items: center; padding: 0 2rem;
+        }
+        .nav__inner {
+            max-width: 1200px; margin: 0 auto; width: 100%;
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+        }
+        .nav__logo {
+            font-family: var(--font-display); font-weight: 800; font-size: 1.1rem;
+            color: #fff; letter-spacing: -0.02em; display: flex; align-items: center; gap: 0.25rem; white-space: nowrap;
+        }
+        .nav__logo .dot { display: inline-block; width: 8px; height: 8px; background: var(--teal); border-radius: 50%; margin-right: 2px; }
+        .nav__links { display: flex; align-items: center; gap: 1.75rem; }
+        .nav__links a { font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.75); transition: color 0.2s; }
+        .nav__links a:hover { color: var(--teal-bright); }
+        .nav__cta {
+            background: var(--teal); color: #fff; font-family: var(--font-display);
+            font-weight: 700; font-size: 0.875rem; padding: 0.5rem 1.25rem;
+            border-radius: 50px; border: none; cursor: pointer;
+            transition: background 0.2s, transform 0.15s; white-space: nowrap;
+        }
+        .nav__cta:hover { background: var(--teal-hover); transform: translateY(-1px); }
+        .nav__hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+        .nav__hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+        .nav__mobile {
+            display: none; position: fixed; top: 64px; left: 0; right: 0;
+            background: var(--navy-deep); border-bottom: 1px solid rgba(42,161,152,0.2);
+            padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99;
+        }
+        .nav__mobile.open { display: flex; }
+        .nav__mobile a { color: rgba(255,255,255,0.85); font-size: 1rem; font-weight: 500; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+        .nav__mobile a:last-of-type { border-bottom: none; }
+        .nav__mobile .nav__cta { margin-top: 0.5rem; text-align: center; display: block; padding: 0.75rem; }
+        .hero {
+            position: relative; min-height: 85vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            padding: 8rem 2rem 5rem; overflow: hidden; background: var(--navy-deep);
+        }
+        .hero__bg {
+            position: absolute; inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1600&q=80');
+            background-size: cover; background-position: center; opacity: 0.3; z-index: 0;
+        }
+        .hero__glow {
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(42,161,152,0.18) 0%, transparent 70%);
+            z-index: 1;
+        }
+        .hero__content { position: relative; z-index: 2; max-width: 800px; width: 100%; }
+        .hero__breadcrumb {
+            display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+            font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; flex-wrap: wrap;
+        }
+        .hero__breadcrumb a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+        .hero__breadcrumb a:hover { color: var(--teal-bright); }
+        .hero__breadcrumb span { color: rgba(255,255,255,0.3); }
+        .hero__icon { font-size: 3.5rem; margin-bottom: 1rem; filter: drop-shadow(0 4px 16px rgba(42,161,152,0.4)); }
+        .hero h1 {
+            font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 1.25rem; letter-spacing: -0.02em;
+        }
+        .grad {
+            background: linear-gradient(135deg, var(--teal-bright) 0%, var(--gold) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero__sub {
+            font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,0.72);
+            max-width: 580px; margin: 0 auto 2rem; line-height: 1.7;
+        }
+        .hero__pills { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 2.5rem; }
+        .hero__pill {
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(42,161,152,0.35);
+            color: rgba(255,255,255,0.88); font-size: 0.875rem; font-weight: 600;
+            padding: 0.45rem 1.1rem; border-radius: 50px; backdrop-filter: blur(8px);
+        }
+        .btn-scroll {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--teal); color: #fff; font-family: var(--font-display);
+            font-weight: 700; font-size: 1rem; padding: 0.85rem 2rem;
+            border-radius: 50px; border: none; cursor: pointer;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 24px rgba(42,161,152,0.35);
+        }
+        .btn-scroll:hover { background: var(--teal-hover); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(42,161,152,0.45); }
+        .section { padding: 5rem 2rem; }
+        .section--surface { background: var(--surface); }
+        .section--dark { background: var(--navy-deep); }
+        .section__inner { max-width: 1160px; margin: 0 auto; }
+        .section__label {
+            font-family: var(--font-display); font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.6rem;
+        }
+        .section__title {
+            font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 0.75rem;
+        }
+        .section__sub { font-size: 1rem; color: var(--text-muted); max-width: 600px; margin-bottom: 2.5rem; }
+        .section--dark .section__title { color: #fff; }
+        .section--dark .section__sub { color: rgba(255,255,255,0.6); }
+        .section--dark .section__label { color: var(--teal-bright); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .pricing-card {
+            background: #fff; border-radius: var(--radius-lg); padding: 2rem;
+            border: 1.5px solid var(--border); position: relative; overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .pricing-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--teal), var(--gold));
+        }
+        .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(27,42,74,0.1); }
+        .pricing-card__emoji { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .pricing-card__title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.35rem; }
+        .pricing-card__range { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--gold); margin-bottom: 0.75rem; }
+        .pricing-card__desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+        .vendors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .vendor-card {
+            background: #fff; border-radius: var(--radius-lg); padding: 1.75rem;
+            border: 1.5px solid var(--border); transition: transform 0.2s, box-shadow 0.2s;
+            display: flex; flex-direction: column; gap: 0.75rem;
+        }
+        .vendor-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(27,42,74,0.1); }
+        .vendor-card__icon { font-size: 2.2rem; }
+        .vendor-card__name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+        .vendor-card__badge {
+            display: inline-block; background: var(--teal-glow); color: var(--teal);
+            border: 1px solid rgba(42,161,152,0.25); font-size: 0.75rem; font-weight: 600;
+            padding: 0.2rem 0.65rem; border-radius: 50px;
+        }
+        .vendor-card__desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; flex: 1; }
+        .btn-vendor {
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            border: 1.5px solid var(--teal); color: var(--teal); font-size: 0.85rem; font-weight: 600;
+            padding: 0.45rem 1rem; border-radius: 50px; transition: background 0.2s, color 0.2s; align-self: flex-start;
+        }
+        .btn-vendor:hover { background: var(--teal); color: #fff; }
+        .vendors__disclaimer { font-size: 0.78rem; color: var(--text-faint); margin-top: 2rem; text-align: center; }
+        .hotels-callout { background: var(--teal); padding: 1.25rem 2rem; text-align: center; }
+        .hotels-callout a {
+            color: #fff; font-size: 0.95rem; font-weight: 600; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 0.5rem; transition: opacity 0.2s;
+        }
+        .hotels-callout a:hover { opacity: 0.85; }
+        .amazon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .amazon-card {
+            background: #fff; border-radius: var(--radius-lg); padding: 1.75rem;
+            border: 1.5px solid var(--border); display: flex; flex-direction: column; gap: 0.75rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .amazon-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(27,42,74,0.09); }
+        .amazon-card__icon { font-size: 2.2rem; }
+        .amazon-card__title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--navy); }
+        .amazon-card__desc { font-size: 0.875rem; color: var(--text-muted); flex: 1; }
+        .btn-amazon {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            background: #FF9900; color: #111; font-size: 0.85rem; font-weight: 700;
+            padding: 0.5rem 1.1rem; border-radius: 50px; transition: filter 0.2s, transform 0.15s; align-self: flex-start;
+        }
+        .btn-amazon:hover { filter: brightness(1.1); transform: translateY(-1px); }
+        .tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .tip-card { background: #fff; border-radius: var(--radius-lg); padding: 1.75rem; border: 1.5px solid var(--border); position: relative; overflow: hidden; }
+        .tip-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+        .tip-card--teal::before { background: var(--teal); }
+        .tip-card--gold::before { background: var(--gold); }
+        .tip-card--blue::before { background: #3B82F6; }
+        .tip-card__icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+        .tip-card__title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+        .tip-card__text { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .blog-card {
+            background: #fff; border-radius: var(--radius-lg); overflow: hidden;
+            border: 1.5px solid var(--border); transition: transform 0.2s, box-shadow 0.2s; display: block;
+        }
+        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(27,42,74,0.1); }
+        .blog-card__img { width: 100%; height: 180px; object-fit: cover; }
+        .blog-card__body { padding: 1.25rem; }
+        .blog-card__title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 0.5rem; }
+        .blog-card__read { font-size: 0.8rem; color: var(--teal); font-weight: 600; }
+        .faq-list { max-width: 760px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border); }
+        .faq-item__q {
+            width: 100%; background: none; border: none; text-align: left; cursor: pointer;
+            padding: 1.25rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+            font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--navy); transition: color 0.2s;
+        }
+        .faq-item__q:hover { color: var(--teal); }
+        .faq-item__icon { font-size: 1.2rem; font-weight: 400; color: var(--teal); flex-shrink: 0; transition: transform 0.3s; }
+        .faq-item.open .faq-item__icon { transform: rotate(45deg); }
+        .faq-item__a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; }
+        .faq-item.open .faq-item__a { max-height: 400px; padding-bottom: 1.25rem; }
+        .faq-item__a p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+        .footer { background: var(--navy-deep); padding: 3rem 2rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer__inner { max-width: 1160px; margin: 0 auto; text-align: center; }
+        .footer__logo { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: #fff; margin-bottom: 1.25rem; }
+        .footer__links { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+        .footer__links a { font-size: 0.875rem; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+        .footer__links a:hover { color: var(--teal-bright); }
+        .footer__links span { color: rgba(255,255,255,0.2); }
+        .footer__disclaimer { font-size: 0.78rem; color: rgba(255,255,255,0.3); max-width: 600px; margin: 0 auto 0.75rem; line-height: 1.5; }
+        .footer__powered { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+        .footer__powered a { color: rgba(255,255,255,0.4); }
+        @media (max-width: 900px) {
+            .nav__links { display: none; }
+            .nav__cta { display: none; }
+            .nav__hamburger { display: flex; }
+            .pricing-grid { grid-template-columns: 1fr 1fr; }
+            .vendors-grid { grid-template-columns: 1fr 1fr; }
+            .amazon-grid { grid-template-columns: 1fr 1fr; }
+            .tips-grid { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .vendors-grid { grid-template-columns: 1fr; }
+            .amazon-grid { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .nav { padding: 0 1rem; }
+            .section { padding: 3.5rem 1.25rem; }
+            .hero { padding: 7rem 1.25rem 4rem; min-height: 70vh; }
+        }
+    </style>
 </head>
 <body>
-<nav class="cat-nav"><a href="../index.html" class="cat-nav__logo"><span class="dot"></span>Tucson<span>&nbsp;Event Connections</span></a><div class="cat-nav__links"><a href="../index.html" class="cat-nav__link">All Categories</a><a href="#faq" class="cat-nav__link">FAQ</a><button class="cat-nav__cta" onclick="openChatForCategory('Tables/Chairs')">Get Free Quotes</button></div></nav>
 
-<section class="cat-hero"><div class="cat-hero__bg"></div>
-    <nav class="cat-hero__breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../index.html">Tucson</a><span>›</span><span>Tables / Chairs / Tents</span></nav>
-    <div class="cat-hero__icon">⛺</div>
-    <h1>Tucson <span class="highlight">Table, Chair & Tent</span> Rentals</h1>
-    <p class="cat-hero__sub">Professional event rental equipment built for the Arizona sun. Shade tents, premium seating, and full setup/takedown service.</p>
-    <div class="cat-hero__stats"><div><div class="cat-hero__stat-val">$2–$15</div><div class="cat-hero__stat-label">Per Item Avg.</div></div><div><div class="cat-hero__stat-val">100%</div><div class="cat-hero__stat-label">Local Vendors</div></div><div><div class="cat-hero__stat-val">Free</div><div class="cat-hero__stat-label">Quote Requests</div></div></div>
-    <div class="cat-hero__cta"><button class="btn-primary" onclick="openChatForCategory('Tables/Chairs')">Get Rental Quotes →</button></div>
-</section>
+<!-- ===== NAV ===== -->
+<nav class="nav">
+    <div class="nav__inner">
+        <a href="/" class="nav__logo"><span class="dot"></span>Tucson<span>&nbsp;Event Connections</span></a>
+        <div class="nav__links">
+            <a href="/">Home</a>
+            <a href="/blog/index.html">Blog</a>
+            <a href="/events.html">Events</a>
+            <a href="/invitations.html">Invitations</a>
+            <a href="/about.html">About</a>
+        </div>
+        <a href="/" class="nav__cta">Find Vendors</a>
+        <button class="nav__hamburger" onclick="document.querySelector('.nav__mobile').classList.toggle('open')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+<div class="nav__mobile">
+    <a href="/">Home</a>
+    <a href="/blog/index.html">Blog</a>
+    <a href="/events.html">Events</a>
+    <a href="/invitations.html">Invitations</a>
+    <a href="/about.html">About</a>
+    <a href="/" class="nav__cta">Find Vendors</a>
+</div>
 
-<section class="cat-pricing"><div class="cat-section-label">Pricing Guide</div><h2 class="cat-section-title">Rental Costs in Tucson</h2><p class="cat-section-subtitle">Typical price ranges from local rental companies.</p>
-    <div class="pricing-grid">
-        <div class="pricing-card anim"><div class="pricing-card__title">Folding Chairs</div><div class="pricing-card__range">$2–$4 /each</div><p class="pricing-card__desc">Standard white or black folding chairs. The workhorse for backyard parties, graduations, and casual events.</p></div>
-        <div class="pricing-card anim anim-d1"><div class="pricing-card__title">Banquet Tables</div><div class="pricing-card__range">$8–$15 /each</div><p class="pricing-card__desc">6ft and 8ft rectangular tables, round tables for 8–10 guests. Includes delivery and pickup.</p></div>
-        <div class="pricing-card anim anim-d2"><div class="pricing-card__title">Shade Tents & Canopies</div><div class="pricing-card__range">$150–$600 /each</div><p class="pricing-card__desc">Pop-up canopies to large frame tents. Essential for Tucson outdoor events — includes setup and anchoring.</p></div>
-        <div class="pricing-card anim anim-d3"><div class="pricing-card__title">Premium Packages</div><div class="pricing-card__range">$8–$15 /person</div><p class="pricing-card__desc">Chiavari chairs, linens, centerpiece stands, and accent lighting. The elevated option for weddings and galas.</p></div>
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__glow"></div>
+    <div class="hero__content">
+        <nav class="hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/tucson/">Tucson</a>
+            <span>›</span>
+            <span>Tables, Chairs &amp; Tents</span>
+        </nav>
+        <div class="hero__icon">🪑</div>
+        <h1>Tucson Tables, Chairs &amp; <span class='grad'>Tent Rentals</span></h1>
+        <p class="hero__sub">Professional event rental equipment for Arizona outdoor events. Wedding chairs, banquet tables, shade tents with full setup and takedown.</p>
+        <div class="hero__pills">
+            <span class="hero__pill">$2–$15 / item</span><span class="hero__pill">Delivery + Setup</span><span class="hero__pill">Free to Browse</span>
+        </div>
+        <button class="btn-scroll" onclick="document.getElementById('vendors').scrollIntoView({behavior:'smooth'})">
+            Browse Local Vendors ↓
+        </button>
     </div>
 </section>
 
-<section class="cat-info"><div class="cat-info__inner"><div class="cat-section-label">Pro Tips</div><h2 class="cat-section-title">Before You Book Rentals</h2>
-    <div class="info-grid">
-        <div class="info-card accent-gold anim"><div class="info-card__icon">🌡️</div><div class="info-card__title">Arizona Sun Protection</div><p class="info-card__text">Tucson events need serious shade. Budget for 20% more tent coverage than you think — guests will crowd under shade and you don't want anyone in direct sun.</p></div>
-        <div class="info-card accent-teal anim anim-d1"><div class="info-card__icon">📏</div><div class="info-card__title">Measure Your Space</div><p class="info-card__text">Know your exact yard or venue dimensions before requesting quotes. Vendors need this to recommend the right tent size and table layout.</p></div>
-        <div class="info-card accent-blue anim anim-d2"><div class="info-card__icon">🏗️</div><div class="info-card__title">Setup Surfaces Matter</div><p class="info-card__text">Grass vs. concrete requires different anchoring systems. Tucson winds can be strong — vendors need to know your surface type for safe tent installation.</p></div>
+<!-- ===== PRICING GUIDE ===== -->
+<section class="section">
+    <div class="section__inner">
+        <div class="section__label">Pricing Guide</div>
+        <h2 class="section__title">What Event Rentals Cost in Tucson</h2>
+        <p class="section__sub">Typical price ranges for tables, chairs, tents, and linens in Tucson.</p>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-card__emoji">🪑</div>
+                <div class="pricing-card__title">Folding Chairs</div>
+                <div class="pricing-card__range">$2–$4 each</div>
+                <p class="pricing-card__desc">White resin or gold chiavari chairs. Minimum order typically 50 chairs.</p>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-card__emoji">🍽️</div>
+                <div class="pricing-card__title">Banquet Tables</div>
+                <div class="pricing-card__range">$8–$15 each</div>
+                <p class="pricing-card__desc">6ft and 8ft folding tables. Round 60" tables also available for wedding receptions.</p>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-card__emoji">⛺</div>
+                <div class="pricing-card__title">Shade Tents</div>
+                <div class="pricing-card__range">$150–$500</div>
+                <p class="pricing-card__desc">10x10 up to 40x60 frame tents. Built for Arizona wind and sun.</p>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-card__emoji">🎀</div>
+                <div class="pricing-card__title">Linen Tablecloths</div>
+                <div class="pricing-card__range">$8–$20 each</div>
+                <p class="pricing-card__desc">White, ivory, and colored linens. Includes delivery and pickup.</p>
+            </div>
+        </div>
     </div>
-</div></section>
-
-<section class="cat-faq" id="faq"><div class="cat-section-label">FAQ</div><h2 class="cat-section-title" style="margin-bottom:2rem;">Table & Tent Rental Questions</h2>
-    <div class="faq-item"><button class="faq-item__q">How much do table and chair rentals cost?<span class="faq-item__icon">+</span></button><div class="faq-item__a"><p>Folding chairs run $2–$4 each, tables $8–$15 each. Premium chiavari chairs are $8–$12 each. Package deals for 50+ guests usually bring per-item costs down. Delivery fees typically add $50–$150.</p></div></div>
-    <div class="faq-item"><button class="faq-item__q">What size tent do I need?<span class="faq-item__icon">+</span></button><div class="faq-item__a"><p>Plan for 10–12 sq ft per seated guest, or 6–8 sq ft for standing. A 20x30 tent fits about 50 seated guests. For Tucson's intense sun, always oversize your shade by 20%.</p></div></div>
-    <div class="faq-item"><button class="faq-item__q">Is setup and takedown included?<span class="faq-item__icon">+</span></button><div class="faq-item__a"><p>Most Tucson rental companies include delivery, setup, and takedown in their pricing. They typically need 2–4 hours before the event for tent installation and will pick up the day after.</p></div></div>
-    <div class="faq-item"><button class="faq-item__q">Can I rent linens and decor too?<span class="faq-item__icon">+</span></button><div class="faq-item__a"><p>Many rental companies offer linens, centerpiece stands, and accent lighting as add-ons. Ask for a complete package quote — bundling usually saves 15–20% vs. sourcing separately.</p></div></div>
 </section>
 
-<section class="cat-crosslinks"><div class="cat-section-label">Also Popular</div><h2 class="cat-section-title" style="margin-bottom:0.5rem;">Other Event Services</h2>
-    <div class="crosslink-grid">
-        <a href="catering.html" class="crosslink-card"><span class="crosslink-card__icon">🚚</span><span class="crosslink-card__name">Catering</span></a>
-        <a href="jumping-houses.html" class="crosslink-card"><span class="crosslink-card__icon">🏰</span><span class="crosslink-card__name">Inflatables</span></a>
-        <a href="photography.html" class="crosslink-card"><span class="crosslink-card__icon">📸</span><span class="crosslink-card__name">Photography</span></a>
-        <a href="cakes.html" class="crosslink-card"><span class="crosslink-card__icon">🎂</span><span class="crosslink-card__name">Cakes & Sweets</span></a>
-        <a href="transportation.html" class="crosslink-card"><span class="crosslink-card__icon">🚐</span><span class="crosslink-card__name">Transportation</span></a>
-        <a href="music-dj.html" class="crosslink-card"><span class="crosslink-card__icon">🎵</span><span class="crosslink-card__name">Music / DJ</span></a>
-        <a href="decor.html" class="crosslink-card"><span class="crosslink-card__icon">🎈</span><span class="crosslink-card__name">Decor</span></a>
+<!-- ===== LOCAL VENDORS ===== -->
+<section class="section section--surface" id="vendors">
+    <div class="section__inner">
+        <div class="section__label">Local Vendors</div>
+        <h2 class="section__title">Tucson Event Rental Vendors</h2>
+        <p class="section__sub">A selection of local event rental companies serving Tucson, Marana &amp; Oro Valley.</p>
+        <div class="vendors-grid">
+            <div class="vendor-card">
+                <div class="vendor-card__icon">🎪</div>
+                <div class="vendor-card__name">Frenchy's Wedding + Event Rentals</div>
+                <span class="vendor-card__badge">Specialty Rentals</span>
+                <p class="vendor-card__desc">Vintage, modern, and specialty tables, chairs, tents, and décor for Tucson weddings and events.</p>
+                <a href="https://www.frenchysrentals.com/" target="_blank" rel="noopener" class="btn-vendor">Visit Website →</a>
+            </div>
+            <div class="vendor-card">
+                <div class="vendor-card__icon">🎉</div>
+                <div class="vendor-card__name">Parties Plus LLC</div>
+                <span class="vendor-card__badge">Tucson Party Rentals</span>
+                <p class="vendor-card__desc">Tents, chairs, tables, food equipment, decorations, and tablecloths for any event in Tucson. Call 520-798-TENT.</p>
+                <a href="https://www.partiesplus.net/" target="_blank" rel="noopener" class="btn-vendor">Visit Website →</a>
+            </div>
+            <div class="vendor-card">
+                <div class="vendor-card__icon">🏠</div>
+                <div class="vendor-card__name">Tucson Event Rentals</div>
+                <span class="vendor-card__badge">Full Inventory</span>
+                <p class="vendor-card__desc">Extensive party rental inventory including tables, chairs, linens, decorations, and more.</p>
+                <a href="https://tucsoneventrentals.com/" target="_blank" rel="noopener" class="btn-vendor">Visit Website →</a>
+            </div>
+            <div class="vendor-card">
+                <div class="vendor-card__icon">🌵</div>
+                <div class="vendor-card__name">A La Carte Rentals</div>
+                <span class="vendor-card__badge">Tent &amp; Table Rentals</span>
+                <p class="vendor-card__desc">Tent rentals, table &amp; chair rentals, and everything you need for your Tucson event.</p>
+                <a href="https://www.alcrentals.com/" target="_blank" rel="noopener" class="btn-vendor">Visit Website →</a>
+            </div>
+            <div class="vendor-card">
+                <div class="vendor-card__icon">⭐</div>
+                <div class="vendor-card__name">Arizona Party Rental</div>
+                <span class="vendor-card__badge">Premium Event Supply</span>
+                <p class="vendor-card__desc">Tents, chairs, tables, and more for every occasion. Seamless planning, premium quality.</p>
+                <a href="https://arizonapartyrental.com/" target="_blank" rel="noopener" class="btn-vendor">Visit Website →</a>
+            </div>
+            <div class="vendor-card">
+                <div class="vendor-card__icon">🔍</div>
+                <div class="vendor-card__name">GigSalad Tucson Rentals</div>
+                <span class="vendor-card__badge">Compare Rental Cos</span>
+                <p class="vendor-card__desc">Browse event rental companies in Tucson with real reviews and transparent pricing.</p>
+                <a href="https://www.gigsalad.com/" target="_blank" rel="noopener" class="btn-vendor">Visit Website →</a>
+            </div>
+        </div>
+        <p class="vendors__disclaimer">Listings sourced from public directories. Contact vendors directly to confirm availability.</p>
     </div>
 </section>
 
-<section class="cat-cta"><div class="cat-cta__inner"><div class="cat-cta__text"><h3>Need Tables, Chairs<br>or Tents in Tucson?</h3><p>Get matched with local rental pros — free quotes in minutes.</p></div><button class="btn-cta-white" onclick="openChatForCategory('Tables/Chairs')">Get Free Quotes →</button></div></section>
+<!-- ===== HOTELS CALLOUT ===== -->
+<div class="hotels-callout">
+    <a href="https://www.anrdoezrs.net/click-101714506-15734399" rel="nofollow sponsored" target="_blank">
+        🏨 Guests traveling for your event? Find hotels near any Tucson venue →
+    </a>
+</div>
 
-<footer class="cat-footer"><div class="cat-footer__inner"><div class="cat-footer__logo">Tucson Event Connections</div><div class="cat-footer__links"><a href="../index.html">All Categories</a><span style="color:var(--text-faint)">·</span><a href="../legal.html">Terms & Privacy</a><span style="color:var(--text-faint)">·</span><a href="https://theory-solutions.com" target="_blank">Theory Solutions</a></div><p class="cat-footer__disclaimer">Theory Solutions is a connection platform. We are NOT LIABLE for any services conducted or performed by independent vendors.</p><p class="cat-footer__powered">Powered by <a href="https://theory-solutions.com" target="_blank">Theory Solutions</a> · © 2026 · Serving Tucson, Marana & Oro Valley, AZ</p></div></footer>
+<!-- ===== AMAZON AFFILIATE ===== -->
+<section class="section">
+    <div class="section__inner">
+        <div class="section__label">Event Supplies</div>
+        <h2 class="section__title">Event Equipment &amp; Outdoor Comfort</h2>
+        <p class="section__sub">Supplement your rentals or keep guests cool at your outdoor Tucson event.</p>
+        <div class="amazon-grid">
+            <div class="amazon-card">
+                <div class="amazon-card__icon">🪑</div>
+                <div class="amazon-card__title">Folding Chairs (bulk)</div>
+                <p class="amazon-card__desc">For smaller events or supplementing rentals.</p>
+                <a href="https://www.amazon.com/s?k=white+folding+chairs+bulk+wedding" rel="nofollow" target="_blank" class="btn-amazon">Shop on Amazon →</a>
+            </div>
+            <div class="amazon-card">
+                <div class="amazon-card__icon">⛺</div>
+                <div class="amazon-card__title">10x10 Pop-Up Canopy</div>
+                <p class="amazon-card__desc">Instant shade for Tucson outdoor events.</p>
+                <a href="https://amzn.to/4sUiR0V" rel="nofollow" target="_blank" class="btn-amazon">Shop on Amazon →</a>
+            </div>
+            <div class="amazon-card">
+                <div class="amazon-card__icon">🌬️</div>
+                <div class="amazon-card__title">Outdoor Patio Misters</div>
+                <p class="amazon-card__desc">Beat the heat at your tented outdoor event.</p>
+                <a href="https://amzn.to/4dNtxJH" rel="nofollow" target="_blank" class="btn-amazon">Shop on Amazon →</a>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div id="chat-widget" style="display:none;"><div id="chat-header" onclick="toggleChat()"><div class="chat-header-label"><span class="chat-fab-icon">💬</span><div><div class="chat-header-title">Theory Assistant</div><div class="chat-header-status"><span class="live-dot"></span> Online now</div></div></div><span id="chat-toggle-icon">✕</span></div><div id="chat-body"><div id="chat-display"></div><div id="chat-controls"></div></div></div>
-<script src="../script.js"></script><script src="category.js"></script>
+<!-- ===== BLOG POSTS ===== -->
+<section class="section section--surface">
+    <div class="section__inner">
+        <div class="section__label">Planning Guides</div>
+        <h2 class="section__title">Event Rental Planning Guides</h2>
+        <p class="section__sub">Helpful articles to plan your Tucson outdoor event setup.</p>
+        <div class="blog-grid">
+            <a href="/blog/tucson-event-planning-checklist.html" class="blog-card">
+                <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400&q=80" alt="The ultimate Tucson event planning checklist" class="blog-card__img" loading="lazy">
+                <div class="blog-card__body">
+                    <div class="blog-card__title">The Ultimate Tucson Event Planning Checklist</div>
+                    <div class="blog-card__read">Read article →</div>
+                </div>
+            </a>
+            <a href="/blog/tucson-backyard-party-ideas.html" class="blog-card">
+                <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=400&q=80" alt="Tucson backyard party ideas" class="blog-card__img" loading="lazy">
+                <div class="blog-card__body">
+                    <div class="blog-card__title">Tucson Backyard Party Ideas</div>
+                    <div class="blog-card__read">Read article →</div>
+                </div>
+            </a>
+            <a href="/blog/tucson-corporate-event-planning-guide.html" class="blog-card">
+                <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=400&q=80" alt="Tucson corporate event planning guide" class="blog-card__img" loading="lazy">
+                <div class="blog-card__body">
+                    <div class="blog-card__title">Tucson Corporate Event Planning Guide</div>
+                    <div class="blog-card__read">Read article →</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+    <div class="section__inner">
+        <div class="section__label">FAQ</div>
+        <h2 class="section__title" style="text-align:center; margin-bottom: 2.5rem;">Table &amp; Chair Rental Questions Answered</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-item__q" onclick="toggleFaq(this)">
+                    How much do table and chair rentals cost in Tucson?
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__a">
+                    <p>Folding chairs run $2–$4 each. Tables are $8–$15. Tents vary from $150 for small pop-ups to $500+ for large 40x60 frame tents.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-item__q" onclick="toggleFaq(this)">
+                    Do rental companies deliver and set up in Tucson?
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__a">
+                    <p>Yes, most include delivery and pickup. Setup and takedown services are usually available for an extra fee — always ask when quoting.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-item__q" onclick="toggleFaq(this)">
+                    What surface can tents be set up on in Tucson?
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__a">
+                    <p>Grass, concrete, and gravel all work. Hard surfaces require different anchoring methods. Always confirm setup details with your vendor before booking.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-item__q" onclick="toggleFaq(this)">
+                    How much wind can Tucson event tents handle?
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__a">
+                    <p>Commercial frame tents are rated for Tucson's afternoon winds. Stakes and sandbag weights are critical. Always discuss anchoring strategy with your vendor, especially for monsoon season events.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__logo">Tucson Event Connections</div>
+        <div class="footer__links">
+            <a href="/">Home</a>
+            <span>·</span>
+            <a href="/blog/index.html">Blog</a>
+            <span>·</span>
+            <a href="/events.html">Events</a>
+            <span>·</span>
+            <a href="/about.html">About</a>
+            <span>·</span>
+            <a href="/legal.html">Terms &amp; Privacy</a>
+            <span>·</span>
+            <a href="https://theory-solutions.com" target="_blank">Theory Solutions</a>
+        </div>
+        <p class="footer__disclaimer">Theory Solutions is a connection platform. We are NOT LIABLE for any services conducted or performed by independent vendors.</p>
+        <p class="footer__powered">Powered by <a href="https://theory-solutions.com" target="_blank">Theory Solutions</a> · © 2026 · Serving Tucson, Marana &amp; Oro Valley, AZ</p>
+    </div>
+</footer>
+
+<!-- ===== FAQ ACCORDION JS ===== -->
+<script>
+function toggleFaq(btn) {
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(el) {
+        el.classList.remove('open');
+    });
+    if (!isOpen) {
+        item.classList.add('open');
+    }
+}
+</script>
+
 </body>
 </html>
