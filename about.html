@@ -4,437 +4,300 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3M5JB8V0WL"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3M5JB8V0WL');</script>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About Us | Tucson Event Connections</title>
-    <meta name="description" content="Tucson Event Connections is a locally operated vendor-matching platform built for Tucson event planners. Learn our story, our mission, and why local vendors trust us.">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>About Us | Tucson Event Connections — Family Owned & Operated</title>
+    <meta name="description" content="Tucson Event Connections is a family-owned Tucson resource for event planning — vendor guides, a local events calendar, editable invitations, and affiliate tools to help you plan any occasion.">
     <link rel="canonical" href="https://tucsoneventconnections.com/about.html">
     <meta property="og:title" content="About Tucson Event Connections">
-    <meta property="og:description" content="A locally built platform connecting Tucson event planners with trusted local vendors.">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <meta property="og:description" content="Family-owned and Tucson-based. Your local guide for event planning, vendors, and resources.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Tucson Event Connections",
+      "url": "https://tucsoneventconnections.com",
+      "logo": "https://tucsoneventconnections.com/favicon.png",
+      "description": "Family-owned Tucson event planning resource — vendor directory, events calendar, planning guides, and digital invitations.",
+      "address": {"@type": "PostalAddress", "addressLocality": "Tucson", "addressRegion": "AZ", "addressCountry": "US"},
+      "areaServed": ["Tucson, AZ", "Marana, AZ", "Oro Valley, AZ"],
+      "email": "hello@tucsoneventconnections.com"
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="tec-fonts.css">
     <style>
-        :root{
-            --bg:#FFFFFF;--surface:#F5F7FA;--surface-2:#EBEEF3;--surface-3:#DDE1E9;
-            --navy:#1B2A4A;--navy-light:#2D4166;--navy-deep:#0F1A2E;--navy-card:#1E3050;
-            --teal:#2AA198;--teal-dim:rgba(42,161,152,0.08);--teal-glow:rgba(42,161,152,0.2);--teal-hover:#239089;--teal-bright:#35B8AE;
-            --gold:#D4942A;--gold-dim:rgba(212,148,42,0.1);
-            --text:#1B2A4A;--text-muted:#5E6D8A;--text-faint:#94A0B8;--text-on-navy:rgba(255,255,255,0.92);--text-on-navy-muted:rgba(255,255,255,0.55);
-            --border:rgba(27,42,74,0.08);--border-hover:rgba(42,161,152,0.4);
-            --radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;
-            --font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
-            --transition:0.35s cubic-bezier(0.16,1,0.3,1);
-            --shadow-sm:0 1px 3px rgba(27,42,74,0.06);--shadow-md:0 4px 16px rgba(27,42,74,0.08);--shadow-lg:0 12px 40px rgba(27,42,74,0.1);--shadow-xl:0 24px 60px rgba(27,42,74,0.12);
-        }
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth}
+        :root{--bg:#FFFFFF;--surface:#F5F7FA;--surface-2:#EBEEF3;--surface-3:#DDE1E9;--navy:#1B2A4A;--navy-light:#2D4166;--navy-deep:#0F1A2E;--navy-card:#1E3050;--teal:#2AA198;--teal-dim:rgba(42,161,152,0.08);--teal-glow:rgba(42,161,152,0.2);--teal-hover:#239089;--teal-bright:#35B8AE;--gold:#D4942A;--gold-dim:rgba(212,148,42,0.1);--text:#1B2A4A;--text-muted:#5E6D8A;--text-faint:#94A0B8;--border:rgba(27,42,74,0.08);--border-hover:rgba(42,161,152,0.4);--radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;--font-display:'Exo 2',sans-serif;--font-body:'DM Sans',sans-serif;--transition:0.35s cubic-bezier(0.16,1,0.3,1);--shadow-sm:0 1px 3px rgba(27,42,74,0.06);--shadow-md:0 4px 16px rgba(27,42,74,0.08);--shadow-lg:0 12px 40px rgba(27,42,74,0.1);--shadow-xl:0 24px 60px rgba(27,42,74,0.12)}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
         body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:1rem;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
         a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;background:none;font-family:inherit}
+        @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
+        @keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
-        /* ── NAV ── */
-        nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:68px;background:rgba(255,255,255,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
-        .nav-logo{font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--navy);letter-spacing:-0.02em;display:flex;align-items:center;gap:0.5rem;text-decoration:none;white-space:nowrap;flex-shrink:0}
-        .nav-logo span{color:var(--teal)}
-        .nav-logo .dot{width:8px;height:8px;background:var(--teal);border-radius:50%;display:inline-block;animation:pulse-dot 2s ease-in-out infinite;flex-shrink:0}
+        nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:68px;background:rgba(255,255,255,0.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+        .nav-logo{font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--navy);display:flex;align-items:center;gap:0.5rem;text-decoration:none;white-space:nowrap;flex-shrink:0}
+        .nav-logo span{color:var(--teal)}.nav-logo .dot{width:8px;height:8px;background:var(--teal);border-radius:50%;display:inline-block;animation:pulse-dot 2s ease-in-out infinite;flex-shrink:0}
         .nav-right{display:flex;align-items:center;gap:1.5rem;flex-shrink:0}
-        .nav-link{font-size:0.85rem;font-weight:500;color:var(--text-muted);transition:color 0.2s}.nav-link:hover{color:var(--navy)}
-        .nav-link.active{color:var(--teal);font-weight:600}
-        .nav-cta{background:var(--teal);border:none;color:white;font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:0.55rem 1.3rem;border-radius:100px;transition:var(--transition);white-space:nowrap}
-        .nav-cta:hover{background:var(--teal-hover);box-shadow:0 4px 16px var(--teal-glow)}
-
-        /* ── HAMBURGER ── */
-        .nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:40px;height:40px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;flex-shrink:0;transition:var(--transition)}
+        .nav-link{font-size:0.85rem;font-weight:500;color:var(--text-muted);transition:color 0.2s}.nav-link:hover{color:var(--navy)}.nav-link.active{color:var(--teal);font-weight:600}
+        .nav-cta{background:var(--teal);color:white;font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:0.55rem 1.3rem;border-radius:100px;transition:var(--transition)}
+        .nav-cta:hover{background:var(--teal-hover)}
+        .nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:40px;height:40px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer}
         .nav-hamburger span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px;transition:var(--transition)}
         .nav-hamburger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
         .nav-hamburger.is-open span:nth-child(2){opacity:0;transform:scaleX(0)}
         .nav-hamburger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-        /* ── MOBILE MENU ── */
         .mobile-menu{position:fixed;top:68px;left:0;right:0;background:white;border-bottom:1px solid var(--border);box-shadow:var(--shadow-lg);z-index:999;padding:1.5rem 1.5rem 2rem;display:flex;flex-direction:column;gap:0.25rem;transform:translateY(-10px);opacity:0;pointer-events:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
         .mobile-menu.is-open{transform:translateY(0);opacity:1;pointer-events:all}
         .mobile-nav-link{font-size:1rem;font-weight:500;color:var(--navy);padding:0.85rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-        .mobile-nav-link:last-of-type{border-bottom:none}
         .mobile-nav-link::after{content:'→';color:var(--text-faint);font-size:0.85rem}
-        .mobile-cta{width:100%;background:var(--teal);color:white;font-size:0.9rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:1rem;border-radius:var(--radius-md);margin-top:1rem;transition:var(--transition);text-align:center;display:block}
-        .mobile-cta:hover{background:var(--teal-hover)}
+        .mobile-cta-btn{width:100%;background:var(--teal);color:white;font-family:var(--font-body);font-size:0.9rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:1rem;border-radius:var(--radius-md);margin-top:1rem;text-align:center;display:block}
 
-        @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
-
-        /* ── PAGE HERO ── */
-        .page-hero{position:relative;padding:9rem 2rem 6rem;background:var(--navy-deep);overflow:hidden;text-align:center}
-        .page-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 40%,rgba(42,161,152,0.1) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 80% 60%,rgba(212,148,42,0.06) 0%,transparent 60%)}
-        .page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 0%,transparent 70%)}
-        .page-hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(42,161,152,0.12);border:1px solid rgba(42,161,152,0.2);border-radius:100px;padding:0.4rem 1.1rem;font-size:0.78rem;font-weight:600;color:var(--teal-bright);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem;animation:fade-up 0.6s ease both}
-        .page-hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.08;letter-spacing:-0.035em;color:white;max-width:700px;margin:0 auto;animation:fade-up 0.6s 0.08s ease both}
+        .page-hero{padding:8rem 2rem 5rem;background:var(--navy-deep);text-align:center;position:relative;overflow:hidden}
+        .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 40%,rgba(42,161,152,0.12) 0%,transparent 65%)}
+        .hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(42,161,152,0.12);border:1px solid rgba(42,161,152,0.2);border-radius:100px;padding:0.4rem 1.1rem;font-size:0.78rem;font-weight:600;color:var(--teal-bright);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem;position:relative;z-index:1;animation:fade-up 0.6s ease both}
+        .page-hero h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-0.02em;line-height:1.1;color:white;max-width:700px;margin:0 auto;position:relative;z-index:1;animation:fade-up 0.6s 0.08s ease both}
         .page-hero h1 .grad{background:linear-gradient(135deg,var(--teal-bright) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .page-hero-sub{margin-top:1.25rem;font-size:clamp(1rem,1.8vw,1.1rem);color:rgba(255,255,255,0.55);max-width:500px;margin-left:auto;margin-right:auto;line-height:1.75;animation:fade-up 0.6s 0.16s ease both}
+        .page-hero p{margin:1rem auto 0;color:rgba(255,255,255,0.55);font-size:1.05rem;max-width:540px;line-height:1.75;position:relative;z-index:1;animation:fade-up 0.6s 0.16s ease both}
 
-        /* ── SECTION UTILITIES ── */
         .section-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
         .section-label::before{content:'';display:block;width:20px;height:1px;background:var(--teal)}
-        .section-wrap{max-width:1100px;margin:0 auto;padding:0 2.5rem}
 
-        /* ── STORY SECTION ── */
-        .story{padding:6rem 2.5rem}
+        /* STORY */
+        .story{padding:6rem 2rem}
         .story-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-        .story-text h2{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;color:var(--navy);margin-bottom:1.5rem}
-        .story-text p{color:var(--text-muted);font-size:0.97rem;line-height:1.8;margin-bottom:1rem}
-        .story-text p:last-child{margin-bottom:0}
+        .story-text h2{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;color:var(--navy);margin-bottom:1.5rem}
+        .story-text p{color:var(--text-muted);font-size:0.97rem;line-height:1.85;margin-bottom:1rem}
         .story-text strong{color:var(--navy);font-weight:600}
-        .story-visual{position:relative}
-        .story-card{background:var(--navy);border-radius:var(--radius-xl);padding:2.5rem;position:relative;overflow:hidden}
-        .story-card::before{content:'';position:absolute;top:-30%;right:-20%;width:280px;height:280px;background:radial-gradient(circle,rgba(42,161,152,0.2) 0%,transparent 70%);pointer-events:none}
-        .story-card-icon{font-size:3rem;margin-bottom:1.25rem;display:block}
-        .story-card h3{font-family:var(--font-display);font-size:1.3rem;font-weight:800;color:white;letter-spacing:-0.02em;margin-bottom:0.75rem}
-        .story-card p{color:rgba(255,255,255,0.6);font-size:0.9rem;line-height:1.7}
-        .story-card-tag{display:inline-flex;align-items:center;gap:0.4rem;margin-top:1.25rem;background:rgba(42,161,152,0.15);border:1px solid rgba(42,161,152,0.25);border-radius:100px;padding:0.35rem 0.9rem;font-size:0.75rem;font-weight:600;color:var(--teal-bright);letter-spacing:0.05em;text-transform:uppercase}
-        .story-float{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--gold);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;box-shadow:var(--shadow-xl)}
-        .story-float-num{font-family:var(--font-display);font-size:2rem;font-weight:800;color:white;line-height:1}
-        .story-float-label{font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.06em;margin-top:0.2rem}
+        .story-text p:last-child{margin-bottom:0}
 
-        /* ── VALUES ── */
-        .values{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:6rem 2.5rem}
-        .values-inner{max-width:1100px;margin:0 auto}
-        .values-header{text-align:center;margin-bottom:3.5rem}
-        .values-header h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;letter-spacing:-0.03em;color:var(--navy);margin-bottom:0.75rem}
-        .values-header p{color:var(--text-muted);font-size:0.97rem;max-width:480px;margin:0 auto;line-height:1.7}
-        .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-        .value-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem 1.75rem;position:relative;overflow:hidden;transition:var(--transition)}
-        .value-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border-hover)}
-        .value-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal)}
-        .value-card:nth-child(2)::before{background:linear-gradient(90deg,var(--gold),#F0C060)}
-        .value-card:nth-child(3)::before{background:linear-gradient(90deg,#3B82F6,#60A5FA)}
-        .value-icon{font-size:2rem;margin-bottom:1rem;display:block}
-        .value-title{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:0.6rem}
-        .value-text{font-size:0.88rem;color:var(--text-muted);line-height:1.75}
-        .value-text strong{color:var(--navy);font-weight:500}
+        /* FAMILY BADGE */
+        .family-badge{background:var(--navy);border-radius:var(--radius-xl);padding:2.5rem;position:relative;overflow:hidden}
+        .family-badge::before{content:'';position:absolute;top:-30%;right:-20%;width:260px;height:260px;background:radial-gradient(circle,rgba(42,161,152,0.2) 0%,transparent 70%)}
+        .family-icon{font-size:3.5rem;margin-bottom:1rem;display:block}
+        .family-badge h3{font-family:var(--font-display);font-size:1.35rem;font-weight:800;color:white;margin-bottom:0.75rem;letter-spacing:-0.02em}
+        .family-badge p{color:rgba(255,255,255,0.6);font-size:0.9rem;line-height:1.75}
+        .family-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.25rem}
+        .family-tag{background:rgba(42,161,152,0.12);border:1px solid rgba(42,161,152,0.2);color:var(--teal-bright);font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:100px}
 
-        /* ── HOW WE WORK ── */
-        .how-section{padding:6rem 2.5rem}
-        .how-inner{max-width:1100px;margin:0 auto}
-        .how-header{text-align:center;margin-bottom:3.5rem}
-        .how-header h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;letter-spacing:-0.03em;color:var(--navy);margin-bottom:0.75rem}
-        .how-cols{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-        .how-col-title{font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--navy);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:0.6rem}
-        .how-col-title .badge{background:var(--teal);color:white;font-size:0.65rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.2rem 0.7rem;border-radius:100px}
-        .how-col-title .badge-gold{background:var(--gold)}
-        .how-item{display:flex;gap:1rem;margin-bottom:1.25rem;align-items:flex-start}
-        .how-item:last-child{margin-bottom:0}
-        .how-num{width:32px;height:32px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:white;flex-shrink:0;margin-top:0.1rem}
-        .how-col:last-child .how-num{background:var(--gold)}
-        .how-item-text{font-size:0.9rem;color:var(--text-muted);line-height:1.7}
-        .how-item-text strong{color:var(--navy);font-weight:600;display:block;margin-bottom:0.15rem}
+        /* WHAT WE OFFER */
+        .offer{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:6rem 2rem}
+        .offer-inner{max-width:1100px;margin:0 auto}
+        .offer-header{text-align:center;margin-bottom:3rem}
+        .offer-header h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;letter-spacing:-0.03em;color:var(--navy);margin-bottom:0.6rem}
+        .offer-header p{color:var(--text-muted);font-size:0.97rem;max-width:500px;margin:0 auto;line-height:1.7}
+        .offer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+        .offer-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem 1.5rem;text-align:center;transition:var(--transition);text-decoration:none;display:block;color:inherit}
+        .offer-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(42,161,152,0.25)}
+        .offer-icon{font-size:2.2rem;margin-bottom:0.85rem;display:block}
+        .offer-title{font-family:var(--font-display);font-size:0.95rem;font-weight:800;color:var(--navy);margin-bottom:0.5rem}
+        .offer-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.65}
+        .offer-link{display:inline-flex;align-items:center;gap:0.3rem;margin-top:0.75rem;font-size:0.75rem;font-weight:700;color:var(--teal);letter-spacing:0.04em}
 
-        /* ── TUCSON SECTION ── */
-        .tucson-section{background:var(--navy-deep);padding:5rem 2.5rem;position:relative;overflow:hidden}
-        .tucson-bg{position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 80% 50%,rgba(42,161,152,0.08) 0%,transparent 65%)}
-        .tucson-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:3rem;position:relative;z-index:1;flex-wrap:wrap}
-        .tucson-text{flex:1;min-width:260px}
-        .tucson-text .section-label{color:var(--teal-bright)}.tucson-text .section-label::before{background:var(--teal-bright)}
-        .tucson-text h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;color:white;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1rem}
-        .tucson-text p{color:rgba(255,255,255,0.55);font-size:0.95rem;line-height:1.75;max-width:480px}
-        .tucson-stats{display:flex;flex-direction:column;gap:1rem;flex-shrink:0}
-        .stat-pill{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-md);padding:1.1rem 1.75rem;display:flex;align-items:center;gap:1rem}
-        .stat-pill .stat-icon{font-size:1.5rem}
-        .stat-pill .stat-num{font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:white;line-height:1}
-        .stat-pill .stat-label{font-size:0.78rem;color:rgba(255,255,255,0.45);margin-top:0.15rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:600}
+        /* MISSION */
+        .mission{padding:6rem 2rem}
+        .mission-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+        .mission-left h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;letter-spacing:-0.03em;color:var(--navy);margin-bottom:1.5rem;line-height:1.15}
+        .mission-left p{color:var(--text-muted);font-size:0.97rem;line-height:1.85;margin-bottom:1rem}
+        .mission-left strong{color:var(--navy);font-weight:600}
+        .pillars{display:flex;flex-direction:column;gap:1rem}
+        .pillar{display:flex;gap:1rem;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem}
+        .pillar-icon{font-size:1.4rem;flex-shrink:0;margin-top:0.1rem}
+        .pillar-title{font-family:var(--font-display);font-size:0.9rem;font-weight:700;color:var(--navy);margin-bottom:0.25rem}
+        .pillar-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.6}
 
-        /* ── VENDOR / CONSUMER CTA SPLIT ── */
-        .cta-split{padding:5rem 2.5rem 6rem}
-        .cta-split-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-        .cta-box{border-radius:var(--radius-xl);padding:3rem;position:relative;overflow:hidden}
-        .cta-box.cta-consumer{background:var(--teal)}
-        .cta-box.cta-vendor{background:var(--navy)}
-        .cta-box::before{position:absolute;font-size:7rem;right:1.5rem;top:50%;transform:translateY(-50%);opacity:0.12;pointer-events:none}
-        .cta-box.cta-consumer::before{content:'🌵'}
-        .cta-box.cta-vendor::before{content:'📸'}
-        .cta-box h3{font-family:var(--font-display);font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:800;color:white;letter-spacing:-0.03em;line-height:1.15;margin-bottom:0.75rem;position:relative;z-index:1}
-        .cta-box p{color:rgba(255,255,255,0.75);font-size:0.95rem;margin-bottom:1.75rem;line-height:1.65;position:relative;z-index:1}
-        .btn-white{background:white;color:var(--navy);font-family:var(--font-display);font-size:0.85rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:0.9rem 2rem;border-radius:100px;display:inline-flex;align-items:center;gap:0.5rem;transition:var(--transition);position:relative;z-index:1;box-shadow:0 6px 20px rgba(0,0,0,0.15)}
-        .btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.2)}
-        .btn-outline-white{background:transparent;color:white;border:1.5px solid rgba(255,255,255,0.3);font-family:var(--font-display);font-size:0.85rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:0.9rem 2rem;border-radius:100px;display:inline-flex;align-items:center;gap:0.5rem;transition:var(--transition);position:relative;z-index:1}
-        .btn-outline-white:hover{border-color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.08)}
+        /* CONTACT */
+        .contact-section{background:var(--navy);padding:5rem 2rem}
+        .contact-inner{max-width:700px;margin:0 auto;text-align:center}
+        .contact-inner .section-label{color:var(--teal-bright);justify-content:center}.contact-inner .section-label::before{background:var(--teal-bright)}
+        .contact-inner h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:white;letter-spacing:-0.02em;margin-bottom:0.75rem}
+        .contact-inner p{color:rgba(255,255,255,0.55);font-size:0.97rem;line-height:1.75;margin-bottom:2rem}
+        .contact-ways{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+        .contact-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 1.75rem;border-radius:100px;font-size:0.88rem;font-weight:700;transition:var(--transition)}
+        .contact-btn.primary{background:var(--teal);color:white}.contact-btn.primary:hover{background:var(--teal-hover);box-shadow:0 4px 16px var(--teal-glow)}
+        .contact-btn.secondary{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.15)}.contact-btn.secondary:hover{background:rgba(255,255,255,0.12)}
 
-        /* ── FOOTER ── */
         footer{background:var(--navy-deep);padding:3rem 2.5rem}
         .footer-inner{max-width:1300px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center}
         .footer-logo{font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:rgba(255,255,255,0.6)}
-        .footer-links{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;justify-content:center}
+        .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
         .footer-links a{color:rgba(255,255,255,0.4);font-size:0.85rem;transition:color 0.2s}.footer-links a:hover{color:var(--teal-bright)}
         .footer-cat-label{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:0.5rem}
         .footer-cats{display:flex;flex-wrap:wrap;gap:0.4rem 1rem;justify-content:center;margin-top:0.25rem}
         .footer-cats a{color:rgba(255,255,255,0.3);font-size:0.78rem;transition:color 0.2s}.footer-cats a:hover{color:var(--teal-bright)}
         .footer-disc{font-size:0.75rem;color:rgba(255,255,255,0.2);max-width:600px;line-height:1.6;margin-top:0.5rem}
-        .footer-pow{font-size:0.8rem;color:rgba(255,255,255,0.2)}.footer-pow a{color:var(--teal-bright);text-decoration:none;font-weight:600}
+        .footer-pow{font-size:0.8rem;color:rgba(255,255,255,0.2)}.footer-pow a{color:var(--teal-bright);font-weight:600}
 
-        @keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-
-        /* ── RESPONSIVE ── */
-        @media(max-width:960px){
-            .story-inner{grid-template-columns:1fr;gap:3rem}
-            .story-float{bottom:-1rem;right:0}
-            .values-grid{grid-template-columns:1fr 1fr}
-            .how-cols{grid-template-columns:1fr}
-            .cta-split-inner{grid-template-columns:1fr}
-        }
-        @media(max-width:768px){
-            /* NAV FIX */
-            nav{padding:0 1rem}
-            .nav-link{display:none}
-            .nav-cta{display:none}
-            .nav-hamburger{display:flex}
-            .nav-logo{font-size:0.88rem}
-
-            .section-wrap{padding:0 1.25rem}
-            .story{padding:4rem 1.25rem}
-            .values{padding:4rem 1.25rem}
-            .values-grid{grid-template-columns:1fr}
-            .how-section{padding:4rem 1.25rem}
-            .tucson-section{padding:4rem 1.25rem}
-            .cta-split{padding:3rem 1.25rem 4rem}
-            .cta-split-inner{gap:1rem}
-            .cta-box{padding:2rem 1.75rem}
-            .page-hero{padding:7rem 1.25rem 4rem}
-        }
-        @media(max-width:480px){
-            .values-grid{grid-template-columns:1fr}
-            .tucson-stats{width:100%}
-        }
+        @media(max-width:900px){.story-inner,.mission-inner{grid-template-columns:1fr;gap:2.5rem}.offer-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){nav{padding:0 1rem}.nav-link{display:none}.nav-cta{display:none}.nav-hamburger{display:flex}.page-hero{padding:6rem 1.25rem 3.5rem}.story{padding:4rem 1.25rem}.offer{padding:4rem 1.25rem}.mission{padding:4rem 1.25rem}.contact-section{padding:4rem 1.25rem}}
+        @media(max-width:480px){.offer-grid{grid-template-columns:1fr}.contact-ways{flex-direction:column;align-items:center}}
     </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
 <nav>
-    <a href="index.html" class="nav-logo">
-        <span class="dot"></span>Tucson<span>&nbsp;Event Connections</span>
-    </a>
+    <a href="/" class="nav-logo"><span class="dot"></span>Tucson<span>&nbsp;Event Connections</span></a>
     <div class="nav-right">
-        <a href="index.html#categories" class="nav-link">Categories</a>
-        <a href="index.html#tips" class="nav-link">Before You Book</a>
+        <a href="/#categories" class="nav-link">Categories</a>
         <a href="/blog/index.html" class="nav-link">Blog</a>
-        <a href="about.html" class="nav-link active">About</a>
-        <button class="nav-cta" onclick="window.location.href='index.html'">Join as Vendor</button>
-        <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
+        <a href="/events.html" class="nav-link">Events</a>
+        <a href="/invitations.html" class="nav-link">Invitations</a>
+        <a href="/about.html" class="nav-link active">About</a>
+        <a href="/" class="nav-cta">Find Vendors</a>
+        <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
     </div>
 </nav>
 
-<!-- ── MOBILE MENU ── -->
 <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">Categories</a>
-    <a href="index.html#tips" class="mobile-nav-link" onclick="closeMobileMenu()">Before You Book</a>
+    <a href="/#categories" class="mobile-nav-link" onclick="closeMobileMenu()">Categories</a>
     <a href="/blog/index.html" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>
-    <a href="about.html" class="mobile-nav-link" onclick="closeMobileMenu()">About</a>
-    <a href="index.html" class="mobile-cta" onclick="closeMobileMenu()">Join as Vendor →</a>
+    <a href="/events.html" class="mobile-nav-link" onclick="closeMobileMenu()">Events</a>
+    <a href="/invitations.html" class="mobile-nav-link" onclick="closeMobileMenu()">Invitations</a>
+    <a href="/" class="mobile-cta-btn" onclick="closeMobileMenu()">Find Vendors →</a>
 </div>
 
-<!-- ── PAGE HERO ── -->
 <section class="page-hero">
-    <div class="page-hero-bg"></div>
-    <div class="page-hero-grid"></div>
-    <div class="page-hero-eyebrow">🌵 Locally Operated · Tucson, AZ</div>
-    <h1>Built for Tucson.<br><span class="grad">By people who love it.</span></h1>
-    <p class="page-hero-sub">We're a locally operated platform on a simple mission — make it easier for Tucson event planners to find the people who bring their events to life.</p>
+    <div class="hero-eyebrow">🌵 Family Owned &amp; Operated — Tucson, AZ</div>
+    <h1>Your Tucson Event<br><span class="grad">Planning Hub</span></h1>
+    <p>We're a family-owned Tucson resource helping locals plan better events — from finding the right vendors to navigating the entire process with confidence.</p>
 </section>
 
-<!-- ── STORY ── -->
+<!-- STORY -->
 <section class="story">
     <div class="story-inner">
         <div class="story-text">
             <div class="section-label">Our Story</div>
-            <h2>Finding great vendors in Tucson shouldn't feel like a second job.</h2>
-            <p>Anyone who's planned an event in Tucson knows the drill. You ask around, search through Facebook groups, leave voicemails that never get returned, and end up with a handful of half-answers right before your deadline.</p>
-            <p>Tucson has <strong>genuinely talented local vendors</strong> — caterers, photographers, DJs, decorators — who do incredible work. The problem was never the talent. It was the connection.</p>
-            <p>We built TEC to fix that. One request from a planner becomes instant, targeted outreach to the vendors most likely to be a great fit. <strong>No endless searching. No phone tag. No guesswork.</strong></p>
-            <p>We're in our early days and proud of it — it means every vendor on this platform has been onboarded personally, and every consumer request gets real attention.</p>
+            <h2>We live here. We plan events here. We built this for here.</h2>
+            <p>Tucson Event Connections started with a simple frustration — planning an event in Tucson meant hours of searching, unreturned calls, and hoping the vendor you found was actually good. There had to be a better way.</p>
+            <p>So we built one. A <strong>locally focused hub</strong> where Tucson families and event planners can find vendor guides, browse a real events calendar, grab editable invitations, and get matched with local professionals — all in one place.</p>
+            <p>We're a <strong>small family-run operation</strong>, and that's intentional. It means we care about this community, we know Tucson's quirks (yes, the summer heat matters when planning outdoor events), and we're invested in every planner who comes through this site.</p>
+            <p>We're not a national platform that parachuted into Tucson. We're Tucson.</p>
         </div>
-        <div class="story-visual">
-            <div class="story-card">
-                <span class="story-card-icon">🎯</span>
-                <h3>The Problem We're Solving</h3>
-                <p>Tucson's event vendor market is fragmented. Great vendors are hard to find, and event planners waste hours on dead-end searches. We fix that with a single, structured request that reaches the right people instantly.</p>
-                <div class="story-card-tag">📍 Pima County — Tucson, Marana & Oro Valley</div>
-            </div>
-            <div class="story-float">
-                <div class="story-float-num">100%</div>
-                <div class="story-float-label">Free for planners</div>
+        <div class="family-badge">
+            <span class="family-icon">🏡</span>
+            <h3>Family Owned &amp; Operated</h3>
+            <p>Tucson Event Connections is run by a small local family team that knows this city inside and out. We're not a corporate directory — we're neighbors helping neighbors plan better events.</p>
+            <div class="family-tags">
+                <span class="family-tag">📍 Tucson, AZ</span>
+                <span class="family-tag">🌵 Born &amp; Raised</span>
+                <span class="family-tag">💛 Community First</span>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ── VALUES ── -->
-<section class="values">
-    <div class="values-inner">
-        <div class="values-header">
-            <div class="section-label" style="justify-content:center">What We Stand For</div>
-            <h2>Our Principles</h2>
-            <p>These aren't marketing words. They're the decisions we make every day about how this platform works.</p>
+<!-- WHAT WE OFFER -->
+<section class="offer">
+    <div class="offer-inner">
+        <div class="offer-header">
+            <div class="section-label" style="justify-content:center">What We Offer</div>
+            <h2>Everything you need to plan a Tucson event</h2>
+            <p>Free resources, tools, and guides — all built specifically for Tucson and surrounding communities.</p>
         </div>
-        <div class="values-grid">
-            <div class="value-card">
-                <span class="value-icon">🆓</span>
-                <div class="value-title">Always Free for Planners</div>
-                <p class="value-text">Consumer-side matching is and will always be <strong>completely free</strong>. You describe your event, we send the leads. No subscription, no hidden fees, no catch.</p>
-            </div>
-            <div class="value-card">
-                <span class="value-icon">🤝</span>
-                <div class="value-title">Vendors We Actually Know</div>
-                <p class="value-text">We don't have thousands of faceless listings. Every vendor in our network has been <strong>personally onboarded</strong>. Small by design — for now.</p>
-            </div>
-            <div class="value-card">
-                <span class="value-icon">📍</span>
-                <div class="value-title">Tucson First, Always</div>
-                <p class="value-text">We're not a national platform trying to localize. We're a <strong>Tucson-specific platform</strong> built to serve Pima County — and nothing else.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ── HOW WE WORK ── -->
-<section class="how-section">
-    <div class="how-inner">
-        <div class="how-header">
-            <div class="section-label" style="justify-content:center">How It Works</div>
-            <h2>Simple for everyone involved.</h2>
-        </div>
-        <div class="how-cols">
-            <div class="how-col">
-                <div class="how-col-title">
-                    For Event Planners
-                    <span class="badge">Consumers</span>
-                </div>
-                <div class="how-item">
-                    <div class="how-num">1</div>
-                    <div class="how-item-text"><strong>Describe your event</strong>Tell our chat assistant what you need — date, guest count, category, and budget. Takes about two minutes.</div>
-                </div>
-                <div class="how-item">
-                    <div class="how-num">2</div>
-                    <div class="how-item-text"><strong>We match and alert vendors</strong>Your request goes directly to vetted vendors in the right category. No one outside your needs gets pinged.</div>
-                </div>
-                <div class="how-item">
-                    <div class="how-num">3</div>
-                    <div class="how-item-text"><strong>Compare and book</strong>Vendors reach out directly with quotes. You pick the best fit — no middleman, no markup on the final price.</div>
-                </div>
-            </div>
-            <div class="how-col">
-                <div class="how-col-title">
-                    For Vendors
-                    <span class="badge badge-gold">Partners</span>
-                </div>
-                <div class="how-item">
-                    <div class="how-num">1</div>
-                    <div class="how-item-text"><strong>Join the network</strong>Apply to become a TEC partner. We'll onboard you personally, set up your profile, and match you to the right event categories.</div>
-                </div>
-                <div class="how-item">
-                    <div class="how-num">2</div>
-                    <div class="how-item-text"><strong>Receive qualified leads</strong>When a consumer request matches your category, you get the details instantly. No chasing cold traffic — warm leads delivered to you.</div>
-                </div>
-                <div class="how-item">
-                    <div class="how-num">3</div>
-                    <div class="how-item-text"><strong>Close on your terms</strong>You connect directly with the planner. Pricing, terms, and logistics stay between you and the client.</div>
-                </div>
-            </div>
+        <div class="offer-grid">
+            <a href="/#categories" class="offer-card">
+                <span class="offer-icon">🔎</span>
+                <div class="offer-title">Vendor Directory</div>
+                <div class="offer-desc">Browse local caterers, DJs, photographers, florists, and more. Get matched and get free quotes.</div>
+                <span class="offer-link">Browse Vendors →</span>
+            </a>
+            <a href="/blog/index.html" class="offer-card">
+                <span class="offer-icon">📝</span>
+                <div class="offer-title">Planning Blog</div>
+                <div class="offer-desc">Expert guides on Tucson weddings, quinceañeras, backyard parties, and more — with local insight.</div>
+                <span class="offer-link">Read the Blog →</span>
+            </a>
+            <a href="/events.html" class="offer-card">
+                <span class="offer-icon">📅</span>
+                <div class="offer-title">Events Calendar</div>
+                <div class="offer-desc">Find farmers markets, festivals, and community events happening around Tucson every week.</div>
+                <span class="offer-link">View Events →</span>
+            </a>
+            <a href="/invitations.html" class="offer-card">
+                <span class="offer-icon">✉️</span>
+                <div class="offer-title">Invitation Templates</div>
+                <div class="offer-desc">Editable digital invitations for every occasion. Customize in your browser, download instantly.</div>
+                <span class="offer-link">Shop Templates →</span>
+            </a>
         </div>
     </div>
 </section>
 
-<!-- ── TUCSON FOCUS ── -->
-<section class="tucson-section">
-    <div class="tucson-bg"></div>
-    <div class="tucson-inner">
-        <div class="tucson-text">
-            <div class="section-label">Why Local Matters</div>
-            <h2>Tucson isn't just where we operate.<br>It's who we're built for.</h2>
-            <p>National vendor marketplaces are built around volume. We're built around Tucson. That means we understand the heat at summer outdoor events, the quinceañera culture, the backyard weddings in Marana, and the corporate events downtown. Our vendors live here. They get it.</p>
+<!-- MISSION -->
+<section class="mission">
+    <div class="mission-inner">
+        <div class="mission-left">
+            <div class="section-label">Why We Do This</div>
+            <h2>Great events don't happen by accident — they happen with the right help.</h2>
+            <p>Tucson has an incredible community of event vendors — talented caterers, creative photographers, skilled decorators. The problem has always been <strong>visibility and connection</strong>. Good vendors get overlooked. Planners waste time searching.</p>
+            <p>We exist to close that gap. Whether you're planning a backyard quinceañera, a corporate luncheon, or the wedding of the decade — <strong>you deserve good information and good vendors</strong>. That's what we're here to provide.</p>
         </div>
-        <div class="tucson-stats">
-            <div class="stat-pill">
-                <span class="stat-icon">🌵</span>
+        <div class="pillars">
+            <div class="pillar">
+                <span class="pillar-icon">🆓</span>
                 <div>
-                    <div class="stat-num">Local</div>
-                    <div class="stat-label">Operated in Tucson, AZ</div>
+                    <div class="pillar-title">Always Free for Planners</div>
+                    <div class="pillar-desc">Our guides, calendar, and vendor matching are completely free. No sign-up walls, no hidden fees.</div>
                 </div>
             </div>
-            <div class="stat-pill">
-                <span class="stat-icon">🗺️</span>
+            <div class="pillar">
+                <span class="pillar-icon">📍</span>
                 <div>
-                    <div class="stat-num">3 Cities</div>
-                    <div class="stat-label">Tucson · Marana · Oro Valley</div>
+                    <div class="pillar-title">Tucson Specific</div>
+                    <div class="pillar-desc">Every article, guide, and vendor listing is focused on Tucson, Marana, and Oro Valley. No generic national content.</div>
                 </div>
             </div>
-            <div class="stat-pill">
-                <span class="stat-icon">📋</span>
+            <div class="pillar">
+                <span class="pillar-icon">🤝</span>
                 <div>
-                    <div class="stat-num">8+</div>
-                    <div class="stat-label">Event Categories Covered</div>
+                    <div class="pillar-title">Community Driven</div>
+                    <div class="pillar-desc">We feature local vendors, local events, and local knowledge. Supporting Tucson businesses is core to what we do.</div>
+                </div>
+            </div>
+            <div class="pillar">
+                <span class="pillar-icon">🔄</span>
+                <div>
+                    <div class="pillar-title">Always Improving</div>
+                    <div class="pillar-desc">New content every week, updated events monthly, and new vendor categories added as the community grows.</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ── DUAL CTA ── -->
-<section class="cta-split">
-    <div class="cta-split-inner">
-        <div class="cta-box cta-consumer">
-            <h3>Planning an event?<br>Start here — it's free.</h3>
-            <p>Tell us what you need and we'll handle the matchmaking. No sign-up required.</p>
-            <a href="index.html" class="btn-white">Get Matched Now →</a>
-        </div>
-        <div class="cta-box cta-vendor">
-            <h3>You're a Tucson vendor?<br>We want to know you.</h3>
-            <p>Join our growing network and start receiving qualified local event leads.</p>
-            <a href="index.html" class="btn-outline-white">Apply to Join →</a>
+<!-- CONTACT -->
+<section class="contact-section">
+    <div class="contact-inner">
+        <div class="section-label">Get In Touch</div>
+        <h2>Questions? We're local and we actually respond.</h2>
+        <p>Whether you're a vendor who wants to be featured, an event planner with a question, or just someone who wants to say hi — we'd love to hear from you. We're a small team, so you're getting a real person.</p>
+        <div class="contact-ways">
+            <a href="mailto:hello@tucsoneventconnections.com" class="contact-btn primary">✉️ Email Us</a>
+            <a href="/" class="contact-btn secondary">🔎 Find Vendors</a>
         </div>
     </div>
 </section>
 
-<!-- ── FOOTER ── -->
 <footer><div class="footer-inner">
     <div class="footer-logo">Tucson Event Connections</div>
     <div class="footer-links">
-        <a href="legal.html" target="_blank">Terms & Privacy</a>
-        <span style="color:rgba(255,255,255,0.2)">·</span>
+        <a href="legal.html">Terms &amp; Privacy</a>
         <a href="about.html">About</a>
-        <span style="color:rgba(255,255,255,0.2)">·</span>
+        <a href="events.html">Events</a>
+        <a href="blog/index.html">Blog</a>
         <a href="https://theory-solutions.com" target="_blank">Theory Solutions</a>
     </div>
     <div class="footer-cat-label">Browse by Category</div>
     <div class="footer-cats">
-        <a href="tucson/catering.html">Catering & Food Trucks</a>
-        <a href="tucson/tables-chairs.html">Tables, Chairs & Tents</a>
-        <a href="tucson/jumping-houses.html">Bounce Houses & Slides</a>
-        <a href="tucson/photography.html">Photography & Photo Booths</a>
-        <a href="tucson/cakes.html">Cakes & Sweets</a>
-        <a href="tucson/transportation.html">Transportation & Shuttles</a>
-        <a href="tucson/music-dj.html">DJs & Live Music</a>
-        <a href="tucson/decor.html">Decor, Balloons & Piñatas</a>
+        <a href="tucson/catering.html">Catering &amp; Food Trucks</a><a href="tucson/tables-chairs.html">Tables, Chairs &amp; Tents</a><a href="tucson/jumping-houses.html">Bounce Houses &amp; Slides</a><a href="tucson/photography.html">Photography &amp; Photo Booths</a><a href="tucson/cakes.html">Cakes &amp; Sweets</a><a href="tucson/transportation.html">Transportation &amp; Shuttles</a><a href="tucson/music-dj.html">DJs &amp; Live Music</a><a href="tucson/decor.html">Decor, Balloons &amp; Piñatas</a>
     </div>
     <p class="footer-disc">Theory Solutions is a connection platform. We are NOT LIABLE for any services conducted or performed by independent vendors.</p>
-    <p class="footer-pow">Powered by <a href="https://theory-solutions.com" target="_blank">Theory Solutions</a> &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; Serving Tucson, Marana & Oro Valley, AZ</p>
+    <p class="footer-pow">Powered by <a href="https://theory-solutions.com" target="_blank">Theory Solutions</a> &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; Serving Tucson, Marana &amp; Oro Valley, AZ</p>
 </div></footer>
 
 <script>
-    function toggleMobileMenu() {
-        const menu = document.getElementById('mobileMenu');
-        const btn = document.getElementById('navHamburger');
-        const isOpen = menu.classList.contains('is-open');
-        menu.classList.toggle('is-open', !isOpen);
-        btn.classList.toggle('is-open', !isOpen);
-    }
-    function closeMobileMenu() {
-        document.getElementById('mobileMenu').classList.remove('is-open');
-        document.getElementById('navHamburger').classList.remove('is-open');
-    }
-    // Close on outside click
-    document.addEventListener('click', function(e) {
-        const menu = document.getElementById('mobileMenu');
-        const btn = document.getElementById('navHamburger');
-        if (menu.classList.contains('is-open') && !menu.contains(e.target) && !btn.contains(e.target)) {
-            closeMobileMenu();
-        }
-    });
+function toggleMobileMenu(){const m=document.getElementById('mobileMenu'),b=document.getElementById('navHamburger'),o=m.classList.contains('is-open');m.classList.toggle('is-open',!o);b.classList.toggle('is-open',!o)}
+function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('is-open');document.getElementById('navHamburger').classList.remove('is-open')}
+document.addEventListener('click',function(e){const m=document.getElementById('mobileMenu'),b=document.getElementById('navHamburger');if(m.classList.contains('is-open')&&!m.contains(e.target)&&!b.contains(e.target))closeMobileMenu()});
 </script>
 </body>
 </html>
