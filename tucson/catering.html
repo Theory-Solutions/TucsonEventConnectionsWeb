@@ -1,121 +1,1039 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3M5JB8V0WL"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3M5JB8V0WL');</script>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tucson Catering & Food Trucks for Events | Tucson Event Connections</title>
-    <meta name="description" content="Find the best catering, food trucks & taco carts for events in Tucson, AZ. Get free quotes from local pros. Serving Pima County, Oro Valley & Marana.">
-    <meta name="keywords" content="Tucson catering, food truck Tucson AZ, taco cart rental Tucson, event catering Pima County, wedding catering Tucson">
-    <link rel="canonical" href="https://tucsoneventconnections.com/tucson/catering">
-    <meta property="og:title" content="Tucson Catering & Food Trucks for Events"><meta property="og:description" content="Get free quotes from Tucson's best caterers and food trucks."><meta property="og:type" content="website"><meta property="og:url" content="https://tucsoneventconnections.com/tucson/catering">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tucson Catering &amp; Food Trucks for Events 2026 | Tucson Event Connections</title>
+    <meta name="description" content="Find the best caterers and food trucks in Tucson AZ for weddings, quinceañeras, corporate events and parties. Browse local vendors, pricing guides, and planning tips.">
+    <link rel="canonical" href="https://tucsoneventconnections.com/tucson/catering.html">
+    <meta property="og:title" content="Tucson Catering &amp; Food Trucks for Events 2026 | Tucson Event Connections">
+    <meta property="og:description" content="Find the best caterers and food trucks in Tucson AZ for weddings, quinceañeras, corporate events and parties.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tucsoneventconnections.com/tucson/catering.html">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1555244162-803834f70033?w=1200&q=80">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- FAQ Schema -->
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does event catering cost in Tucson?","acceptedAnswer":{"@type":"Answer","text":"Event catering in Tucson typically ranges from $10-$20 per person for taco carts and food trucks, $25-$45 per person for buffet-style, and $50-$85 per person for plated service. Prices vary by menu and guest count."}},{"@type":"Question","name":"How far in advance should I book a caterer in Tucson?","acceptedAnswer":{"@type":"Answer","text":"For weddings and large events, book 3-6 months ahead. Corporate events and parties usually need 2-6 weeks. During Tucson's peak event season (October-April), book as early as possible."}},{"@type":"Question","name":"Do Tucson food trucks need permits for private events?","acceptedAnswer":{"@type":"Answer","text":"For private residential events, food trucks generally don't need special permits beyond their existing business license. For public or park events, additional permits from Pima County may be required."}},{"@type":"Question","name":"Who handles trash and cleanup after catering?","acceptedAnswer":{"@type":"Answer","text":"This varies by vendor. Full-service caterers typically handle all cleanup. Food trucks and taco carts may leave trash responsibility to the host. Always clarify cleanup terms before booking."}}]}</script>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="category-styles.css">
-    <link rel="stylesheet" href="../tec-fonts.css">
+
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --bg: #FFFFFF;
+            --surface: #F5F7FA;
+            --navy: #1B2A4A;
+            --navy-deep: #0F1A2E;
+            --navy-card: #1E3050;
+            --teal: #2AA198;
+            --teal-hover: #239089;
+            --teal-bright: #35B8AE;
+            --teal-glow: rgba(42,161,152,0.2);
+            --gold: #D4942A;
+            --gold-light: rgba(212,148,42,0.15);
+            --text: #1B2A4A;
+            --text-muted: #5E6D8A;
+            --text-faint: #94A0B8;
+            --border: rgba(27,42,74,0.08);
+            --font-display: 'Exo 2', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+        }
+
+        /* ===== RESET ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(15,26,46,0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(42,161,152,0.15);
+            height: 64px;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        .nav__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .nav__logo {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            white-space: nowrap;
+        }
+        .nav__logo .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--teal);
+            border-radius: 50%;
+            margin-right: 2px;
+        }
+        .nav__links {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+        }
+        .nav__links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.75);
+            transition: color 0.2s;
+        }
+        .nav__links a:hover { color: var(--teal-bright); }
+        .nav__cta {
+            background: var(--teal);
+            color: #fff;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.875rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            white-space: nowrap;
+        }
+        .nav__cta:hover { background: var(--teal-hover); transform: translateY(-1px); }
+        .nav__hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+        }
+        .nav__hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .nav__mobile {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: var(--navy-deep);
+            border-bottom: 1px solid rgba(42,161,152,0.2);
+            padding: 1.5rem 2rem;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 99;
+        }
+        .nav__mobile.open { display: flex; }
+        .nav__mobile a {
+            color: rgba(255,255,255,0.85);
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .nav__mobile a:last-of-type { border-bottom: none; }
+        .nav__mobile .nav__cta { margin-top: 0.5rem; text-align: center; display: block; padding: 0.75rem; }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 5rem;
+            overflow: hidden;
+            background: var(--navy-deep);
+        }
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1555244162-803834f70033?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        .hero__glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(42,161,152,0.18) 0%, transparent 70%);
+            z-index: 1;
+        }
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            width: 100%;
+        }
+        .hero__breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .hero__breadcrumb a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+        .hero__breadcrumb a:hover { color: var(--teal-bright); }
+        .hero__breadcrumb span { color: rgba(255,255,255,0.3); }
+        .hero__icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 16px rgba(42,161,152,0.4));
+        }
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+        .grad {
+            background: linear-gradient(135deg, var(--teal-bright) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero__sub {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(255,255,255,0.72);
+            max-width: 580px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        .hero__pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+        .hero__pill {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(42,161,152,0.35);
+            color: rgba(255,255,255,0.88);
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.45rem 1.1rem;
+            border-radius: 50px;
+            backdrop-filter: blur(8px);
+        }
+        .btn-scroll {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--teal);
+            color: #fff;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 24px rgba(42,161,152,0.35);
+        }
+        .btn-scroll:hover {
+            background: var(--teal-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(42,161,152,0.45);
+        }
+
+        /* ===== SECTION WRAPPER ===== */
+        .section {
+            padding: 5rem 2rem;
+        }
+        .section--surface { background: var(--surface); }
+        .section--dark { background: var(--navy-deep); }
+        .section__inner {
+            max-width: 1160px;
+            margin: 0 auto;
+        }
+        .section__label {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 0.6rem;
+        }
+        .section__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .section__sub {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+        .section--dark .section__title { color: #fff; }
+        .section--dark .section__sub { color: rgba(255,255,255,0.6); }
+        .section--dark .section__label { color: var(--teal-bright); }
+
+        /* ===== PRICING GRID ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .pricing-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1.5px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal), var(--gold));
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(27,42,74,0.1);
+        }
+        .pricing-card__emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .pricing-card__title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.35rem;
+        }
+        .pricing-card__range {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+        .pricing-card__desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ===== VENDORS GRID ===== */
+        .vendors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .vendor-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            border: 1.5px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .vendor-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(27,42,74,0.1);
+        }
+        .vendor-card__icon {
+            font-size: 2.2rem;
+        }
+        .vendor-card__name {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        .vendor-card__badge {
+            display: inline-block;
+            background: var(--teal-glow);
+            color: var(--teal);
+            border: 1px solid rgba(42,161,152,0.25);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.65rem;
+            border-radius: 50px;
+        }
+        .vendor-card__desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            flex: 1;
+        }
+        .btn-vendor {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            border: 1.5px solid var(--teal);
+            color: var(--teal);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.45rem 1rem;
+            border-radius: 50px;
+            transition: background 0.2s, color 0.2s;
+            align-self: flex-start;
+        }
+        .btn-vendor:hover {
+            background: var(--teal);
+            color: #fff;
+        }
+        .vendors__disclaimer {
+            font-size: 0.78rem;
+            color: var(--text-faint);
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        /* ===== HOTELS CALLOUT ===== */
+        .hotels-callout {
+            background: var(--teal);
+            padding: 1.25rem 2rem;
+            text-align: center;
+        }
+        .hotels-callout a {
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.2s;
+        }
+        .hotels-callout a:hover { opacity: 0.85; }
+
+        /* ===== AMAZON SECTION ===== */
+        .amazon-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .amazon-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            border: 1.5px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .amazon-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(27,42,74,0.09);
+        }
+        .amazon-card__icon {
+            font-size: 2.2rem;
+        }
+        .amazon-card__title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        .amazon-card__desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            flex: 1;
+        }
+        .btn-amazon {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: #FF9900;
+            color: #111;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.5rem 1.1rem;
+            border-radius: 50px;
+            transition: filter 0.2s, transform 0.15s;
+            align-self: flex-start;
+        }
+        .btn-amazon:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        /* ===== TIPS SECTION ===== */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .tip-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            border: 1.5px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .tip-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+        .tip-card--teal::before { background: var(--teal); }
+        .tip-card--gold::before { background: var(--gold); }
+        .tip-card--blue::before { background: #3B82F6; }
+        .tip-card__icon {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .tip-card__title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .tip-card__text {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ===== BLOG POSTS ===== */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .blog-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1.5px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: block;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(27,42,74,0.1);
+        }
+        .blog-card__img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .blog-card__body {
+            padding: 1.25rem;
+        }
+        .blog-card__title {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        .blog-card__read {
+            font-size: 0.8rem;
+            color: var(--teal);
+            font-weight: 600;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-list {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+        .faq-item__q {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            padding: 1.25rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--navy);
+            transition: color 0.2s;
+        }
+        .faq-item__q:hover { color: var(--teal); }
+        .faq-item__icon {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--teal);
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+        .faq-item.open .faq-item__icon { transform: rotate(45deg); }
+        .faq-item__a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+        .faq-item.open .faq-item__a {
+            max-height: 400px;
+            padding-bottom: 1.25rem;
+        }
+        .faq-item__a p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--navy-deep);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer__inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .footer__logo {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 1.25rem;
+        }
+        .footer__links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer__links a {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.55);
+            transition: color 0.2s;
+        }
+        .footer__links a:hover { color: var(--teal-bright); }
+        .footer__links span { color: rgba(255,255,255,0.2); }
+        .footer__disclaimer {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.3);
+            max-width: 600px;
+            margin: 0 auto 0.75rem;
+            line-height: 1.5;
+        }
+        .footer__powered {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.25);
+        }
+        .footer__powered a { color: rgba(255,255,255,0.4); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .nav__links { display: none; }
+            .nav__cta { display: none; }
+            .nav__hamburger { display: flex; }
+            .pricing-grid { grid-template-columns: 1fr 1fr; }
+            .vendors-grid { grid-template-columns: 1fr 1fr; }
+            .amazon-grid { grid-template-columns: 1fr 1fr; }
+            .tips-grid { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .vendors-grid { grid-template-columns: 1fr; }
+            .amazon-grid { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .nav { padding: 0 1rem; }
+            .section { padding: 3.5rem 1.25rem; }
+            .hero { padding: 7rem 1.25rem 4rem; min-height: 70vh; }
+        }
+    </style>
 </head>
 <body>
-<nav class="cat-nav">
-    <a href="../index.html" class="cat-nav__logo"><span class="dot"></span>Tucson<span>&nbsp;Event Connections</span></a>
-    <div class="cat-nav__links">
-        <a href="../index.html" class="cat-nav__link">All Categories</a>
-        <a href="#faq" class="cat-nav__link">FAQ</a>
-        <button class="cat-nav__cta" onclick="openChatForCategory('Catering')">Get Free Quotes</button>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+    <div class="nav__inner">
+        <a href="/" class="nav__logo"><span class="dot"></span>Tucson<span>&nbsp;Event Connections</span></a>
+        <div class="nav__links">
+            <a href="/">Home</a>
+            <a href="/blog/index.html">Blog</a>
+            <a href="/events.html">Events</a>
+            <a href="/invitations.html">Invitations</a>
+            <a href="/about.html">About</a>
+        </div>
+        <a href="/" class="nav__cta">Find Vendors</a>
+        <button class="nav__hamburger" onclick="document.querySelector('.nav__mobile').classList.toggle('open')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </nav>
+<div class="nav__mobile">
+    <a href="/">Home</a>
+    <a href="/blog/index.html">Blog</a>
+    <a href="/events.html">Events</a>
+    <a href="/invitations.html">Invitations</a>
+    <a href="/about.html">About</a>
+    <a href="/" class="nav__cta">Find Vendors</a>
+</div>
 
-<section class="cat-hero">
-    <div class="cat-hero__bg"></div>
-    <nav class="cat-hero__breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../index.html">Tucson</a><span>›</span><span>Catering</span></nav>
-    <div class="cat-hero__icon">🚚</div>
-    <h1>Tucson <span class="highlight">Catering & Food Trucks</span> for Any Event</h1>
-    <p class="cat-hero__sub">From authentic taco carts to full-service wedding catering — get connected with local pros across Pima County.</p>
-    <div class="cat-hero__stats">
-        <div><div class="cat-hero__stat-val">$10–$20</div><div class="cat-hero__stat-label">Per Person Avg.</div></div>
-        <div><div class="cat-hero__stat-val">100%</div><div class="cat-hero__stat-label">Local Vendors</div></div>
-        <div><div class="cat-hero__stat-val">Free</div><div class="cat-hero__stat-label">Quote Requests</div></div>
-    </div>
-    <div class="cat-hero__cta">
-        <button class="btn-primary" onclick="openChatForCategory('Catering')">Get Catering Quotes →</button>
-        <button class="btn-ghost" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})" style="margin-left:1rem;">Read FAQ ↓</button>
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__glow"></div>
+    <div class="hero__content">
+        <nav class="hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/tucson/">Tucson</a>
+            <span>›</span>
+            <span>Catering &amp; Food Trucks</span>
+        </nav>
+        <div class="hero__icon">🚚</div>
+        <h1>Tucson Catering &amp; <span class="grad">Food Trucks</span></h1>
+        <p class="hero__sub">From backyard taco carts to full-service wedding catering — find the right local vendor for your Tucson event.</p>
+        <div class="hero__pills">
+            <span class="hero__pill">$10–$85 / person</span>
+            <span class="hero__pill">100% Local Vendors</span>
+            <span class="hero__pill">Free to Browse</span>
+        </div>
+        <button class="btn-scroll" onclick="document.getElementById('vendors').scrollIntoView({behavior:'smooth'})">
+            Browse Local Vendors ↓
+        </button>
     </div>
 </section>
 
-<section class="cat-pricing">
-    <div class="cat-section-label">Pricing Guide</div>
-    <h2 class="cat-section-title">What Catering Costs in Tucson</h2>
-    <p class="cat-section-subtitle">Typical price ranges from our local vendor network.</p>
-    <div class="pricing-grid">
-        <div class="pricing-card anim"><div class="pricing-card__title">Taco Carts & Food Trucks</div><div class="pricing-card__range">$10–$20 /person</div><p class="pricing-card__desc">Build-your-own taco bars, birria, street corn, and Sonoran dogs. Perfect for casual events and backyard parties.</p></div>
-        <div class="pricing-card anim anim-d1"><div class="pricing-card__title">Buffet-Style Catering</div><div class="pricing-card__range">$25–$45 /person</div><p class="pricing-card__desc">Self-serve stations with multiple entrees, sides, and desserts. Great for weddings, quinceañeras, and corporate events.</p></div>
-        <div class="pricing-card anim anim-d2"><div class="pricing-card__title">Plated / Full-Service</div><div class="pricing-card__range">$50–$85 /person</div><p class="pricing-card__desc">Individual plated courses with wait staff, linens, and bar service. The premium choice for formal events and galas.</p></div>
-        <div class="pricing-card anim anim-d3"><div class="pricing-card__title">BBQ & Smokehouse</div><div class="pricing-card__range">$18–$35 /person</div><p class="pricing-card__desc">Slow-smoked brisket, ribs, and pulled pork over mesquite wood. Arizona-style BBQ perfect for outdoor events.</p></div>
-    </div>
-</section>
-
-<section class="cat-info">
-    <div class="cat-info__inner">
-        <div class="cat-section-label">What to Know</div>
-        <h2 class="cat-section-title">Before You Book a Caterer</h2>
-        <div class="info-grid">
-            <div class="info-card accent-teal anim"><div class="info-card__icon">🧹</div><div class="info-card__title">Clarify Cleanup</div><p class="info-card__text">Full-service caterers usually handle cleanup. Food trucks often leave trash to the host. Always confirm before signing — hidden cleanup fees are the #1 surprise in Tucson events.</p></div>
-            <div class="info-card accent-gold anim anim-d1"><div class="info-card__icon">⚡</div><div class="info-card__title">Check Power Needs</div><p class="info-card__text">Food trucks need a dedicated 20-amp circuit or generator access. Confirm your venue's electrical setup matches what the caterer requires — especially for backyard events.</p></div>
-            <div class="info-card accent-blue anim anim-d2"><div class="info-card__icon">🌡️</div><div class="info-card__title">Plan for the Heat</div><p class="info-card__text">Tucson summers hit 100°F+. Outdoor catering needs shade coverage, cold holding equipment, and plenty of hydration stations. October–April is prime season for outdoor food service.</p></div>
+<!-- ===== PRICING GUIDE ===== -->
+<section class="section">
+    <div class="section__inner">
+        <div class="section__label">Pricing Guide</div>
+        <h2 class="section__title">What Catering Costs in Tucson</h2>
+        <p class="section__sub">Typical price ranges for the most popular catering styles at Tucson events.</p>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-card__emoji">🌮</div>
+                <div class="pricing-card__title">Taco Carts &amp; Food Trucks</div>
+                <div class="pricing-card__range">$10–$20 / person</div>
+                <p class="pricing-card__desc">Build-your-own taco bars, birria, al pastor, street corn. Perfect for backyard parties and casual events.</p>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-card__emoji">🍽️</div>
+                <div class="pricing-card__title">Buffet-Style Catering</div>
+                <div class="pricing-card__range">$25–$45 / person</div>
+                <p class="pricing-card__desc">Self-serve stations with multiple entrees, sides, and desserts. Great for weddings, quinceañeras, and corporate events.</p>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-card__emoji">🥘</div>
+                <div class="pricing-card__title">Plated / Full-Service</div>
+                <div class="pricing-card__range">$50–$85 / person</div>
+                <p class="pricing-card__desc">Individual plated courses with wait staff. The premium choice for formal events and galas.</p>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-card__emoji">🔥</div>
+                <div class="pricing-card__title">BBQ &amp; Smokehouse</div>
+                <div class="pricing-card__range">$18–$35 / person</div>
+                <p class="pricing-card__desc">Slow-smoked brisket, ribs, and pulled pork. Arizona-style BBQ perfect for outdoor events.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="cat-faq" id="faq">
-    <div class="cat-section-label">FAQ</div>
-    <h2 class="cat-section-title" style="margin-bottom:2rem;">Catering Questions Answered</h2>
-    <div class="faq-item"><button class="faq-item__q">How much does event catering cost in Tucson?<span class="faq-item__icon">+</span></button><div class="faq-item__a"><p>Taco carts and food trucks run $10–$20 per person. Buffet catering ranges $25–$45 per person. Plated full-service catering with staff runs $50–$85 per person. Guest count, menu complexity, and service style all affect final pricing.</p></div></div>
-    <div class="faq-item"><button class="faq-item__q">How far in advance should I book?<span class="faq-item__icon">+</span></button><div class="faq-item__a"><p>For weddings and large events, book 3–6 months ahead. Corporate events and parties need 2–6 weeks. During peak season (October–April), popular caterers fill up fast — book as early as possible.</p></div></div>
-    <div class="faq-item"><button class="faq-item__q">Do food trucks need permits for private events?<span class="faq-item__icon">+</span></button><div class="faq-item__a"><p>For private residential events, food trucks generally operate under their existing business license. Public or park events in Pima County may require additional permits. Our vendors handle their own licensing — just confirm during the quote process.</p></div></div>
-    <div class="faq-item"><button class="faq-item__q">Who handles trash and cleanup?<span class="faq-item__icon">+</span></button><div class="faq-item__a"><p>It varies. Full-service caterers handle everything including trash. Food trucks and taco carts typically leave cleanup to the host. This is the most common surprise — always clarify before booking.</p></div></div>
-    <div class="faq-item"><button class="faq-item__q">Can caterers accommodate dietary restrictions?<span class="faq-item__icon">+</span></button><div class="faq-item__a"><p>Yes — most Tucson caterers offer vegetarian, vegan, gluten-free, and allergen-friendly options. Discuss dietary needs during the quote process so vendors can plan accordingly.</p></div></div>
-</section>
-
-<section class="cat-crosslinks">
-    <div class="cat-section-label">Also Popular</div>
-    <h2 class="cat-section-title" style="margin-bottom:0.5rem;">Other Event Services</h2>
-    <div class="crosslink-grid">
-        <a href="tables-chairs.html" class="crosslink-card"><span class="crosslink-card__icon">⛺</span><span class="crosslink-card__name">Tables & Chairs</span></a>
-        <a href="jumping-houses.html" class="crosslink-card"><span class="crosslink-card__icon">🏰</span><span class="crosslink-card__name">Inflatables</span></a>
-        <a href="photography.html" class="crosslink-card"><span class="crosslink-card__icon">📸</span><span class="crosslink-card__name">Photography</span></a>
-        <a href="cakes.html" class="crosslink-card"><span class="crosslink-card__icon">🎂</span><span class="crosslink-card__name">Cakes & Sweets</span></a>
-        <a href="transportation.html" class="crosslink-card"><span class="crosslink-card__icon">🚐</span><span class="crosslink-card__name">Transportation</span></a>
-        <a href="music-dj.html" class="crosslink-card"><span class="crosslink-card__icon">🎵</span><span class="crosslink-card__name">Music / DJ</span></a>
-        <a href="decor.html" class="crosslink-card"><span class="crosslink-card__icon">🎈</span><span class="crosslink-card__name">Decor</span></a>
+<!-- ===== LOCAL VENDORS ===== -->
+<section class="section section--surface" id="vendors">
+    <div class="section__inner">
+        <div class="section__label">Local Vendors</div>
+        <h2 class="section__title">Tucson Catering Vendors</h2>
+        <p class="section__sub">A selection of local catering professionals serving Tucson, Marana &amp; Oro Valley.</p>
+        <div class="vendors-grid">
+            <div class="vendor-card">
+                <div class="vendor-card__icon">🍽️</div>
+                <div class="vendor-card__name">Creative Catering Corporation</div>
+                <span class="vendor-card__badge">Full-Service Caterer</span>
+                <p class="vendor-card__desc">Tucson's premier caterer for over 30 years. Family-owned, full-service with event planning included.</p>
+                <a href="https://tucsoncreativecatering.com" target="_blank" rel="noopener" class="btn-vendor">Visit Website →</a>
+            </div>
+            <div class="vendor-card">
+                <div class="vendor-card__icon">🌮</div>
+                <div class="vendor-card__name">Taco'Queta</div>
+                <span class="vendor-card__badge">Food Truck / Taco Cart</span>
+                <p class="vendor-card__desc">Authentic Sonoran-style tacos and taco cart rentals. Popular for weddings and backyard events across Tucson.</p>
+                <a href="https://www.yelp.com/search?find_desc=taco%27queta&find_loc=Tucson%2C+AZ" target="_blank" rel="noopener" class="btn-vendor">Visit Website →</a>
+            </div>
+            <div class="vendor-card">
+                <div class="vendor-card__icon">🍖</div>
+                <div class="vendor-card__name">McCann Caterers</div>
+                <span class="vendor-card__badge">Off-Premise Catering</span>
+                <p class="vendor-card__desc">Tucson's premier off-premise catering company. Specializes in corporate, private, and themed events.</p>
+                <a href="https://www.google.com/search?q=McCann+Caterers+Tucson+AZ" target="_blank" rel="noopener" class="btn-vendor">Visit Website →</a>
+            </div>
+            <div class="vendor-card">
+                <div class="vendor-card__icon">🚚</div>
+                <div class="vendor-card__name">Tucson Food Trucks</div>
+                <span class="vendor-card__badge">Food Truck Booking</span>
+                <p class="vendor-card__desc">Local food truck booking platform connecting event planners with Tucson's best mobile kitchens.</p>
+                <a href="https://tucsonfoodtrucks.com" target="_blank" rel="noopener" class="btn-vendor">Visit Website →</a>
+            </div>
+            <div class="vendor-card">
+                <div class="vendor-card__icon">🌯</div>
+                <div class="vendor-card__name">La Madera Catering</div>
+                <span class="vendor-card__badge">Full-Service</span>
+                <p class="vendor-card__desc">Family catering company at 2522 E Fort Lowell Rd. Known for creative, fresh dishes. 4.9 stars on Yelp.</p>
+                <a href="https://www.yelp.com/search?find_desc=la+madera+catering&find_loc=Tucson%2C+AZ" target="_blank" rel="noopener" class="btn-vendor">Visit Website →</a>
+            </div>
+            <div class="vendor-card">
+                <div class="vendor-card__icon">🔥</div>
+                <div class="vendor-card__name">Roaming Hunger Tucson</div>
+                <span class="vendor-card__badge">Food Truck Network</span>
+                <p class="vendor-card__desc">Browse and book from 100+ food trucks available in Tucson for corporate events, weddings, and parties.</p>
+                <a href="https://roaminghunger.com/tucson-az" target="_blank" rel="noopener" class="btn-vendor">Visit Website →</a>
+            </div>
+        </div>
+        <p class="vendors__disclaimer">Listings sourced from public directories. Contact vendors directly to confirm availability.</p>
     </div>
 </section>
 
-<section class="cat-cta">
-    <div class="cat-cta__inner">
-        <div class="cat-cta__text"><h3>Ready to Book Catering<br>for Your Tucson Event?</h3><p>Tell us what you need — our assistant matches you with local pros in minutes.</p></div>
-        <button class="btn-cta-white" onclick="openChatForCategory('Catering')">Get Free Quotes →</button>
+<!-- ===== HOTELS CALLOUT ===== -->
+<div class="hotels-callout">
+    <a href="https://www.anrdoezrs.net/click-101714506-15734399" rel="nofollow sponsored" target="_blank">
+        🏨 Guests traveling for your catered event? Find hotels near any Tucson venue →
+    </a>
+</div>
+
+<!-- ===== AMAZON AFFILIATE ===== -->
+<section class="section">
+    <div class="section__inner">
+        <div class="section__label">Event Supplies</div>
+        <h2 class="section__title">Catering Supplies for Your Event</h2>
+        <p class="section__sub">Supplement your caterer or handle food service yourself with these essentials.</p>
+        <div class="amazon-grid">
+            <div class="amazon-card">
+                <div class="amazon-card__icon">🔥</div>
+                <div class="amazon-card__title">Chafing Dishes &amp; Food Warmers</div>
+                <p class="amazon-card__desc">Keep hot food at the right temp during service.</p>
+                <a href="https://amzn.to/4rW6kZa" rel="nofollow" target="_blank" class="btn-amazon">Shop on Amazon →</a>
+            </div>
+            <div class="amazon-card">
+                <div class="amazon-card__icon">📦</div>
+                <div class="amazon-card__title">Disposable Catering Trays (Bulk)</div>
+                <p class="amazon-card__desc">Aluminum pans for transport and buffet service.</p>
+                <a href="https://amzn.to/4bFO0gQ" rel="nofollow" target="_blank" class="btn-amazon">Shop on Amazon →</a>
+            </div>
+            <div class="amazon-card">
+                <div class="amazon-card__icon">🥄</div>
+                <div class="amazon-card__title">Serving Utensil Set</div>
+                <p class="amazon-card__desc">Professional stainless steel set for buffet lines.</p>
+                <a href="https://amzn.to/4v1VxzJ" rel="nofollow" target="_blank" class="btn-amazon">Shop on Amazon →</a>
+            </div>
+        </div>
     </div>
 </section>
 
-<footer class="cat-footer">
-    <div class="cat-footer__inner">
-        <div class="cat-footer__logo">Tucson Event Connections</div>
-        <div class="cat-footer__links">
-            <a href="../index.html">All Categories</a><span style="color:var(--text-faint)">·</span>
-            <a href="../legal.html">Terms & Privacy</a><span style="color:var(--text-faint)">·</span>
+<!-- ===== BEFORE YOU BOOK ===== -->
+<section class="section section--surface">
+    <div class="section__inner">
+        <div class="section__label">What to Know</div>
+        <h2 class="section__title">Before You Book a Caterer</h2>
+        <p class="section__sub">Three things Tucson event hosts wish they'd known sooner.</p>
+        <div class="tips-grid">
+            <div class="tip-card tip-card--teal">
+                <div class="tip-card__icon">🗑️</div>
+                <div class="tip-card__title">Clean-up &amp; Trash</div>
+                <p class="tip-card__text">Always clarify who hauls away trash after the event — it's the biggest hidden fee surprise. Full-service caterers typically include cleanup; food trucks and taco carts often leave it to the host.</p>
+            </div>
+            <div class="tip-card tip-card--gold">
+                <div class="tip-card__icon">📋</div>
+                <div class="tip-card__title">Guest Count Timing</div>
+                <p class="tip-card__text">Give your caterer a final headcount 2 weeks before the event — not the day before. Last-minute changes cost more and stress everyone out.</p>
+            </div>
+            <div class="tip-card tip-card--blue">
+                <div class="tip-card__icon">☀️</div>
+                <div class="tip-card__title">Summer Heat Rules</div>
+                <p class="tip-card__text">Avoid mayo-based dishes sitting out in Tucson summer heat. Plan for food safety: cold holding equipment, shaded service areas, and timing your food service after sunset when possible.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== BLOG POSTS ===== -->
+<section class="section">
+    <div class="section__inner">
+        <div class="section__label">Planning Guides</div>
+        <h2 class="section__title">Catering Planning Guides</h2>
+        <p class="section__sub">Helpful articles to plan your catered Tucson event.</p>
+        <div class="blog-grid">
+            <a href="/blog/affordable-catering-tucson-weddings.html" class="blog-card">
+                <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=400&q=80" alt="Affordable catering options for Tucson weddings" class="blog-card__img" loading="lazy">
+                <div class="blog-card__body">
+                    <div class="blog-card__title">Affordable Catering Options for Tucson Weddings</div>
+                    <div class="blog-card__read">Read article →</div>
+                </div>
+            </a>
+            <a href="/blog/corporate-catering-tucson.html" class="blog-card">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Corporate event catering in Tucson" class="blog-card__img" loading="lazy">
+                <div class="blog-card__body">
+                    <div class="blog-card__title">Corporate Event Catering in Tucson: Best Options</div>
+                    <div class="blog-card__read">Read article →</div>
+                </div>
+            </a>
+            <a href="/blog/best-catering-companies-tucson-az-2026.html" class="blog-card">
+                <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=400&q=80" alt="Best catering companies in Tucson AZ 2026" class="blog-card__img" loading="lazy">
+                <div class="blog-card__body">
+                    <div class="blog-card__title">Best Catering Companies in Tucson AZ 2026</div>
+                    <div class="blog-card__read">Read article →</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section section--surface" id="faq">
+    <div class="section__inner">
+        <div class="section__label">FAQ</div>
+        <h2 class="section__title" style="text-align:center; margin-bottom: 2.5rem;">Catering Questions Answered</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-item__q" onclick="toggleFaq(this)">
+                    How much does event catering cost in Tucson?
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__a">
+                    <p>Taco carts and food trucks run $10–$20 per person. Buffet catering ranges $25–$45 per person. Plated full-service catering with staff runs $50–$85 per person. Guest count, menu complexity, and service style all affect final pricing.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-item__q" onclick="toggleFaq(this)">
+                    How far in advance should I book a caterer?
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__a">
+                    <p>For weddings and large events, book 3–6 months ahead. Corporate events and parties need 2–6 weeks. During peak season (October–April), popular caterers fill up fast — book as early as possible.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-item__q" onclick="toggleFaq(this)">
+                    Do food trucks need permits for private events?
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__a">
+                    <p>For private residential events, food trucks generally operate under their existing business license. Public or park events in Pima County may require additional permits. Vendors handle their own licensing — just confirm during the booking process.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-item__q" onclick="toggleFaq(this)">
+                    Who handles trash and cleanup after catering?
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__a">
+                    <p>It varies. Full-service caterers handle everything including trash. Food trucks and taco carts typically leave cleanup to the host. This is the most common surprise — always clarify before booking.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__logo">Tucson Event Connections</div>
+        <div class="footer__links">
+            <a href="/">Home</a>
+            <span>·</span>
+            <a href="/blog/index.html">Blog</a>
+            <span>·</span>
+            <a href="/events.html">Events</a>
+            <span>·</span>
+            <a href="/about.html">About</a>
+            <span>·</span>
+            <a href="/legal.html">Terms &amp; Privacy</a>
+            <span>·</span>
             <a href="https://theory-solutions.com" target="_blank">Theory Solutions</a>
         </div>
-        <p class="cat-footer__disclaimer">Theory Solutions is a connection platform. We are NOT LIABLE for any services conducted or performed by independent vendors.</p>
-        <p class="cat-footer__powered">Powered by <a href="https://theory-solutions.com" target="_blank">Theory Solutions</a> · © 2026 · Serving Tucson, Marana & Oro Valley, AZ</p>
+        <p class="footer__disclaimer">Theory Solutions is a connection platform. We are NOT LIABLE for any services conducted or performed by independent vendors.</p>
+        <p class="footer__powered">Powered by <a href="https://theory-solutions.com" target="_blank">Theory Solutions</a> · © 2026 · Serving Tucson, Marana &amp; Oro Valley, AZ</p>
     </div>
 </footer>
 
-<!-- CHAT WIDGET (same as main site) -->
-<div id="chat-widget" style="display:none;">
-    <div id="chat-header" onclick="toggleChat()"><div class="chat-header-label"><span class="chat-fab-icon">💬</span><div><div class="chat-header-title">Theory Assistant</div><div class="chat-header-status"><span class="live-dot"></span> Online now</div></div></div><span id="chat-toggle-icon">✕</span></div>
-    <div id="chat-body"><div id="chat-display"></div><div id="chat-controls"></div></div>
-</div>
+<!-- ===== FAQ ACCORDION JS ===== -->
+<script>
+function toggleFaq(btn) {
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(el) {
+        el.classList.remove('open');
+    });
+    if (!isOpen) {
+        item.classList.add('open');
+    }
+}
+</script>
 
-<script src="../script.js"></script>
-<script src="category.js"></script>
 </body>
 </html>
