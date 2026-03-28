@@ -41,42 +41,42 @@
 
   <url>
     <loc>https://tucsoneventconnections.com/tucson/jumping-houses.html</loc>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://tucsoneventconnections.com/tucson/photography.html</loc>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://tucsoneventconnections.com/tucson/cakes.html</loc>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://tucsoneventconnections.com/tucson/transportation.html</loc>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://tucsoneventconnections.com/tucson/music-dj.html</loc>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://tucsoneventconnections.com/tucson/decor.html</loc>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -315,6 +315,12 @@
     <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+  </url>
+    <url>
+    <loc>https://tucsoneventconnections.com/about.html</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <!-- SITEMAP_BLOG_INSERT -->
 
