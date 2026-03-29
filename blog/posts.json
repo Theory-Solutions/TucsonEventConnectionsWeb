@@ -118,5 +118,13 @@
     "category": "Venues",
     "date": "2026-03-28",
     "image": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80"
+  },
+  {
+    "slug": "tucson-corporate-event-planning-guide",
+    "title": "Tucson Corporate Event Planning Guide",
+    "excerpt": "Planning a corporate event in Tucson? This guide covers venues, catering, AV, and everything you need for a professional event.",
+    "category": "Corporate",
+    "date": "2026-03-29",
+    "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80"
   }
 ]
