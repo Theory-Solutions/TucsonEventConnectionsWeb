@@ -66,6 +66,8 @@
         .filter-bar{background:var(--bg);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;justify-content:center;position:sticky;top:68px;z-index:100}
         .filter-btn{font-family:var(--font-body);font-size:0.82rem;font-weight:600;padding:0.45rem 1.1rem;border-radius:100px;border:1.5px solid var(--border);background:var(--bg);color:var(--text-muted);cursor:pointer;transition:var(--transition)}
         .filter-btn:hover,.filter-btn.active{background:var(--teal);color:white;border-color:var(--teal);box-shadow:0 2px 10px var(--teal-glow)}
+        .filter-updated{font-size:0.74rem;font-weight:500;color:var(--text-faint);display:flex;align-items:center;gap:0.3rem;margin-left:auto;white-space:nowrap;padding-left:0.5rem}
+        .filter-updated::before{content:'🕐';font-size:0.8rem}
 
         /* MAIN LAYOUT */
         .cal-wrap{max-width:1200px;margin:0 auto;padding:3rem 2rem 5rem;display:grid;grid-template-columns:1fr 320px;gap:2.5rem;align-items:start}
@@ -144,6 +146,7 @@
             .page-hero{padding:5.5rem 1.25rem 2.5rem}
             .cal-wrap{padding:2rem 1.25rem 4rem;gap:1.5rem}
             .filter-bar{padding:0.75rem 1rem;gap:0.5rem}
+            .filter-updated{display:none}
             .event-card{flex-direction:column;gap:0.75rem}
             .event-date-box{display:flex;align-items:center;gap:0.75rem;width:100%;background:var(--surface);border-radius:var(--radius-sm);padding:0.5rem 0.75rem}
             .event-date-box .month,.event-date-box .day,.event-date-box .day-name{color:var(--navy)}
@@ -195,6 +198,7 @@
     <button class="filter-btn" onclick="filterEvents('arts', this)">🎨 Arts & Culture</button>
     <button class="filter-btn" onclick="filterEvents('family', this)">👨‍👩‍👧 Family</button>
     <button class="filter-btn" onclick="filterEvents('recurring', this)">🔄 Weekly/Monthly</button>
+    <span class="filter-updated">Last updated: April 16, 2026</span>
 </div>
 
 <!-- MAIN -->
@@ -275,44 +279,28 @@
                 <div class="event-tags"><span class="event-tag">Swap Meet</span><span class="event-tag">Flea Market</span><span class="event-tag">Budget Friendly</span></div>
             </div>
         </div>
+
+        <div class="event-card recurring" data-tags="arts community recurring">
+            <div class="event-date-box"><div class="month">1ST</div><div class="day">THU</div><div class="day-name">Monthly</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Downtown Tucson ArtWalk</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Downtown Galleries & 4th Avenue</span>
+                    <span>🕗 5:00 PM – 8:00 PM</span>
+                    <span>📅 First Thursday of every month</span>
+                </div>
+                <p class="event-desc">Stroll through downtown Tucson's galleries and studios on the first Thursday of each month. Local artists open their doors for receptions, live music, and refreshments. A beloved community tradition celebrating Tucson's creative scene.</p>
+                <div class="event-tags"><span class="event-tag">Art Walk</span><span class="event-tag">Galleries</span><span class="event-tag">Live Music</span></div>
+            </div>
+        </div>
     </div>
 
     <!-- APRIL 2026 -->
     <div class="month-section" data-section="april">
-        <div class="month-heading">April 2026 <span class="count">5 Events</span></div>
-
-        <div class="event-card" data-tags="arts community festival">
-            <div class="event-date-box"><div class="month">APR</div><div class="day">4</div><div class="day-name">SAT</div></div>
-            <div class="event-body">
-                <div class="event-top">
-                    <div class="event-title">Tucson Celtic Festival & Scottish Highland Games</div>
-                    <span class="event-badge badge-paid">Ticketed</span>
-                </div>
-                <div class="event-meta">
-                    <span>📍 Rillito Regional Park</span>
-                    <span>🕗 9:00 AM – 6:00 PM</span>
-                </div>
-                <p class="event-desc">A celebration of Celtic heritage featuring Highland athletic competitions, Celtic music and dance, pipe and drum bands, Irish step dancing, and authentic Scottish and Irish food and crafts vendors.</p>
-                <div class="event-tags"><span class="event-tag">Cultural Festival</span><span class="event-tag">Music</span><span class="event-tag">Family</span></div>
-                <a href="https://tucsonceltfest.com" target="_blank" class="event-link">Get tickets →</a>
-            </div>
-        </div>
-
-        <div class="event-card" data-tags="arts community">
-            <div class="event-date-box"><div class="month">APR</div><div class="day">11</div><div class="day-name">SAT</div></div>
-            <div class="event-body">
-                <div class="event-top">
-                    <div class="event-title">Tucson Earth Day Festival</div>
-                    <span class="event-badge badge-free">Free Entry</span>
-                </div>
-                <div class="event-meta">
-                    <span>📍 Brandi Fenton Memorial Park</span>
-                    <span>🕗 10:00 AM – 4:00 PM</span>
-                </div>
-                <p class="event-desc">Tucson's annual Earth Day celebration featuring environmental vendors, sustainability exhibitors, local food trucks, live music, kids activities, and community organizations focused on our desert ecosystem.</p>
-                <div class="event-tags"><span class="event-tag">Environmental</span><span class="event-tag">Community</span><span class="event-tag">Family</span></div>
-            </div>
-        </div>
+        <div class="month-heading">April 2026 <span class="count">3 Events</span></div>
 
         <div class="event-card" data-tags="arts festival">
             <div class="event-date-box"><div class="month">APR</div><div class="day">18</div><div class="day-name">SAT</div></div>
@@ -365,7 +353,24 @@
 
     <!-- MAY 2026 -->
     <div class="month-section" data-section="may">
-        <div class="month-heading">May 2026 <span class="count">4 Events</span></div>
+        <div class="month-heading">May 2026 <span class="count">7 Events</span></div>
+
+        <div class="event-card" data-tags="arts festival community">
+            <div class="event-date-box"><div class="month">APR</div><div class="day">29</div><div class="day-name">WED</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Tucson International Mariachi Conference</div>
+                    <span class="event-badge badge-paid">Ticketed</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Tucson Convention Center</span>
+                    <span>🕗 Apr 29 – May 3</span>
+                </div>
+                <p class="event-desc">One of the nation's most prestigious mariachi events since 1983 — hundreds of student musicians and folkloric dancers gather for workshops, masterclasses, and culminating concerts. The Espectacular finale concert is a must-see.</p>
+                <div class="event-tags"><span class="event-tag">Mariachi</span><span class="event-tag">Folklórico</span><span class="event-tag">Cultural</span><span class="event-tag">Multi-Day</span></div>
+                <a href="https://tucsonmariachi.org" target="_blank" class="event-link">Learn more →</a>
+            </div>
+        </div>
 
         <div class="event-card" data-tags="arts festival">
             <div class="event-date-box"><div class="month">MAY</div><div class="day">2</div><div class="day-name">SAT</div></div>
@@ -416,6 +421,23 @@
             </div>
         </div>
 
+        <div class="event-card" data-tags="community arts family">
+            <div class="event-date-box"><div class="month">MAY</div><div class="day">19</div><div class="day-name">TUE</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Antiques Roadshow — Tucson Taping</div>
+                    <span class="event-badge badge-free">Free (Ticketed)</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Tucson Convention Center</span>
+                    <span>🕗 All Day</span>
+                </div>
+                <p class="event-desc">America's beloved PBS treasure-hunt show comes to Tucson! Bring your heirlooms and collectibles to find out if they could be the show's next remarkable discovery. Admission is free but tickets are required — check the AZPM website for details.</p>
+                <div class="event-tags"><span class="event-tag">PBS</span><span class="event-tag">Antiques</span><span class="event-tag">Collectibles</span><span class="event-tag">TV Taping</span></div>
+                <a href="https://community.azpm.org" target="_blank" class="event-link">Get tickets →</a>
+            </div>
+        </div>
+
         <div class="event-card" data-tags="market community">
             <div class="event-date-box"><div class="month">MAY</div><div class="day">24</div><div class="day-name">SUN</div></div>
             <div class="event-body">
@@ -429,6 +451,77 @@
                 </div>
                 <p class="event-desc">An evening market experience featuring local artisans, street food vendors, live entertainment, and the cool Tucson desert night. A social scene that feels like a block party meets art fair.</p>
                 <div class="event-tags"><span class="event-tag">Night Market</span><span class="event-tag">Artisans</span><span class="event-tag">Street Food</span></div>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="family arts community">
+            <div class="event-date-box"><div class="month">MAY</div><div class="day">29</div><div class="day-name">FRI</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Loft Kids Fest — Outdoor Movie Party Kickoff</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Himmel Park (kickoff); The Loft Cinema (ongoing through Jun 28)</span>
+                    <span>🕗 Evenings — May 29 through June 28</span>
+                </div>
+                <p class="event-desc">The Loft Cinema's beloved annual kids film festival kicks off with an outdoor movie party at Himmel Park, then continues every Saturday and Sunday morning through late June. Eleven days of free family films celebrating cinema for all ages.</p>
+                <div class="event-tags"><span class="event-tag">Family</span><span class="event-tag">Film Festival</span><span class="event-tag">Free</span><span class="event-tag">Kids</span></div>
+                <a href="https://loftcinema.org" target="_blank" class="event-link">Learn more →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JUNE 2026 -->
+    <div class="month-section" data-section="june">
+        <div class="month-heading">June 2026 <span class="count">3 Events</span></div>
+
+        <div class="event-card" data-tags="community family">
+            <div class="event-date-box"><div class="month">JUN</div><div class="day">19</div><div class="day-name">FRI</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Juneteenth Tucson Celebration</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Downtown Tucson</span>
+                    <span>🕗 All Day</span>
+                </div>
+                <p class="event-desc">Tucson's annual Juneteenth observance commemorates the emancipation of enslaved African Americans with music, dance, educational programming, and community gatherings. A meaningful celebration of freedom, culture, and history.</p>
+                <div class="event-tags"><span class="event-tag">Cultural</span><span class="event-tag">Community</span><span class="event-tag">Educational</span></div>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="community family arts">
+            <div class="event-date-box"><div class="month">JUN</div><div class="day">20</div><div class="day-name">SAT</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Summer Solstice Celebration at Mission Garden</div>
+                    <span class="event-badge badge-free">Free Entry</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Mission Garden, 946 W. Mission Ln</span>
+                    <span>🕗 5:00 PM – 8:00 PM</span>
+                </div>
+                <p class="event-desc">Celebrate the longest day of the year at one of Tucson's most beautiful historic gardens. This family-friendly multicultural evening features live music, food, and cultural traditions from Tucson's diverse communities. A uniquely Tucson experience.</p>
+                <div class="event-tags"><span class="event-tag">Family</span><span class="event-tag">Cultural</span><span class="event-tag">Outdoors</span><span class="event-tag">Free</span></div>
+            </div>
+        </div>
+
+        <div class="event-card" data-tags="arts festival">
+            <div class="event-date-box"><div class="month">JUN</div><div class="day">27</div><div class="day-name">SAT</div></div>
+            <div class="event-body">
+                <div class="event-top">
+                    <div class="event-title">Disney's Beauty and the Beast — Touring Production</div>
+                    <span class="event-badge badge-paid">Ticketed</span>
+                </div>
+                <div class="event-meta">
+                    <span>📍 Centennial Hall, University of Arizona</span>
+                    <span>🕗 7:00 PM</span>
+                </div>
+                <p class="event-desc">The beloved Broadway classic comes to Tucson with spectacular new sets, dazzling costumes, and the full Tony Award–nominated score. Featuring original creative team members, this touring production is a must for theater fans and families alike.</p>
+                <div class="event-tags"><span class="event-tag">Broadway</span><span class="event-tag">Theater</span><span class="event-tag">Family</span><span class="event-tag">Disney</span></div>
+                <a href="https://ticketmaster.com/discover/tucson" target="_blank" class="event-link">Get tickets →</a>
             </div>
         </div>
     </div>
@@ -534,18 +627,18 @@
         <a href="/">Find Vendors →</a>
     </div>
 
-    
     <div class="sidebar-box" style="margin-top:1.5rem;background:var(--navy);border-color:rgba(255,255,255,0.08)">
         <div class="sidebar-title" style="color:white">🏨 Need a Hotel?</div>
         <p style="font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.65;margin-bottom:0.75rem">Visiting Tucson for an event? Compare and book hotels near any venue.</p>
         <a href="https://www.anrdoezrs.net/click-101714506-15734399" rel="nofollow sponsored" target="_blank" style="display:block;background:var(--teal);color:white;font-size:0.8rem;font-weight:700;padding:0.65rem;border-radius:var(--radius-md);text-align:center;text-decoration:none">Find Hotels in Tucson →</a>
     </div>
-    
+
     <div class="sidebar-box" style="margin-top:1.5rem;background:#FFF7ED;border-color:rgba(249,115,22,0.15)">
         <div class="sidebar-title">🍼 Traveling with Baby?</div>
         <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.65;margin-bottom:0.75rem">Rent cribs, strollers & more delivered to your Tucson hotel or venue.</p>
         <a href="https://www.babyquip.com/p/25181?a=0984950" rel="nofollow sponsored" target="_blank" style="display:block;background:#F97316;color:white;font-size:0.8rem;font-weight:700;padding:0.65rem;border-radius:var(--radius-md);text-align:center;text-decoration:none">Rent Baby Gear in Tucson →</a>
     </div>
+
     <div class="sidebar-box" style="margin-top:1.5rem">
         <div class="sidebar-title">📝 Submit Your Event</div>
         <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.65;margin-bottom:0.75rem">Know of a Tucson event we should list? We update this calendar monthly.</p>
@@ -570,7 +663,7 @@
             <li><strong>4th Avenue Street Fair</strong> — Spring and Fall editions, 400+ artists and vendors</li>
             <li><strong>All Souls Procession</strong> — A once-in-a-lifetime community event every fall</li>
             <li><strong>Tucson Gem & Mineral Show</strong> — World's largest, draws dealers from 100+ countries</li>
-            <li><strong>Tucson Celtic Festival</strong> — Highland games, Celtic music, authentic food</li>
+            <li><strong>Tucson International Mariachi Conference</strong> — A beloved multicultural tradition since 1983</li>
         </ul>
 
         <h3>Planning an Event in Tucson?</h3>
